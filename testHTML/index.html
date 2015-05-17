@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototypes</title>
+	<style>
+		.odd {
+			background: #f6f6f6;
+			height: 100px;
+		}
+		.even {
+			background: #ccc;
+			height: 200px;
+		}
+		.test {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+
+<div class='odd'></div>
+<div class='even'></div>
+<div class='odd third'></div>
+<div class='even'></div>
+<div class='odd'></div>
+<div class='even'></div>
+
+<script src='../dist/app.min.js'></script>
+
+<script>
+var test = function() { console.log(this); };
+var $ = window.q; //window.q();// window.q().setFn(test);
+
+console.log( $ );
+console.log( $() );
+console.log( $('.even').each(function(val) { console.log(val); }) );
+console.log( $('.odd').addClass('test') );
+console.log( $('div').on('click', test) );
+console.log( $('div').off('click', test) );
+
+</script>
+
+
+</body>
+</html>
