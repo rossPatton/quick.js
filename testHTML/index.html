@@ -3,6 +3,9 @@
 <head>
 	<title>Prototypes</title>
 	<style>
+		#first {
+			height: 50px;
+		}
 		.odd {
 			background: #f6f6f6;
 			height: 100px;
@@ -18,25 +21,51 @@
 </head>
 <body>
 
-<div class='odd'></div>
-<div class='even'></div>
+<div id='first' class='odd' title="something">
+	<p>Test</p>
+</div>
+<div class='even'>
+	<p>Test 2</p>
+</div>
 <div class='odd third'></div>
 <div class='even'></div>
 <div class='odd'></div>
 <div class='even'></div>
 
+<p><strong>Test 1</strong></p>
+<p id="second-p" ><strong>Test 2</strong></p>
+<p><strong>Test 3</strong></p>
+
 <script src='../dist/app.min.js'></script>
 
 <script>
 var test = function() { console.log(this); };
-var $ = window.q; //window.q();// window.q().setFn(test);
+var testify = function() { return 'testify! \n' + this[0]; };
+$.fn.testify = testify;
 
-console.log( $ );
-console.log( $() );
+console.log( $('.odd') );
+console.log( $('div').testify() );
 console.log( $('.even').each(function(val) { console.log(val); }) );
 console.log( $('.odd').addClass('test') );
+console.log( $('.odd').removeClass('odd') );
 console.log( $('div').on('click', test) );
-console.log( $('div').off('click', test) );
+// console.log( $('div').off('click', test) );
+console.log( $('div').attr('title') );
+console.log( $('div').attr('title', 'something else') );
+console.log( $('div').hasClass('even') );
+console.log( $('div').empty() );
+console.log( $('#first').height() );
+console.log( $('div.even').height('50vh') );
+console.log( $('p').html() );
+console.log( $('p').html('<em>Testing EVEN MORE</em>') );
+console.log( $('#second-p .test').remove() );
+console.log( $('p').add('div') );
+console.log( $('p').add('div').text() );
+console.log( $('p').add('div').text('shenanigans!') );
+console.log( $('div').toggleClass('even') );
+console.log( $('div').toggleClass('odd') );
+console.log( $('div').width() );
+console.log( $('div.even').add('#second-p').width('50vw') );
 
 </script>
 

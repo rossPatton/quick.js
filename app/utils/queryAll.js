@@ -19,10 +19,6 @@ const queryAll = function(
 	cache = {},
 	bust = false ): Array {
 
-	if ( typeof sel !== 'string' ) {
-		return console.error('query requires a string as its first param');
-	}
-
 	if ( bust === true ||
 		typeof cache[sel] === 'undefined' ) {
 		cache[sel] = toArray( parent.querySelectorAll(sel) );

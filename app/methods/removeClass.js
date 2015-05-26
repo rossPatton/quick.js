@@ -4,15 +4,13 @@ const removeClass = function( classes: string ): Object {
 		throw Error( 'removeClass needs a string' );
 	}
 
-	classes = classes.split(' ');
-
-	this.selection.forEach(sel => {
-		return classes.forEach(className => {
-			if ( sel.classList.contains( className ) ) {
-				sel.classList.remove( className );
+	for ( let dom of this[0] ) {
+		for ( let c of classes.split(' ') ) {
+			if ( dom.className.indexOf(c) !== -1 ) {
+				dom.classList.remove(c);
 			}
-		});
-	});
+		}
+	}
 
 	return this;
 };

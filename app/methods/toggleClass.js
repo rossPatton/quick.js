@@ -1,5 +1,5 @@
-// adds a class to the current selection
-const addClass = function( classes: string ): Object {
+// toggles them classes
+const toggleClass: Function = function( classes: string ): Object {
 	if ( typeof classes !== 'string' ) {
 		throw Error( 'addClass needs a string' );
 	}
@@ -9,10 +9,13 @@ const addClass = function( classes: string ): Object {
 			if ( dom.className.indexOf(c) === -1 ) {
 				dom.className += ` ${c}`;
 			}
+			else {
+				dom.classList.remove(c);
+			}
 		}
 	}
 
 	return this;
 };
 
-export default addClass;
+export default toggleClass;

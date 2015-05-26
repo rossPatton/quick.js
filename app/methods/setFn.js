@@ -1,13 +1,13 @@
-import stampit from 'stampit';
-import init from '../core/init';
-import methods from './methods';
+// import stampit from 'stampit';
+// import init from '../core/init';
+// import methods from './methods';
 
-const setFn = function( fns ) {
-	let newMethods = stampit().methods(fns);
-	return stampit().compose( cache, methods, newMethods, init(arguments) ).create();
-};
+// const setFn = function( fns ) {
+// 	let newMethods = stampit().methods(fns);
+// 	return stampit().compose( cache, methods, newMethods, init(arguments) ).create();
+// };
 
-export default setFn;
+// export default setFn;
 
 
 // for ( let method in newMethods ) {

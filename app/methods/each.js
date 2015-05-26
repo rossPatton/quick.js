@@ -1,9 +1,9 @@
 const each = function( cb ) {
-	const len = this.selection.length;
+	const len = this[0].length;
 	let i = 0;
 
 	for ( i; i < len; i++ ) {
-		cb( this.selection[i], i, this.selection );
+		cb( this[0][i], i, this[0] );
 	}
 
 	return this;

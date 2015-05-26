@@ -1,19 +1,36 @@
-import stampit from 'stampit';
-
 import on from './on';
 import off from './off';
 import addClass from './addClass';
+import hasClass from './hasClass';
+import attr from './attr';
+import html from './html';
 import each from './each';
-import setFn from './setFn';
+import empty from './empty';
+import height from './height';
+import width from './width';
+import add from './add';
+import text from './text';
+// import setFn from './setFn';
+import remove from './remove';
 import removeClass from './removeClass';
+import toggleClass from './toggleClass';
 
-const Methods = stampit().methods({
+const methods = {
+	add,
+	attr,
 	on,
 	off,
-	setFn,
 	each,
+	html,
+	empty,
+	text,
+	height,
+	width,
+	remove,
 	addClass,
-	removeClass
-});
+	hasClass,
+	removeClass,
+	toggleClass
+};
 
-export default Methods;
+export default methods;
