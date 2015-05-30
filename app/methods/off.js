@@ -3,9 +3,9 @@ const off = function( events: string, cb: Function, capture = false ) {
 		throw TypeError('off requires a string');
 	}
 
-	for ( let dom of this[0] ) {
+	for ( let el of this[0] ) {
 		for ( let event of events.split(' ') ) {
-			dom.removeEventListener( event, cb.bind(dom), capture );
+			el.removeEventListener( event, cb.bind(el), capture );
 		}
 	}
 

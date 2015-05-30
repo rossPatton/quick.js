@@ -6,8 +6,8 @@ const height: Function = function( height: string ): number | Array {
 		return this[0][0].clientHeight;
 	}
 
-	for ( let dom of this[0] ) {
-		dom.style.height = `${height}`;
+	for ( let el of this[0] ) {
+		el.style.height = `${height}`;
 	}
 
 	return this;

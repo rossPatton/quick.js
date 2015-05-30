@@ -1,21 +1,15 @@
-// adds a class to the current selection
+// return true if every element in selection has all the classes passed in
 const hasClass = function( classes: string ): Object {
 	if ( typeof classes !== 'string' ) {
-		throw Error( 'addClass needs a string' );
+		throw Error( 'hasClass needs a string' );
 	}
 
-	let haz: Array = [];
-
-	for ( let dom of this[0] ) {
-		for ( let c of classes.split(' ') ) {
-			if ( dom.className.indexOf(c) !== -1 ) {
-				haz.push(dom);
-			}
-		}
-	}
-
-	this[0] = haz;
-	return this;
+	classes = classes.split(' ');
+	return this[0].every(el => {
+		return classes.every(c => {
+			return el.className.indexOf(c) !== -1
+		});
+	});
 };
 
 export default hasClass;

@@ -4,10 +4,10 @@ const addClass = function( classes: string ): Object {
 		throw Error( 'addClass needs a string' );
 	}
 
-	for ( let dom of this[0] ) {
+	for ( let el of this[0] ) {
 		for ( let c of classes.split(' ') ) {
-			if ( dom.className.indexOf(c) === -1 ) {
-				dom.className += ` ${c}`;
+			if ( el.className.indexOf(c) === -1 ) {
+				el.className += ` ${c}`;
 			}
 		}
 	}

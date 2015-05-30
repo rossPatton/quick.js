@@ -20,11 +20,11 @@ const queryAll = function(
 	bust = false ): Array {
 
 	if ( bust === true ||
-		typeof cache[sel] === 'undefined' ) {
-		cache[sel] = toArray( parent.querySelectorAll(sel) );
+		typeof cache[`${parent}:sel`] === 'undefined' ) {
+		cache[`${parent}:sel`] = toArray( parent.querySelectorAll(sel) );
 	}
 
-	return cache[sel];
+	return cache[`${parent}:sel`];
 };
 
 export default queryAll;

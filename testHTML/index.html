@@ -6,6 +6,12 @@
 		#first {
 			height: 50px;
 		}
+		.hide {
+			display: none;
+		}
+		.show {
+			display: block;
+		}
 		.odd {
 			background: #f6f6f6;
 			height: 100px;
@@ -35,6 +41,10 @@
 <p><strong>Test 1</strong></p>
 <p id="second-p" ><strong>Test 2</strong></p>
 <p><strong>Test 3</strong></p>
+<p class='hide'>I'm hidden!</p>
+<p class='show'>I'm visible!</p>
+<p class='hide two'>I'm hidden!</p>
+<p class='show two'>I'm visible!</p>
 
 <script src='../dist/app.min.js'></script>
 
@@ -53,6 +63,7 @@ console.log( $('div').on('click', test) );
 console.log( $('div').attr('title') );
 console.log( $('div').attr('title', 'something else') );
 console.log( $('div').hasClass('even') );
+console.log( $('div.even').hasClass('even') );
 console.log( $('div').empty() );
 console.log( $('#first').height() );
 console.log( $('div.even').height('50vh') );
@@ -66,6 +77,21 @@ console.log( $('div').toggleClass('even') );
 console.log( $('div').toggleClass('odd') );
 console.log( $('div').width() );
 console.log( $('div.even').add('#second-p').width('50vw') );
+$('div').append( document.createTextNode('testing testing') );
+$('div').append( '<a href="#">links</a>' );
+$('div.even').prepend( document.createTextNode('prepended!') );
+$('div.even').prepend( '<strong>I SAID PREPENDED!</strong>' );
+$('div').after( document.createElement('button') );
+$('div').after( '<a href="#">test after</a>' );
+$('p').before( document.createElement('hr') );
+$('p').before( '<a href="#">test before</a>' );
+$('p.hide').hide();
+$('p.show').show();
+$('p.show.two').hide();
+$('p.hide.two').show();
+
+$('strong').wrap( document.createElement('em') );
+$('strong').wrap( '<marquee scrollamount="10"></marquee>' );
 
 </script>
 

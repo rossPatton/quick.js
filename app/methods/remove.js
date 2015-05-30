@@ -1,8 +1,8 @@
 // gets or sets (safely) html content of a dom node
-const remove: Function = function(): void {
-	for ( let dom of this[0] ) {
-		dom.parentNode.removeChild( dom );
-	}
+const remove: Function = function(): Object {
+	this.each(el => {
+		return el.parentNode.removeChild(el);
+	});
 	return this;
 };
 

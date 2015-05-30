@@ -1,6 +1,7 @@
 import toArray from '../utils/toArray';
 
 // gets or sets (safely) html content of a dom node
+// @TODO DOMParser is cool but prolly not the most compatible way of doing this
 const html: Function = function( set: string ): Object {
 	if ( typeof set === 'undefined' ) {
 		return this[0][0].innerHTML;
@@ -9,9 +10,9 @@ const html: Function = function( set: string ): Object {
 	this.empty();
 	let html: Object = toArray( ( new DOMParser() ).parseFromString( set, 'text/html' ).body.children );
 
-	for ( let dom of this[0] ) {
+	for ( let el of this[0] ) {
 		for ( let node of html ) {
-			dom.appendChild( node.cloneNode(true) );
+			el.appendChild( node.cloneNode(true) );
 		}
 	}
 

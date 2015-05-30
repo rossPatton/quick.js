@@ -10,25 +10,38 @@ import height from './height';
 import width from './width';
 import add from './add';
 import text from './text';
-// import setFn from './setFn';
 import remove from './remove';
+import append from './append';
+import prepend from './prepend';
+import after from './after';
+import before from './before';
 import removeClass from './removeClass';
 import toggleClass from './toggleClass';
+import hide from './hide';
+import show from './show';
+import wrap from './wrap';
 
 const methods = {
 	add,
 	attr,
+	append,
+	after,
+	before,
 	on,
 	off,
 	each,
 	html,
+	hide,
+	show,
 	empty,
+	wrap,
 	text,
 	height,
 	width,
 	remove,
 	addClass,
 	hasClass,
+	prepend,
 	removeClass,
 	toggleClass
 };

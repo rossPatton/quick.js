@@ -4,10 +4,10 @@ const removeClass = function( classes: string ): Object {
 		throw Error( 'removeClass needs a string' );
 	}
 
-	for ( let dom of this[0] ) {
+	for ( let el of this[0] ) {
 		for ( let c of classes.split(' ') ) {
-			if ( dom.className.indexOf(c) !== -1 ) {
-				dom.classList.remove(c);
+			if ( el.className.indexOf(c) !== -1 ) {
+				el.classList.remove(c);
 			}
 		}
 	}

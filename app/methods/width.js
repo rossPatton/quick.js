@@ -6,8 +6,8 @@ const width: Function = function( width: string ): number | Array {
 		return this[0][0].clientWidth;
 	}
 
-	for ( let dom of this[0] ) {
-		dom.style.width = `${width}`;
+	for ( let el of this[0] ) {
+		el.style.width = `${width}`;
 	}
 
 	return this;
