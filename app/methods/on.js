@@ -1,13 +1,10 @@
-const on = function( events: string, cb: Function, capture = false ) {
-	if ( typeof events !== 'string' ) {
-		throw TypeError('on requires a string');
-	}
-
-	for ( let el of this[0] ) {
-		for ( let event of events.split(' ') ) {
-			el.addEventListener( event, cb.bind(el), capture );
-		}
-	}
+// @TODO needs to promote the better practice of putting evs on the body
+const on = function( events: string, cb: Function, capture = false ): Object {
+	this.each(el => {
+		return events.split(' ').forEach(ev => {
+			return el.addEventListener( ev, cb.bind(el), capture );
+		});
+	});
 
 	return this;
 }

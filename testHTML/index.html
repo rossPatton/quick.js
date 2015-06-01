@@ -89,6 +89,11 @@ $('p.hide').hide();
 $('p.show').show();
 $('p.show.two').hide();
 $('p.hide.two').show();
+$('body').append('<input type="checkbox" />');
+console.log( $('input[type="checkbox"]').prop('checked') );
+console.log( $('input[type="checkbox"]').prop('checked', true) );
+console.log( $('p').haz('.two') );
+// $('p').haz('.two', 'filter').wrap('<em></em>');
 
 $('strong').wrap( document.createElement('em') );
 $('strong').wrap( '<marquee scrollamount="10"></marquee>' );

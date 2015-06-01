@@ -20,6 +20,8 @@ import toggleClass from './toggleClass';
 import hide from './hide';
 import show from './show';
 import wrap from './wrap';
+import prop from './prop';
+import haz from './haz';
 
 const methods = {
 	add,
@@ -36,10 +38,12 @@ const methods = {
 	empty,
 	wrap,
 	text,
+	prop,
 	height,
 	width,
 	remove,
 	addClass,
+	haz,
 	hasClass,
 	prepend,
 	removeClass,

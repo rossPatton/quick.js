@@ -1,10 +1,10 @@
 // adds a class to the current selection
 const empty: Function = function(): Object {
-	for ( let dom of this[0] ) {
-		while ( dom.firstChild ) {
-			dom.removeChild( dom.firstChild );
+	this.each(el => {
+		while (el.firstChild) {
+			el.removeChild(el.firstChild);
 		}
-	}
+	});
 
 	return this;
 };

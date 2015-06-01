@@ -1,8 +1,6 @@
-// gets or sets (safely) html content of a dom node
+// remove nodes from the dom
 const remove: Function = function(): Object {
-	this.each(el => {
-		return el.parentNode.removeChild(el);
-	});
+	this.each( el => el.parentNode.removeChild(el) );
 	return this;
 };
 

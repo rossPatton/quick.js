@@ -1,6 +1,6 @@
 import isNode from '../utils/isNode';
 
-const wrap: Function = function(wrap: string | Object): Object {
+const wrap: Function = function( wrap: string | Object ): Object {
 	// if passed a dom node directly, check it and append it
 	if ( isNode(wrap) ) {
 		this.each(el => {

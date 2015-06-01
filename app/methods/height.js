@@ -1,16 +1,15 @@
 // gets or sets the height on an element or array of elements
 // @returns array of numbers if not setting height
 // @returns this, if we're setting the height of elements
-const height: Function = function( height: string ): number | Array {
-	if ( typeof height === 'undefined' ) {
-		return this[0][0].clientHeight;
+const height: Function = function( height: string ): number | Object {
+	// set the height if a height was passed in
+	if ( height ) {
+		this.each( el => el.style.height = height );
 	}
 
-	for ( let el of this[0] ) {
-		el.style.height = `${height}`;
-	}
-
-	return this;
+	// if just getting the height, return the height
+	// else if setting the height, set height above and keep chaining
+	return !height ? this[0][0].clientHeight: this ;
 };
 
 export default height;

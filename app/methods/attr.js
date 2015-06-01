@@ -1,22 +1,12 @@
-// set attribute
+// get attribute (first match) or set attribute on all matching
 const attr = function( get: string, set: string ): Object {
-	if ( typeof get !== 'string' ) {
-		throw Error( 'attr needs a string' );
+	if ( set ) {
+		this.each( el => el.setAttribute(get, set) );
 	}
 
-	let attr: string = '';
-
-	for ( let dom of this[0] ) {
-		if ( dom.hasAttribute(get) ) {
-			attr = dom.getAttribute(get);
-
-			if ( set ) {
-				dom.setAttribute(get, set);
-			}
-		}
-	}
-
-	return set ? set : attr;
+	// if getting, return the attr
+	// if setting, set attributes and continue chaining
+	return !set ? this[0][0].getAttribute(get) : this;
 };
 
 export default attr;
