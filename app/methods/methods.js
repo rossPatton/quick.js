@@ -22,9 +22,13 @@ import hide from './hide';
 import show from './show';
 import wrap from './wrap';
 import prop from './prop';
-import haz from './haz';
+import has from './has';
+import size from './size';
+import slice from './slice';
+import eq from './eq';
 
 const methods = {
+	eq,
 	add,
 	attr,
 	append,
@@ -45,8 +49,10 @@ const methods = {
 	width,
 	remove,
 	addClass,
-	haz,
+	has,
+	size,
 	hasClass,
+	slice,
 	prepend,
 	removeClass,
 	toggleClass
