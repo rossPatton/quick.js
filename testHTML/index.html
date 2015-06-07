@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Prototypes</title>
+	<title>Quick Test</title>
 	<style>
 		#first {
 			height: 50px;
@@ -49,17 +49,17 @@
 <script src='../dist/app.min.js'></script>
 
 <script>
-var test = function() { console.log(this); };
-var testify = function() { return 'testify! \n' + this[0]; };
+function test() { console.log(this); };
+function testify() { return 'testify! \n' + this[0]; };
 $.fn.testify = testify;
 
 console.log( $('.odd') );
 console.log( $('div').testify() );
-console.log( $('.even').each(function(val) { console.log(val); }) );
+$('.even').each(function(val) { console.log(val); });
 console.log( $('.odd').addClass('test') );
 console.log( $('.odd').removeClass('odd') );
 console.log( $('div').on('click', test) );
-// console.log( $('div').off('click', test) );
+console.log( $('div').off('click', test) );
 console.log( $('div').attr('title') );
 console.log( $('div').attr('title', 'something else') );
 console.log( $('div').hasClass('even') );

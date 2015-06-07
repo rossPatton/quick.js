@@ -2,7 +2,15 @@
 const on = function( events: string, cb: Function, capture = false ): Object {
 	this.each(el => {
 		return events.split(' ').forEach(ev => {
-			return el.addEventListener( ev, cb.bind(el), capture );
+			const l: Object = {
+				el: el,
+				ev: ev,
+				cb: cb.bind(el)
+			}
+
+			this.listeners.push(l);
+
+			return el.addEventListener( l.ev, l.cb );
 		});
 	});
 

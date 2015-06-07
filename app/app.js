@@ -4,14 +4,13 @@ import queryAll from './utils/queryAll';
 let proto: Object = Object.create( methods );
 
 let App: Function = function(input) {
+	this.listeners = this.listeners || [];
 	this[0] = typeof input === 'string' ? queryAll(input) : TypeError('Quick needs a string!');
 
 	if ( typeof App.fn === 'object' ) {
 		for ( let method in App.fn ) {
 			if ( App.fn.hasOwnProperty(method) ) {
-				if ( !this.__proto__[method] ) {
-					this.__proto__[method] = App.fn[method];
-				}
+				this.__proto__[method] = App.fn[method];
 			}
 		}
 	}
