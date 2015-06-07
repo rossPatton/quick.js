@@ -1,7 +1,7 @@
 # quick.js
 Lightweight, Modular, Isomorphic, DOM Traversal Library
 
-inspired by sprintjs, very rough, use at own risk, etc etc. 
+inspired by [sprintjs](https://github.com/bendc/sprint), very rough, use at own risk, etc etc. 
 
 goal is to match the functionality (more or less) of [jQuery dom manipulation methods](https://api.jquery.com/category/manipulation/), using the latest native methods. Not a library to use if you have to support legacy browsers.
 
