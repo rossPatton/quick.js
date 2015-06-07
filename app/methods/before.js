@@ -1,7 +1,7 @@
 import isNode from '../utils/isNode';
 
 // appends dom nodes using those nodes directly or strings
-const before: Function = function(prependMe: string | Object) {
+const before: Function = function( prependMe: string | Object ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode(prependMe) ) {
 		this.each(el => {

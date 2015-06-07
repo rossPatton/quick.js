@@ -5,7 +5,7 @@ const on = function( events: string, cb: Function, capture = false ): Object {
 			const l: Object = {
 				el: el,
 				ev: ev,
-				cb: cb.bind(el)
+				cb: cb
 			}
 
 			this.listeners.push(l);

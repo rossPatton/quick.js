@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div id='first' class='odd' title="something">
+<div id='first' class='odd' title="something" style='background-color: #ff0000'>
 	<p>Test</p>
 </div>
 <div class='even'>
@@ -53,30 +53,30 @@ function test() { console.log(this); };
 function testify() { return 'testify! \n' + this[0]; };
 $.fn.testify = testify;
 
-console.log( $('.odd') );
-console.log( $('div').testify() );
-$('.even').each(function(val) { console.log(val); });
-console.log( $('.odd').addClass('test') );
-console.log( $('.odd').removeClass('odd') );
+// console.log( $('.odd') );
+// console.log( $('div').testify() );
+// $('.even').each(function(val) { console.log(val); });
+// console.log( $('.odd').addClass('test') );
+// console.log( $('.odd').removeClass('odd') );
 console.log( $('div').on('click', test) );
 console.log( $('div').off('click', test) );
-console.log( $('div').attr('title') );
-console.log( $('div').attr('title', 'something else') );
-console.log( $('div').hasClass('even') );
-console.log( $('div.even').hasClass('even') );
-console.log( $('div').empty() );
-console.log( $('#first').height() );
-console.log( $('div.even').height('50vh') );
-console.log( $('p').html() );
-console.log( $('p').html('<em>Testing EVEN MORE</em>') );
-console.log( $('#second-p .test').remove() );
-console.log( $('p').add('div') );
-console.log( $('p').add('div').text() );
-console.log( $('p').add('div').text('shenanigans!') );
-console.log( $('div').toggleClass('even') );
-console.log( $('div').toggleClass('odd') );
-console.log( $('div').width() );
-console.log( $('div.even').add('#second-p').width('50vw') );
+// console.log( $('div').attr('title') );
+// console.log( $('div').attr('title', 'something else') );
+// console.log( $('div').hasClass('even') );
+// console.log( $('div.even').hasClass('even') );
+// console.log( $('div').empty() );
+// console.log( $('#first').height() );
+// console.log( $('div.even').height('50vh') );
+// console.log( $('p').html() );
+// console.log( $('p').html('<em>Testing EVEN MORE</em>') );
+// console.log( $('#second-p .test').remove() );
+// console.log( $('p').add('div') );
+// console.log( $('p').add('div').text() );
+// console.log( $('p').add('div').text('shenanigans!') );
+// console.log( $('div').toggleClass('even') );
+// console.log( $('div').toggleClass('odd') );
+// console.log( $('div').width() );
+// console.log( $('div.even').add('#second-p').width('50vw') );
 $('div').append( document.createTextNode('testing testing') );
 $('div').append( '<a href="#">links</a>' );
 $('div.even').prepend( document.createTextNode('prepended!') );
@@ -90,13 +90,20 @@ $('p.show').show();
 $('p.show.two').hide();
 $('p.hide.two').show();
 $('body').append('<input type="checkbox" />');
-console.log( $('input[type="checkbox"]').prop('checked') );
-console.log( $('input[type="checkbox"]').prop('checked', true) );
-console.log( $('p').haz('.two') );
+// console.log( $('input[type="checkbox"]').prop('checked') );
+// console.log( $('input[type="checkbox"]').prop('checked', true) );
+// console.log( $('p').haz('.two') );
 // $('p').haz('.two', 'filter').wrap('<em></em>');
 
 $('strong').wrap( document.createElement('em') );
 $('strong').wrap( '<marquee scrollamount="10"></marquee>' );
+$('div').css('background-color');
+$('#first').css({
+	'background-color': '#000',
+	color: '#fff',
+	width: '100vw'
+});
+
 
 </script>
 

@@ -1,5 +1,6 @@
 import on from './on';
 import off from './off';
+import css from './css';
 import addClass from './addClass';
 import hasClass from './hasClass';
 import attr from './attr';
@@ -27,6 +28,7 @@ const methods = {
 	add,
 	attr,
 	append,
+	css,
 	after,
 	before,
 	on,
