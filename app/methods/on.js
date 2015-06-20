@@ -6,7 +6,7 @@ const on = function( events, cb ) {
 				el: el,
 				ev: ev,
 				cb: cb
-			}
+			};
 
 			this.listeners.push( l );
 
@@ -15,6 +15,6 @@ const on = function( events, cb ) {
 	} );
 
 	return this;
-}
+};
 
 export default on;

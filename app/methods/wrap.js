@@ -6,6 +6,7 @@ const wrap = function( dom ) {
 		this.each( el => {
 			let w = dom.cloneNode( true );
 			w.appendChild( el.cloneNode( true ) );
+
 			return el.parentNode.replaceChild( w, el );
 		} );
 	}
@@ -16,6 +17,7 @@ const wrap = function( dom ) {
 		this.each( el => {
 			let w = tmp.firstChild.cloneNode( true );
 			w.appendChild( el.cloneNode( true ) );
+
 			return el.parentNode.replaceChild( w, el );
 		} );
 	}

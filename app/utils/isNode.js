@@ -10,7 +10,9 @@ const isNode = function( node ) {
 	if ( typeof node === 'object' &&
 		node.nodeType && node.cloneNode &&
 		( node.nodeType === 1 || node.nodeType === 3 ) ) {
+
 		amNode = true;
+
 	}
 
 	return amNode;

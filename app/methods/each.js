@@ -8,6 +8,6 @@ const each = function( cb ) {
 	}
 
 	return this;
-}
+};
 
 export default each;

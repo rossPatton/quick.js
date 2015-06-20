@@ -13,6 +13,6 @@ const off = function( events, cb ) {
 	} );
 
 	return this;
-}
+};
 
 export default off;
