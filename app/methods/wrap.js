@@ -1,17 +1,17 @@
 import isNode from '../utils/isNode';
 
-const wrap = function( wrap ) {
+const wrap = function( dom ) {
 	// if passed a dom node directly, check it and append it
-	if ( isNode( wrap ) ) {
+	if ( isNode( dom ) ) {
 		this.each( el => {
-			let w = wrap.cloneNode( true );
+			let w = dom.cloneNode( true );
 			w.appendChild( el.cloneNode( true ) );
 			return el.parentNode.replaceChild( w, el );
 		} );
 	}
-	else if ( typeof wrap === 'string' ) {
+	else if ( typeof dom === 'string' ) {
 		let tmp = document.createElement( 'div' );
-		tmp.insertAdjacentHTML( 'afterbegin', wrap );
+		tmp.insertAdjacentHTML( 'afterbegin', dom );
 
 		this.each( el => {
 			let w = tmp.firstChild.cloneNode( true );

@@ -4,12 +4,13 @@ import toArray from '../utils/toArray';
 // @TODO DOMParser is cool but def not the most compatible way of doing this
 const html = function( set ) {
 	this.empty();
-	let html = toArray(
+
+	let htmlArr = toArray(
 		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
 	);
 
 	this.each( el => {
-		for ( let node of html ) {
+		for ( let node of htmlArr ) {
 			el.appendChild( node.cloneNode( true ) );
 		}
 	} );

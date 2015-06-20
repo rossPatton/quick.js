@@ -20,4 +20,7 @@ let App = function( input ) {
 
 App.fn = typeof App.fn === 'undefined' ? {} : App.fn;
 
+// pretty much just for testing atm
+if ( window ) { window.$ = App; }
+
 export default App;

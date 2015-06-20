@@ -13,12 +13,12 @@ import toArray from './toArray';
  * @param {bool} [bust] [if true, we ignore the cache and get it fresh]
  * @return {array} [our node list, as an array]
  */
-const queryAll = function(
-	sel,
-	parent = document,
-	cache = {},
-	bust = false ) {
-
+const queryAll = function( sel, parent = document, cache = {}, bust = false ) {
+	console.log( sel );
+	console.log( parent );
+	console.log( cache );
+	console.log( bust );
+	
 	if ( bust === true ||
 		typeof cache[`${parent}:sel`] === 'undefined' ) {
 		cache[`${parent}:sel`] = toArray( parent.querySelectorAll( sel ) );
