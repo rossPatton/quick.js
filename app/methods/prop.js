@@ -4,12 +4,12 @@ const prop = function( get, set ) {
 	// else we just pass in the config object
 	// ternary lets ppl pass in a value here, or a config object
 	if ( set ) {
-		this.each(el => {
+		this.each( el => {
 			console.log( el );
 			console.log( this[0][0] );
 			console.log( this[0][0][get] );
 			this[0][0][get] = set;
-		});
+		} );
 	}
 
 	// if getting, just return the prop (bracket notation needed: get is a str)

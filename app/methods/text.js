@@ -6,11 +6,11 @@ const text = function( set ) {
 		this.each( el => txt += ` ${el.textContent}` );
 	}
 
-	this.each(el => {
+	this.each( el => {
 		if ( el.nodeType === 1 || el.nodeType === 11 || el.nodeType === 9 ) {
 			el.textContent = set;
 		}
-	});
+	} );
 
 	// if just getting, we return the total txt
 	// if setting, we set above and continue chaining

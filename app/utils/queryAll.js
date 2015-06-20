@@ -21,7 +21,7 @@ const queryAll = function(
 
 	if ( bust === true ||
 		typeof cache[`${parent}:sel`] === 'undefined' ) {
-		cache[`${parent}:sel`] = toArray( parent.querySelectorAll(sel) );
+		cache[`${parent}:sel`] = toArray( parent.querySelectorAll( sel ) );
 	}
 
 	return cache[`${parent}:sel`];

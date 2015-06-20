@@ -1,7 +1,7 @@
 /**
  * @description sanity check to make sure we've got a dom node
  * @param {object} node [the object we're checking for node-ness]
- * @return {boolean}
+ * @returns {boolean} whether or not the node is a node
  */
 const isNode = function( node ) {
 	let isNode = false;

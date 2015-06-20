@@ -8,11 +8,11 @@ const html = function( set ) {
 		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
 	);
 
-	this.each(el => {
+	this.each( el => {
 		for ( let node of html ) {
-			el.appendChild( node.cloneNode(true) );
+			el.appendChild( node.cloneNode( true ) );
 		}
-	});
+	} );
 
 	return set ? this[0][0].innerHTML : this;
 };
