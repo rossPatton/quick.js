@@ -1,7 +1,7 @@
 import isNode from '../utils/isNode';
 
 // appends dom nodes using those nodes directly or strings
-const append: Function = function(appendMe: string | Object) {
+const append = function( appendMe ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode(appendMe) ) {
 		this.each(el => {
@@ -9,7 +9,7 @@ const append: Function = function(appendMe: string | Object) {
 		});
 	}
 	else if ( typeof appendMe === 'string' ) {
-		let tmp: Object = document.createElement('div');
+		let tmp = document.createElement('div');
 		tmp.insertAdjacentHTML('afterbegin', appendMe);
 		this.each(el => {
 			return el.appendChild(tmp.firstChild.cloneNode(true));

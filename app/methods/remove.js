@@ -1,5 +1,5 @@
 // remove nodes from the dom
-const remove: Function = function(): Object {
+const remove = function() {
 	this.each( el => el.parentNode.removeChild(el) );
 	return this;
 };

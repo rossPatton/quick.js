@@ -1,7 +1,7 @@
 import queryAll from '../utils/queryAll';
 
 // gets or sets (safely) html content of a dom node
-const add: Function = function( sel: string ): Object {
+const add = function( sel ) {
 	for ( let el of queryAll(sel) ) {
 		this[0].push( el );
 	}

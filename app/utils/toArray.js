@@ -4,8 +4,6 @@
  * @param {object} [arrayLikeObject] [object to convert]
  * @return {array} [our NodeList is now an array so can use array methods on it]
  */
-const toArray = function(arrayLikeObject: Object): Array {
+export const toArray = function(arrayLikeObject) {
 	return Array.prototype.slice.call(arrayLikeObject);
 };
-
-export default toArray;

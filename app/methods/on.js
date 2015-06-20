@@ -1,8 +1,8 @@
 // @TODO needs to promote the better practice of putting evs on the body
-const on = function( events: string, cb: Function, capture = false ): Object {
+const on = function( events, cb ) {
 	this.each(el => {
 		return events.split(' ').forEach(ev => {
-			const l: Object = {
+			const l = {
 				el: el,
 				ev: ev,
 				cb: cb

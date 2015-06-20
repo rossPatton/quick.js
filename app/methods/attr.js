@@ -1,5 +1,5 @@
 // get attribute (first match) or set attribute on all matching
-const attr = function( get: string, set: string ): Object {
+const attr = function( get, set ) {
 	if ( set ) {
 		this.each( el => el.setAttribute(get, set) );
 	}

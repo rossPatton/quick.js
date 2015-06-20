@@ -1,5 +1,5 @@
 // remove all child nodes from an element
-const empty: Function = function(): Object {
+const empty = function() {
 	this.each(el => {
 		while (el.firstChild) {
 			el.removeChild(el.firstChild);

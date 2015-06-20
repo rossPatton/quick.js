@@ -1,9 +1,9 @@
 import methods from './methods/methods';
 import queryAll from './utils/queryAll';
 
-let proto: Object = Object.create( methods );
+let proto = Object.create( methods );
 
-let App: Function = function(input) {
+let App = function(input) {
 	this.listeners = this.listeners || [];
 	this[0] = typeof input === 'string' ? queryAll(input) : TypeError('Quick needs a string!');
 
@@ -19,5 +19,5 @@ let App: Function = function(input) {
 }.bind( proto || {} );
 
 App.fn = typeof App.fn === 'undefined' ? {} : App.fn;
-if ( window ) { window.$ = App; }
+
 export default App;

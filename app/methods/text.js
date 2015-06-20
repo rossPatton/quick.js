@@ -1,8 +1,6 @@
-import toArray from '../utils/toArray';
-
 // gets or sets text content of nodes
-const text: Function = function( set: string ): Object {
-	let txt: string = '';
+const text = function( set ) {
+	let txt = '';
 
 	if ( typeof set === 'undefined' ) {
 		this.each( el => txt += ` ${el.textContent}` );

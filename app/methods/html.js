@@ -1,10 +1,12 @@
 import toArray from '../utils/toArray';
 
 // gets or sets (safely) html content of a dom node
-// @TODO DOMParser is cool but prolly not the most compatible way of doing this
-const html: Function = function( set: string ): Object {
+// @TODO DOMParser is cool but def not the most compatible way of doing this
+const html = function( set ) {
 	this.empty();
-	let html: Object = toArray( ( new DOMParser() ).parseFromString( set, 'text/html' ).body.children );
+	let html = toArray(
+		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
+	);
 
 	this.each(el => {
 		for ( let node of html ) {

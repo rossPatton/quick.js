@@ -12,7 +12,6 @@ var biffy     = require('browserify');
 var buff      = require('vinyl-buffer');
 var gulp      = require('gulp');
 var source    = require('vinyl-source-stream');
-var transform = require('vinyl-transform');
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*', 'gulp.*'],
 	replaceString: /^gulp(-|\.)/,
@@ -64,11 +63,17 @@ gulp.task('app', function() {
 		.pipe( gulp.dest('dist/') );
 });
 
+
+gulp.task('eslint', $.shell.task([
+	'eslint app/'
+]));
+
+
 // watch our files, runs tasks as we work
 gulp.task('watch', function() {
-	gulp.watch( 'app/**/*.js', ['app'] );
+	gulp.watch( 'app/**/*.js', ['eslint', 'app'] );
 });
 
 
 // gulp -> just runs the stuff we touch the most
-gulp.task( 'default', [ 'app', 'watch' ] );
+gulp.task( 'default', [ 'eslint', 'app' ] );

@@ -1,7 +1,7 @@
 import camelCase from '../utils/camelCase';
 
-const css = function( css: string | Object ): Object {
-	const isString: boolean = typeof css === 'string';
+const css = function( css ) {
+	const isString = typeof css === 'string';
 
 	// set css values of passed in object on every element in the selection
 	if ( !isString && typeof css === 'object' ) {

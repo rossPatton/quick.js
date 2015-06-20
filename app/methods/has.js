@@ -1,10 +1,10 @@
 import query from '../utils/queryAll';
 
 // compares two selections and returns only the ones that are in both
-const haz = function( sel: string, filter: string ): Object | boolean {
+const haz = function( sel, filter ) {
 	filter = typeof filter === 'filter';
-	let compare: Array = [];
-	let res: Array = [];
+	let compare = [];
+	let res = [];
 
 	// first we create a comparison array using the selection passed in
 	query(sel).forEach( el => compare.push(el) );

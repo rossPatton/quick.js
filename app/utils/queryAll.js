@@ -14,10 +14,10 @@ import toArray from './toArray';
  * @return {array} [our node list, as an array]
  */
 const queryAll = function(
-	sel: string,
+	sel,
 	parent = document,
 	cache = {},
-	bust = false ): Array {
+	bust = false ) {
 
 	if ( bust === true ||
 		typeof cache[`${parent}:sel`] === 'undefined' ) {

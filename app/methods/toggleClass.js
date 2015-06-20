@@ -1,5 +1,5 @@
 // toggles them classes
-const toggleClass: Function = function( classes: string ): Object {
+const toggleClass = function( classes ) {
 	this.each(el => {
 		classes.split(' ').forEach(c => {
 			if ( el.className.indexOf(c) === -1 ) {
