@@ -10,7 +10,7 @@ let App = function( input ) {
 	if ( typeof App.fn === 'object' ) {
 		for ( let method in App.fn ) {
 			if ( App.fn.hasOwnProperty( method ) ) {
-				this.__proto__[method] = App.fn[method];
+				Object.getPrototypeOf( this )[method] = App.fn[method];
 			}
 		}
 	}
