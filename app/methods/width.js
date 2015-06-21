@@ -6,4 +6,4 @@ const width = function( set ) {
 	return typeof set === 'undefined' ? this[0][0].clientWidth : this;
 };
 
-export default width;
+module.exports = width;

@@ -5,4 +5,4 @@ const show = function() {
 	return this;
 };
 
-export default show;
+module.exports = show;

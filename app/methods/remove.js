@@ -4,4 +4,4 @@ const remove = function() {
 	return this;
 };
 
-export default remove;
+module.exports = remove;

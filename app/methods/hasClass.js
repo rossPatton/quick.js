@@ -5,4 +5,4 @@ const hasClass = function( classes ) {
 	} );
 };
 
-export default hasClass;
+module.exports = hasClass;

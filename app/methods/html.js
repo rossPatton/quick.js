@@ -1,4 +1,4 @@
-import toArray from '../utils/toArray';
+const toArray = require( '../utils/toArray' );
 
 // gets or sets (safely) html content of a dom node
 // @TODO DOMParser is cool but def not the most compatible way of doing this
@@ -18,4 +18,4 @@ const html = function( set ) {
 	return set ? this[0][0].innerHTML : this;
 };
 
-export default html;
+module.exports = html;

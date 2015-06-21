@@ -1,61 +1,32 @@
-import on from './on';
-import off from './off';
-import css from './css';
-import addClass from './addClass';
-import hasClass from './hasClass';
-import attr from './attr';
-import html from './html';
-import each from './each';
-import empty from './empty';
-import height from './height';
-import width from './width';
-import add from './add';
-import text from './text';
-import remove from './remove';
-import append from './append';
-import prepend from './prepend';
-import after from './after';
-import before from './before';
-import removeClass from './removeClass';
-import toggleClass from './toggleClass';
-import hide from './hide';
-import show from './show';
-import wrap from './wrap';
-import prop from './prop';
-import has from './has';
-import size from './size';
-import slice from './slice';
-import eq from './eq';
-
 const methods = {
-	eq,
-	add,
-	attr,
-	append,
-	css,
-	after,
-	before,
-	on,
-	off,
-	each,
-	html,
-	hide,
-	show,
-	empty,
-	wrap,
-	text,
-	prop,
-	height,
-	width,
-	remove,
-	addClass,
-	has,
-	size,
-	hasClass,
-	slice,
-	prepend,
-	removeClass,
-	toggleClass
+	add: require( './add' ),
+	addClass: require( './addClass' ),
+	after: require( './after' ),
+	append: require( './append' ),
+	attr: require( './attr' ),
+	before: require( './before' ),
+	css: require( './css' ),
+	each: require( './each' ),
+	empty: require( './empty' ),
+	eq: require( './eq' ),
+	has: require( './has' ),
+	hasClass: require( './hasClass' ),
+	height: require( './height' ),
+	hide: require( './hide' ),
+	html: require( './html' ),
+	off: require( './off' ),
+	on: require( './on' ),
+	prepend: require( './prepend' ),
+	prop: require( './prop' ),
+	remove: require( './remove' ),
+	removeClass: require( './removeClass' ),
+	show: require( './show' ),
+	size: require( './size' ),
+	slice: require( './slice' ),
+	text: require( './text' ),
+	toggleClass: require( './toggleClass' ),
+	width: require( './width' ),
+	wrap: require( './wrap' )
 };
 
-export default methods;
+module.exports = methods;

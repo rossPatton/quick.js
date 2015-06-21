@@ -9,4 +9,4 @@ const attr = function( get, set ) {
 	return !set ? this[0][0].getAttribute( get ) : this;
 };
 
-export default attr;
+module.exports = attr;

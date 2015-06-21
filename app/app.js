@@ -1,11 +1,11 @@
-import methods from './methods/methods';
-import queryAll from './utils/queryAll';
-
+const query = require( './utils/query' );
+const methods = require( './methods/methods' );
 let proto = Object.create( methods );
 
+// initialize the app
 let App = function( input ) {
 	this.listeners = this.listeners || [];
-	this[0] = typeof input === 'string' ? queryAll( input ) : new TypeError( 'Quick needs a string!' );
+	this[0] = typeof input === 'string' ? query( input ) : new TypeError( 'Quick needs a string!' );
 
 	if ( typeof App.fn === 'object' ) {
 		for ( let method in App.fn ) {
@@ -21,6 +21,6 @@ let App = function( input ) {
 App.fn = typeof App.fn === 'undefined' ? {} : App.fn;
 
 // pretty much just for testing atm
-if ( window ) { window.$ = App; }
+if ( typeof window !== 'undefined' ) { window.$ = App; }
 
-export default App;
+module.exports = App;

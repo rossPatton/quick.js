@@ -18,4 +18,4 @@ const isNode = function( node ) {
 	return amNode;
 };
 
-export default isNode;
+module.exports = isNode;

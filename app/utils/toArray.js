@@ -8,4 +8,4 @@ const toArray = function( arrayLikeObject ) {
 	return Array.prototype.slice.call( arrayLikeObject );
 };
 
-export default toArray;
+module.exports = toArray;

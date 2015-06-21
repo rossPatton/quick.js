@@ -17,4 +17,4 @@ const text = function( set ) {
 	return typeof set === 'undefined' ? txt : this;
 };
 
-export default text;
+module.exports = text;

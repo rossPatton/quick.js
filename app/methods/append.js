@@ -1,4 +1,4 @@
-import isNode from '../utils/isNode';
+const isNode = require( '../utils/isNode' );
 
 // appends dom nodes using those nodes directly or strings
 const append = function( appendMe ) {
@@ -19,4 +19,4 @@ const append = function( appendMe ) {
 	return this;
 };
 
-export default append;
+module.exports = append;

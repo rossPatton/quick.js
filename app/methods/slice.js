@@ -4,4 +4,4 @@ const slice = function( pos1, pos2 ) {
 	return this;
 };
 
-export default slice;
+module.exports = slice;

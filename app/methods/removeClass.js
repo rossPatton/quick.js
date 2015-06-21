@@ -9,4 +9,4 @@ const removeClass = function( classes ) {
 	return this;
 };
 
-export default removeClass;
+module.exports = removeClass;

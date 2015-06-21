@@ -14,4 +14,4 @@ const toggleClass = function( classes ) {
 	return this;
 };
 
-export default toggleClass;
+module.exports = toggleClass;

@@ -9,4 +9,4 @@ const addClass = function( classes ) {
 	return this;
 };
 
-export default addClass;
+module.exports = addClass;

@@ -1,4 +1,4 @@
-import toArray from './toArray';
+const toArray = require( './toArray' );
 
 
 /**
@@ -22,4 +22,4 @@ const queryAll = function( sel, parent = document, cache = {}, bust = false ) {
 	return cache[`${parent}:sel`];
 };
 
-export default queryAll;
+module.exports = queryAll;

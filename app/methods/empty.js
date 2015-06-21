@@ -9,4 +9,4 @@ const empty = function() {
 	return this;
 };
 
-export default empty;
+module.exports = empty;

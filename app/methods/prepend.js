@@ -1,4 +1,4 @@
-import isNode from '../utils/isNode';
+const isNode = require( '../utils/isNode' );
 
 // appends dom nodes using those nodes directly or strings
 const prepend = function( prependMe ) {
@@ -19,4 +19,4 @@ const prepend = function( prependMe ) {
 	return this;
 };
 
-export default prepend;
+module.exports = prepend;

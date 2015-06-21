@@ -10,4 +10,4 @@ const each = function( cb ) {
 	return this;
 };
 
-export default each;
+module.exports = each;

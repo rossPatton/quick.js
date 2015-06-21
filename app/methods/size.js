@@ -3,4 +3,4 @@ const size = function() {
 	return this[0].length;
 };
 
-export default size;
+module.exports = size;

@@ -11,4 +11,4 @@ const eq = function( pos ) {
 	return this;
 };
 
-export default eq;
+module.exports = eq;

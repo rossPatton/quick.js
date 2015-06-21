@@ -1,4 +1,4 @@
-import isNode from '../utils/isNode';
+const isNode = require( '../utils/isNode' );
 
 const wrap = function( dom ) {
 	// if passed a dom node directly, check it and append it
@@ -11,11 +11,20 @@ const wrap = function( dom ) {
 		} );
 	}
 	else if ( typeof dom === 'string' ) {
+		console.log( 'dom', dom );
 		let tmp = document.createElement( 'div' );
 		tmp.insertAdjacentHTML( 'afterbegin', dom );
 
+		console.dir( tmp );
+		console.dir( this );
+
 		this.each( el => {
 			let w = tmp.firstChild.cloneNode( true );
+
+			console.log( 'wrap', w );
+			console.dir( el );
+			console.log( 'el', typeof el );
+
 			w.appendChild( el.cloneNode( true ) );
 
 			return el.parentNode.replaceChild( w, el );
@@ -25,4 +34,4 @@ const wrap = function( dom ) {
 	return this;
 };
 
-export default wrap;
+module.exports = wrap;

@@ -5,4 +5,4 @@ const hide = function() {
 	return this;
 };
 
-export default hide;
+module.exports = hide;

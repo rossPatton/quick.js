@@ -12,4 +12,4 @@ const height = function( val ) {
 	return !height ? this[0][0].clientHeight : this;
 };
 
-export default height;
+module.exports = height;

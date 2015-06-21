@@ -17,4 +17,4 @@ const on = function( events, cb ) {
 	return this;
 };
 
-export default on;
+module.exports = on;

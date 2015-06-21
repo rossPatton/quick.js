@@ -1,4 +1,4 @@
-import camelCase from '../utils/camelCase';
+const camelCase = require( '../utils/camelCase' );
 
 const css = function( styles ) {
 	const isString = typeof styles === 'string';
@@ -19,4 +19,4 @@ const css = function( styles ) {
 	return isString ? this[0][0].style[camelCase( styles )] : this;
 };
 
-export default css;
+module.exports = css;
