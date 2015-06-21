@@ -37,7 +37,7 @@
 			"after": true
 		}],
 		"comma-style": [2, "last"],
-		"consistent-return": 1,
+		"consistent-return": 0,
 		"curly": 1,
 		"default-case": 1,
 		"eol-last": 1,
@@ -47,7 +47,6 @@
 		"indent": [2, "tab"],
 		"key-spacing": 1,
 		"max-nested-callbacks": 0,
-		"new-cap": 1,
 		"no-constant-condition": 1,
 		"no-control-regex": 1,
 		"new-parens": 1,

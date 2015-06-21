@@ -1,4 +1,5 @@
 const toArray = require( './toArray' );
+let cache = {};
 
 
 /**
@@ -9,17 +10,20 @@ const toArray = require( './toArray' );
  * @see https://eamann.com/tech/selector-caching-jquery/
  * @param {string} [sel] [the string we'll use to get dom nodes]
  * @param {parent} [obj] [where to search]
- * @param {obj} [cache] [where to store the cache, defaults to this]
  * @param {bool} [bust] [if true, we ignore the cache and get it fresh]
  * @return {array} [our node list, as an array]
  */
-const queryAll = function( sel, parent = document, cache = {}, bust = false ) {
-	if ( bust === true ||
-		typeof cache[`${parent}:sel`] === 'undefined' ) {
-		cache[`${parent}:sel`] = toArray( parent.querySelectorAll( sel ) );
+const query = function( sel, parent = document, bust = false ) {
+	if ( bust === 'bust' ||
+		typeof cache[`${parent.nodeName}:${sel}`] === 'undefined' ) {
+		cache[`${parent.nodeName}:${sel}`] = toArray( parent.querySelectorAll( sel ) );
 	}
 
-	return cache[`${parent}:sel`];
+	// pretty much just so i can test the cache object better for now
+	return {
+		sCache: cache,
+		sel: cache[`${parent.nodeName}:${sel}`]
+	};
 };
 
-module.exports = queryAll;
+module.exports = query;

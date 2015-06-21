@@ -9,6 +9,7 @@ const methods = {
 	each: require( './each' ),
 	empty: require( './empty' ),
 	eq: require( './eq' ),
+	extend: require( './extend' ),
 	has: require( './has' ),
 	hasClass: require( './hasClass' ),
 	height: require( './height' ),

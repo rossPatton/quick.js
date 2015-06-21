@@ -2,7 +2,7 @@ const query = require( '../utils/query' );
 
 // compares two selections and returns only the ones that are in both
 const has = function( sel, doWeFilter ) {
-	const compare = query( sel );
+	const compare = query( sel ).sel;
 
 	// returns true or false depending on whether or not
 	// the new selection overlaps with the old selection

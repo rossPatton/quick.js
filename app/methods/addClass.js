@@ -1,7 +1,9 @@
+// const each = require( './each' );
+
 // adds a class to the current selection
 const addClass = function( classes ) {
 	this.each( el => {
-		classes.split( ' ' ).forEach( c => {
+		return classes.split( ' ' ).forEach( c => {
 			return el.className.indexOf( c ) === -1 ? el.className += ` ${c}` : '';
 		} );
 	} );
