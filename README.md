@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/rossPatton/quick.js/badges/gpa.svg)](https://codeclimate.com/github/rossPatton/quick.js)
+
 # quick.js
 Lightweight, Modular, Isomorphic, DOM Traversal Library
 
