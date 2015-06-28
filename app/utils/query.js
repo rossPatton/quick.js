@@ -20,6 +20,7 @@ let cache = {};
 const query = function( sel, parent = document, bust = false ) {
 	if ( bust === 'bust' ||
 		typeof cache[`${parent.nodeName}:${sel}`] === 'undefined' ) {
+		console.log( 'bust cache' );
 		cache[`${parent.nodeName}:${sel}`] = toArray( parent.querySelectorAll( sel ) );
 	}
 

@@ -4,7 +4,7 @@
 /**
  * @module
  * @public
- * @description gets or sets the height on an element or array of elements
+ * @description gets or sets the height on the selection
  * @param {string} [set] the value to set the width of the selection to
  * @returns {Object} [this] like most methods, returns parent object
  */

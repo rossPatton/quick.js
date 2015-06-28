@@ -14,7 +14,7 @@ describe( 'Quick.js Unit Tests', function() {
 	jsdom();
 
 	beforeEach( function() {
-		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span>';
+		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
 	} );
 
 	describe( 'main app object should', function() {
@@ -92,16 +92,16 @@ describe( 'Quick.js Unit Tests', function() {
 		} );
 	} );
 
-	describe( 'after should', function() {
-		it( 'insert node before end of parent node', function() {
-			$( 'em' ).after( 'div' );
-
-			assert.equal(
-				document.body.innerHTML,
-				'<span><div><em></em><p class="alreadyHere"><span></span></p></div></span>'
-			);
-		} );
-	} );
+	// describe( 'after should', function() {
+	// 	it( 'insert node before end of parent node', function() {
+	// 		$( 'em' ).after( 'div' );
+	//
+	// 		assert.equal(
+	// 			document.body.innerHTML,
+	// 			'<span><div><em></em><p class="alreadyHere"><span></span></p></div></span>'
+	// 		);
+	// 	} );
+	// } );
 
 	describe( 'addClass should', function() {
 		it( 'add one class to each item in the selection', function() {
@@ -116,6 +116,50 @@ describe( 'Quick.js Unit Tests', function() {
 			assert.equal( 'alreadyHere', $( 'p' ).addClass( 'alreadyHere' )[0][0].className );
 		} );
 	} );
+
+	describe( 'has should', function() {
+		it( 'return false', function() {
+			assert.equal( false, $( 'strong' ).has( '.test-something-else' ) );
+		} );
+
+		it( 'return true', function() {
+			assert.equal( true, $( 'strong' ).has( '.test-has' ) );
+		} );
+
+		it( 'filter selection', function() {
+			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' )[0].length );
+		} );
+	} );
+
+	describe( 'height should', function() {
+		// var p = document.querySelector( 'p.alreadyHere' );
+		it( 'get the height of the first el in the selection', function() {
+			var div = document.createElement( 'div' );
+			div.className = 'testHeight';
+			document.body.appendChild( div );
+
+			document.querySelector( 'div.testHeight' ).clientHeight = 500;
+			assert.equal( 500, $( 'div.testHeight' ).height() );
+		} );
+
+		// it( 'set the height of the selection', function() {
+		// 	var div = document.createElement( 'div' );
+		// 	div.className = 'testHeight';
+		// 	document.body.appendChild( div );
+		//
+		// 	document.querySelector( 'div.testHeight' ).style = {};
+		// 	$( 'div.testHeight' ).height( '750' );
+		// 	assert.equal( 750, document.querySelector( 'div.testHeight' ).style.height );
+		// } );
+	} );
+
+	// describe( 'remove should', function() {
+	// 	it( 'remove the selection from the dom', function() {
+	// 		$( '.alreadyHere' ).remove();
+	// 		// $().sCache = [];
+	// 		assert.equal( 0, $( '.alreadyHere', document, 'bust' )[0].length );
+	// 	} );
+	// } );
 
 	describe( 'removeClass should', function() {
 

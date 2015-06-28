@@ -116,7 +116,6 @@
 		"no-unused-expressions": 1,
 		"no-unused-vars": 1,
 		"no-use-before-define": 1,
-		"no-var": 1,
 		"no-void": 1,
 		"no-warning-comments": 1,
 		"no-with": 1,
