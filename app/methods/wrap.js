@@ -1,5 +1,15 @@
+'use strict';
 const isNode = require( '../utils/isNode' );
 
+
+/**
+ * @module
+ * @public
+ * @requires isNode
+ * @description wrap the selection with the passed in dom element
+ * @param {Object} [dom] the dom node to wrap the selection with
+ * @returns {Object} [this] like most methods, returns parent object
+ */
 const wrap = function( dom ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode( dom ) ) {
@@ -11,19 +21,11 @@ const wrap = function( dom ) {
 		} );
 	}
 	else if ( typeof dom === 'string' ) {
-		console.log( 'dom', dom );
 		let tmp = document.createElement( 'div' );
 		tmp.insertAdjacentHTML( 'afterbegin', dom );
 
-		console.dir( tmp );
-		console.dir( this );
-
 		this.each( el => {
 			let w = tmp.firstChild.cloneNode( true );
-
-			console.log( 'wrap', w );
-			console.dir( el );
-			console.log( 'el', typeof el );
 
 			w.appendChild( el.cloneNode( true ) );
 

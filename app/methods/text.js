@@ -1,4 +1,13 @@
-// gets or sets text content of nodes
+'use strict';
+
+
+/**
+ * @module
+ * @public
+ * @description get text of first el in the selection
+ * @param {string} [set] if passed in, sets the text of the selection
+ * @returns {string | Object} the textContext of the first el, or the parent Object
+ */
 const text = function( set ) {
 	let txt = '';
 

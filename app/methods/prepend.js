@@ -1,6 +1,15 @@
+'use strict';
 const isNode = require( '../utils/isNode' );
 
-// appends dom nodes using those nodes directly or strings
+
+/**
+ * @module
+ * @public
+ * @requires isNode
+ * @description prepends dom nodes using those nodes directly or a string
+ * @param {Object} [prependMe] the dom node to prepend to the dom
+ * @returns {Object} [this] like most methods, returns parent object
+ */
 const prepend = function( prependMe ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode( prependMe ) ) {

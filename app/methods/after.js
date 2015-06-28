@@ -3,6 +3,8 @@ const isNode = require( '../utils/isNode' );
 
 /**
  * @module
+ * @public
+ * @requires isNode
  * @description appends dom node or nodes to the dom, after each node in the selection
  * @param {Object} [appendMe] the node to append to the dom
  * @returns {Object} [this] like most methods, returns parent object

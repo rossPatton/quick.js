@@ -1,7 +1,9 @@
 'use strict';
 
+
 /**
  * @module
+ * @public
  * @description appends dom nodes to the dom, and the end of each item in the selection
  * @param {string} [get] returns the matching attribute if there is one
  * @param {string} [set] sets an attribute on the selection

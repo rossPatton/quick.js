@@ -1,4 +1,13 @@
-// the dumbest method of them all, just returns the len of the selection
+'use strict';
+
+
+/**
+ * @module
+ * @public
+ * @TODO wait for css transitions
+ * @description just gets the length of the current selection
+ * @returns {number} the length
+ */
 const size = function() {
 	return this[0].length;
 };

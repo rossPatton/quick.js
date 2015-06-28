@@ -1,4 +1,9 @@
+'use strict';
+
+
 /**
+ * @module
+ * @public
  * @description sanity check to make sure we've got a dom node
  * @param {object} node [the object we're checking for node-ness]
  * @returns {boolean} whether or not the node is a node

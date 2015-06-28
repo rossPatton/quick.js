@@ -1,3 +1,4 @@
+'use strict';
 const query = require( './utils/query' );
 const methods = require( './methods/methods' );
 let proto = Object.create( methods );

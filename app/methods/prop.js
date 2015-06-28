@@ -1,4 +1,14 @@
-// get prop (first match) or set prop on all matching
+'use strict';
+
+
+/**
+ * @module
+ * @public
+ * @description get prop (first match) or set prop on all matching
+ * @param {string} [get] get matching property of the first el in the selection
+ * @param {string} [set] set property on the entire selection
+ * @returns {string | Object} the value of property, or the parent Object
+ */
 const prop = function( get, set ) {
 	// if set if string, we pass it as the value
 	// else we just pass in the config object

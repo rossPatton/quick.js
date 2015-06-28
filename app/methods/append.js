@@ -1,8 +1,11 @@
 'use strict';
 const isNode = require( '../utils/isNode' );
 
+
 /**
  * @module
+ * @public
+ * @requires isNode
  * @description appends dom nodes to the dom, and the end of each item in the selection
  * @param {Object} [appendMe] the dom node to append to the dom
  * @returns {Object} [this] like most methods, returns parent object

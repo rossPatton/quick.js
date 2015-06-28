@@ -1,8 +1,12 @@
+'use strict';
 const toArray = require( './toArray' );
 let cache = {};
 
 
 /**
+ * @module
+ * @public
+ * @requires toArray
  * @description save the result of a dom query
  * 	            this is accessible app wide, so you don't have to constantly
  * 	            do dom lookups for each thing every time a function is called

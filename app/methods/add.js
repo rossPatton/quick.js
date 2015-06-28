@@ -4,6 +4,8 @@ const query = require( '../utils/query' );
 
 /**
  * @module
+ * @public
+ * @requires query
  * @description add a node or nodes to the existing selection
  * @TODO redundant, needs cleanup, but works for now
  * @param	{string} [sel] the string (selector) used to query the dom

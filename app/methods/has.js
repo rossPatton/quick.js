@@ -1,6 +1,16 @@
+'use strict';
 const query = require( '../utils/query' );
 
-// compares two selections and returns only the ones that are in both
+
+/**
+ * @module
+ * @public
+ * @requires query
+ * @description compares two selections and returns only the ones that are in both
+ * @param {Object} [sel] the selector to use as the comparison selection
+ * @param {boolean} [doWeFilter] if true we return a new selection of overlapping els only
+ * @returns {Object | boolean} boolean if not filtering, parent Object otherwise
+ */
 const has = function( sel, doWeFilter ) {
 	const compare = query( sel ).sel;
 

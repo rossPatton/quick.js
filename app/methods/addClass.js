@@ -3,6 +3,7 @@
 
 /**
  * @module
+ * @public
  * @description add the class or classes to the selection
  * @param	{string} [classes] the classes to add, separated by a space
  * @returns {Object} [this] like most methods, returns parent object

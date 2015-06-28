@@ -4,6 +4,8 @@ const isNode = require( '../utils/isNode' );
 
 /**
  * @module
+ * @public
+ * @requires isNode
  * @description appends dom nodes before each node in the selection
  * @param {Object} [prependMe] the node to prepend to the dom
  * @returns {Object} [this] like most methods, returns parent object

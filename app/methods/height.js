@@ -1,6 +1,13 @@
-// gets or sets the height on an element or array of elements
-// @returns array of numbers if not setting height
-// @returns this, if we're setting the height of elements
+'use strict';
+
+
+/**
+ * @module
+ * @public
+ * @description gets or sets the height on an element or array of elements
+ * @param {string} [val] if passed in, set the height to this value
+ * @returns {number | Object} the height if getting, parent Object if setting
+ */
 const height = function( val ) {
 	// set the height if a value was passed in
 	if ( val ) {
