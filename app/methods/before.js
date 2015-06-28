@@ -1,6 +1,13 @@
+'use strict';
 const isNode = require( '../utils/isNode' );
 
-// appends dom nodes using those nodes directly or strings
+
+/**
+ * @module
+ * @description appends dom nodes before each node in the selection
+ * @param {Object} [prependMe] the node to prepend to the dom
+ * @returns {Object} [this] like most methods, returns parent object
+ */
 const before = function( prependMe ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode( prependMe ) ) {

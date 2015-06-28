@@ -1,6 +1,12 @@
+'use strict';
 const isNode = require( '../utils/isNode' );
 
-// appends dom nodes using those nodes directly or strings
+/**
+ * @module
+ * @description appends dom node or nodes to the dom, after each node in the selection
+ * @param {Object} [appendMe] the node to append to the dom
+ * @returns {Object} [this] like most methods, returns parent object
+ */
 const after = function( appendMe ) {
 	// if passed a dom node directly, check it and append it
 	if ( isNode( appendMe ) ) {
@@ -18,7 +24,7 @@ const after = function( appendMe ) {
 		} );
 	}
 
-	return;
+	return this;
 };
 
 module.exports = after;

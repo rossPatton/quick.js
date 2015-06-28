@@ -1,5 +1,13 @@
+'use strict';
 const camelCase = require( '../utils/camelCase' );
 
+
+/**
+ * @module
+ * @description gets or sets css properties on the selection
+ * @param {Object | string} [styles] string for an individual style, object for many styles
+ * @returns {Object | string} the matching style rule if getting, or the parent Object if setting
+ */
 const css = function( styles ) {
 	const isString = typeof styles === 'string';
 

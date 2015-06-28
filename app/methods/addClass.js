@@ -1,6 +1,12 @@
-// const each = require( './each' );
+'use strict';
 
-// adds a class to the current selection
+
+/**
+ * @module
+ * @description add the class or classes to the selection
+ * @param	{string} [classes] the classes to add, separated by a space
+ * @returns {Object} [this] like most methods, returns parent object
+ */
 const addClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
