@@ -11,7 +11,9 @@
 const show = function() {
 	this.each( el => {
 		if ( el.style.display === 'none' ) {
-			el.style.display = 'block';
+			this.raf( function() {
+				el.style.display = 'block';
+			} );
 		}
 	} );
 	return this;

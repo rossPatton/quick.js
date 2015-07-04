@@ -12,7 +12,11 @@
 const addClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
-			return el.className.indexOf( c ) === -1 ? el.className += ` ${c}` : '';
+			if ( el.className.indexOf( c ) === -1 ) {
+				return this.raf( function() {
+					el.className += ` ${c}`;
+				} );
+			}
 		} );
 	} );
 

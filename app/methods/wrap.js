@@ -16,7 +16,7 @@ const wrap = function( dom ) {
 			let w = dom.cloneNode( true );
 			w.appendChild( el.cloneNode( true ) );
 
-			return el.parentNode.replaceChild( w, el );
+			return this.raf( el.parentNode.replaceChild( w, el ) );
 		} );
 	}
 	else if ( typeof dom === 'string' ) {
@@ -28,7 +28,7 @@ const wrap = function( dom ) {
 
 			w.appendChild( el.cloneNode( true ) );
 
-			return el.parentNode.replaceChild( w, el );
+			return this.raf( el.parentNode.replaceChild( w, el ) );
 		} );
 	}
 

@@ -13,10 +13,13 @@
  * @param {bool} [bust] [if true, we ignore the cache and get it fresh]
  * @return {array} [our node list, as an array]
  */
-// if ( typeof window !== 'undefined' ) {
-// 	module.exports = window.requestAnimationFrame;
-// }
-// else {
-// 	module.exports = function(cb) { return setTimeout( cb => cb(), 0 ).bind(this) }.bind(this);
-// }
+if ( typeof window !== 'undefined' ) {
+	console.log( 'piggy back on raf' );
+	module.exports = window.requestAnimationFrame;
+}
+// if on server side dont bother with raf
+else {
+	console.log( 'no raf' );
+	module.exports = function( cb ) { return cb(); };
+}
 

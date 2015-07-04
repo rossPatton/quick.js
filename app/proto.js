@@ -22,7 +22,7 @@ const proto = {
 	prepend: require( './methods/prepend' ),
 	prop: require( './methods/prop' ),
 	query: require( './utils/query' ),
-	// raf: require( './utils/raf' ),
+	raf: require( './utils/raf' ),
 	remove: require( './methods/remove' ),
 	removeClass: require( './methods/removeClass' ),
 	show: require( './methods/show' ),

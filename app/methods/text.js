@@ -15,6 +15,7 @@ const text = function( set ) {
 	if ( typeof set === 'undefined' ) {
 		const nodes = this.toArray( this.sel[0].childNodes );
 
+		// we do it this way so we don't get run-on sentences
 		nodes.forEach( node => {
 			if ( node.nodeType === 1 || node.nodeType === 3 ) {
 				txt.push( node.textContent );
@@ -24,8 +25,12 @@ const text = function( set ) {
 	// else set textContent of all nodes in selection
 	else {
 		this.each( el => {
+			const setTxt = document.createTextNode( set ).textContent;
+
 			if ( el.nodeType === 1 || el.nodeType === 11 || el.nodeType === 9 ) {
-				el.textContent = document.createTextNode( set ).textContent;
+				this.raf( function () {
+					el.textContent = setTxt;
+				} );
 			}
 		} );
 	}

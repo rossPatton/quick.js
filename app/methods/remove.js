@@ -8,7 +8,7 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const remove = function() {
-	this.each( el => el.parentNode.removeChild( el ) );
+	this.raf( this.each( el => el.parentNode.removeChild( el ) ) );
 	return this;
 };
 

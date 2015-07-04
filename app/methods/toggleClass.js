@@ -12,10 +12,14 @@ const toggleClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {
-				el.className += ` ${c}`;
+				this.raf( function() {
+					el.className += ` ${c}`;
+				} );
 			}
 			else {
-				el.className = el.className.replace( c, '' );
+				el.className = this.raf( function() {
+					return el.className.replace( c, '' );
+				} );
 			}
 		} );
 	} );

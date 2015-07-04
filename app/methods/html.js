@@ -18,11 +18,11 @@ const html = function( set ) {
 		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
 	);
 
-	this.each( el => {
+	this.raf( this.each( el => {
 		for ( let node of htmlArr ) {
 			el.appendChild( node.cloneNode( true ) );
 		}
-	} );
+	} ) );
 
 	return set ? this.sel[0].innerHTML : this;
 };

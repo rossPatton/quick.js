@@ -14,13 +14,13 @@ const css = function( styles ) {
 
 	// set css values of passed in object on every element in the selection
 	if ( !isString && typeof styles === 'object' ) {
-		this.each( el => {
+		this.raf( this.each( el => {
 			for ( let key in styles ) {
 				if ( styles.hasOwnProperty( key ) ) {
 					el.style[key] = styles[key];
 				}
 			}
-		} );
+		} ) );
 	}
 
 	// if getting, return the matching css value of the first item in the selection
