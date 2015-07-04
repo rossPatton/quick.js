@@ -1,5 +1,4 @@
 'use strict';
-const query = require( '../utils/query' );
 
 
 /**
@@ -14,10 +13,10 @@ const query = require( '../utils/query' );
 const add = function( sel ) {
 	// iterate over new selection and current
 	// if no dupe, push to current selection
-	query( sel ).sel.forEach( el => {
-		this[0].forEach( el2 => {
+	this.query( sel ).forEach( el => {
+		this.sel.forEach( el2 => {
 			if ( !el.isEqualNode( el2 ) ) {
-				this[0].push( el );
+				this.sel.push( el );
 			}
 		} );
 	} );

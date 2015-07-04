@@ -1,7 +1,5 @@
 'use strict';
 
-const toArray = require( '../utils/toArray' );
-
 
 /**
  * @module
@@ -16,7 +14,7 @@ const toArray = require( '../utils/toArray' );
 const html = function( set ) {
 	this.empty();
 
-	let htmlArr = toArray(
+	let htmlArr = this.toArray(
 		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
 	);
 
@@ -26,7 +24,7 @@ const html = function( set ) {
 		}
 	} );
 
-	return set ? this[0][0].innerHTML : this;
+	return set ? this.sel[0].innerHTML : this;
 };
 
 module.exports = html;

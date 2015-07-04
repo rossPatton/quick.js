@@ -9,11 +9,11 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const each = function( cb ) {
-	const len = this[0].length;
+	const len = this.sel.length;
 	let i = 0;
 
 	for ( i; i < len; i++ ) {
-		cb( this[0][i], i, this[0] );
+		cb( this.sel[i], i, this.sel );
 	}
 
 	return this;

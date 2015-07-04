@@ -10,7 +10,7 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const slice = function( pos1, pos2 ) {
-	this[0] = this[0].slice( pos1, pos2 );
+	this.sel = this.sel.slice( pos1, pos2 );
 	return this;
 };
 

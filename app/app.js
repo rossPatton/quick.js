@@ -1,18 +1,16 @@
 'use strict';
-const query = require( './utils/query' );
-const methods = require( './methods/methods' );
+const proto = require( './proto' );
 
 // initialize the app
 let App = function( input ) {
 	this.listeners = this.listeners || [];
-	this.cache = this.cache || {};
 
 	if ( typeof input === 'string' ) {
-		this[0] = query( input ).sel;
+		this.sel = this.query( input );
 	}
 
 	return this;
-}.bind( Object.create( methods ) );
+}.bind( Object.create( proto ) );
 
 if ( typeof window !== 'undefined' ) { window.$ = App; }
 module.exports = App;

@@ -1,5 +1,5 @@
 'use strict';
-const isNode = require( '../utils/isNode' );
+
 
 /**
  * @module
@@ -11,9 +11,11 @@ const isNode = require( '../utils/isNode' );
  */
 const after = function( appendMe ) {
 	// if passed a dom node directly, check it and append it
-	if ( isNode( appendMe ) ) {
+	if ( this.isNode( appendMe ) ) {
 		this.each( el => {
-			return el.parentNode.insertBefore( appendMe.cloneNode(), el.nextSibling );
+			return el.parentNode.insertBefore(
+				appendMe.cloneNode(), el.nextSibling
+			);
 		} );
 	}
 	// return dom.insertBefore(tmp.firstChild.cloneNode(true), dom.firstChild);
@@ -22,7 +24,9 @@ const after = function( appendMe ) {
 		tmp.insertAdjacentHTML( 'afterbegin', appendMe );
 
 		this.each( el => {
-			return el.parentNode.insertBefore( tmp.firstChild.cloneNode( true ), el.nextSibling );
+			return el.parentNode.insertBefore(
+				tmp.firstChild.cloneNode( true ), el.nextSibling
+			);
 		} );
 	}
 

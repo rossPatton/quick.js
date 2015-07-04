@@ -4,7 +4,6 @@
 // const testHTML = fs.readFileSync( process.cwd() + '/testHTML/index.html' ).toString();
 const assert = require( 'assert' );
 const jsdom = require( 'mocha-jsdom' );
-// const should = require( 'chai' ).should();
 
 require( 'babel/register' );
 const $ = require( '../app/app' );
@@ -33,8 +32,6 @@ describe( 'Quick.js Unit Tests', function() {
 	} );
 
 	describe( 'toArray ', function() {
-		const toArray = require( '../app/utils/toArray' );
-
 		it( 'should return an array (obvs)', function() {
 			const testObj = {
 				0: 0,
@@ -42,46 +39,40 @@ describe( 'Quick.js Unit Tests', function() {
 				2: 2
 			};
 
-			assert.equal( true, Array.isArray( toArray( testObj ) ) );
+			assert.equal( true, Array.isArray( $().toArray( testObj ) ) );
 		} );
 	} );
 
 	describe( 'camelCase should', function() {
-		const camelCase = require( '../app/utils/camelCase' );
-
 		it( 'camelCase a string', function() {
-			assert.equal( 'testString', camelCase( 'test-string' ) );
+			assert.equal( 'testString', $().camelCase( 'test-string' ) );
 		} );
 	} );
 
 	describe( 'isNode should', function() {
-		const isNode = require( '../app/utils/isNode' );
-
 		it( 'verify node-y-ness correctly', function() {
-			assert.equal( false, isNode( {} ) );
-			assert.equal( true, isNode( document.createElement( 'div' ) ) );
-			assert.equal( true, isNode( document.createTextNode( 'test' ) ) );
+			assert.equal( false, $().isNode( {} ) );
+			assert.equal( true, $().isNode( document.createElement( 'div' ) ) );
+			assert.equal( true, $().isNode( document.createTextNode( 'test' ) ) );
 		} );
 	} );
 
 	describe( 'query should', function() {
-		const query = require( '../app/utils/query' );
-
 		it( 'create a selection if passed a valid string', function() {
-			assert.equal( 1, query( 'div' ).sel.length );
+			assert.equal( 1, $( 'div' ).sel.length );
 		} );
 
 		it( 'create a selection if passed a valid string', function() {
-			assert.equal( 2, query( 'span' ).sel.length );
-			assert.equal( true, Array.isArray( query( 'p' ).sel ) );
+			assert.equal( 2, $( 'span' ).sel.length );
+			assert.equal( true, Array.isArray( $( 'p' ).sel ) );
 		} );
 
 		it( 'narrow search if passed parent param', function() {
-			assert.equal( 1, query( 'span', query( 'span' ).sel[0] ).sel.length );
+			assert.equal( 1, $( 'span', $( '.alreadyHere' ).sel[0], 'bust' ).sel.length );
 		} );
 
 		it( 'have a cache length of 4 by now', function() {
-			assert.equal( 4, Object.keys( query( 'span' ).sCache ).length );
+			assert.equal( 4, Object.keys( $().cache ).length );
 		} );
 
 		// it( 'cache bust', function() {
@@ -92,7 +83,7 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'add should', function() {
 		it( 'increase the size of the selection', function() {
-			assert.equal( 2, $( 'p' ).add( 'div' )[0].length );
+			assert.equal( 2, $( 'p' ).add( 'div' ).sel.length );
 		} );
 	} );
 
@@ -109,15 +100,15 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'addClass should', function() {
 		it( 'add one class to each item in the selection', function() {
-			assert.equal( ' test', $( 'div' ).addClass( 'test' )[0][0].className );
+			assert.equal( ' test', $( 'div' ).addClass( 'test' ).sel[0].className );
 		} );
 
 		it( 'add classes to each item in the selection', function() {
-			assert.equal( ' test test1 test2', $( 'div' ).addClass( 'test1 test2' )[0][0].className );
+			assert.equal( ' test test1 test2', $( 'div' ).addClass( 'test1 test2' ).sel[0].className );
 		} );
 
 		it( 'not add extra class if class already applied', function() {
-			assert.equal( 'alreadyHere', $( 'p' ).addClass( 'alreadyHere' )[0][0].className );
+			assert.equal( 'alreadyHere', $( 'p' ).addClass( 'alreadyHere' ).sel[0].className );
 		} );
 	} );
 
@@ -131,7 +122,7 @@ describe( 'Quick.js Unit Tests', function() {
 		} );
 
 		it( 'filter selection', function() {
-			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' )[0].length );
+			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' ).sel.length );
 		} );
 	} );
 
@@ -159,23 +150,23 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'eq should', function() {
 		it( 'return correct el from the selection', function() {
-			assert.equal( true, $('span')[0][0].isEqualNode( $('span').eq(0)[0][0] ) );
-			assert.equal( true, $('span')[0][1].isEqualNode( $('span').eq(1)[0][0] ) );
+			assert.equal( true, $('span').sel[0].isEqualNode( $('span').eq(0).sel[0] ) );
+			assert.equal( true, $('span').sel[1].isEqualNode( $('span').eq(1).sel[0] ) );
 		} );
 
 		it( 'return empty selection if out of bounds', function() {
-			assert.equal( 0, $('span').eq(3)[0].length );
+			assert.equal( 0, $('span').eq(3).sel.length );
 		} );
 	} );
 
 	describe( 'hide should', function() {
 		it( 'add display none to the element', function() {
-			assert.equal( 'none', $('p').hide()[0][0].style.display );
+			assert.equal( 'none', $('p').hide().sel[0].style.display );
 		} );
 
 		it( 'do nothing if element already hidden', function() {
-			$('p')[0][0].style.display = 'none';
-			assert.equal( 'none', $('p').hide()[0][0].style.display );
+			$('p').sel[0].style.display = 'none';
+			assert.equal( 'none', $('p').hide().sel[0].style.display );
 		} );
 	} );
 
@@ -190,24 +181,24 @@ describe( 'Quick.js Unit Tests', function() {
 	describe( 'removeClass should', function() {
 
 		it( 'remove one class from each item in the selection', function() {
-			assert.equal( '', $('p').removeClass('alreadyHere')[0][0].className );
+			assert.equal( '', $('p').removeClass('alreadyHere').sel[0].className );
 		} );
 
 		it( 'remove classes from each item in the selection', function() {
-			assert.equal( '', $('span').removeClass('test')[0][0].className );
-			assert.equal( '', $('span').removeClass('test')[0][1].className );
+			assert.equal( '', $('span').removeClass('test').sel[0].className );
+			assert.equal( '', $('span').removeClass('test').sel[1].className );
 		} );
 	} );
 
 	describe( 'show should', function() {
 		it( 'add display block to the element', function() {
-			$('p')[0][0].style.display = 'none';
-			assert.equal( 'block', $('p').show()[0][0].style.display );
+			$('p').sel[0].style.display = 'none';
+			assert.equal( 'block', $('p').show().sel[0].style.display );
 		} );
 
 		it( 'do nothing if element already visible', function() {
-			$('p')[0][0].style.display = 'flex';
-			assert.equal( 'flex', $('p').show()[0][0].style.display );
+			$('p').sel[0].style.display = 'flex';
+			assert.equal( 'flex', $('p').show().sel[0].style.display );
 		} );
 	} );
 
@@ -217,18 +208,24 @@ describe( 'Quick.js Unit Tests', function() {
 		} );
 
 		it( 'set the textContent of all nodes in selection to the passed in value', function() {
-			assert.equal( 'butts', $('span').text('butts')[0][0].textContent );
+			assert.equal( 'butts', $('span').text('butts').sel[0].textContent );
 		} );
 	} );
 
 	describe( 'toggleClass should', function() {
 
 		it( 'remove alreadyHere from each item in the selection', function() {
-			assert.equal( '', $('.alreadyHere', document.body, 'bust').toggleClass('alreadyHere')[0][0].className );
+			assert.equal(
+				'',
+				$('.alreadyHere', document.body, 'bust').toggleClass('alreadyHere').sel[0].className
+			);
 		} );
 
 		it( 'add alreadyHere to each item in the selection', function() {
-			assert.equal( ' alreadyHere', $('p', document.body, 'bust').toggleClass('alreadyHere')[0][0].className );
+			assert.equal(
+				' alreadyHere',
+				$('p', document.body, 'bust').toggleClass('alreadyHere').sel[0].className
+			);
 		} );
 	} );
 

@@ -4,7 +4,6 @@
 /**
  * @module
  * @public
- * @TODO jsdom doesnt support classList because it is the worst
  * @description remove classes from the selection
  * @param	{string} [classes] the classes to remove, separated by a space
  * @returns {Object} [this] like most methods, returns parent object

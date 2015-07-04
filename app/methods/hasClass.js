@@ -10,7 +10,7 @@
  */
 const hasClass = function( classes ) {
 	return classes.split( ' ' ).every( c => {
-		return this[0][0].className.indexOf( c ) !== -1;
+		return this.sel[0].className.indexOf( c ) !== -1;
 	} );
 };
 

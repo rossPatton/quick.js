@@ -1,5 +1,4 @@
 'use strict';
-const isNode = require( '../utils/isNode' );
 
 
 /**
@@ -12,7 +11,7 @@ const isNode = require( '../utils/isNode' );
  */
 const prepend = function( prependMe ) {
 	// if passed a dom node directly, check it and append it
-	if ( isNode( prependMe ) ) {
+	if ( this.isNode( prependMe ) ) {
 		this.each( el => {
 			return el.insertBefore( prependMe.cloneNode(), el.firstChild );
 		} );

@@ -16,7 +16,7 @@ const height = function( val ) {
 
 	// if just getting the height, return the height
 	// else if setting the height, set height above and keep chaining
-	return !val ? this[0][0].clientHeight : this;
+	return !val ? this.sel[0].clientHeight : this;
 };
 
 module.exports = height;

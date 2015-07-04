@@ -1,6 +1,5 @@
 'use strict';
 
-const toArray = require( '../utils/toArray' );
 
 /**
  * @module
@@ -14,7 +13,7 @@ const text = function( set ) {
 
 	// get textContent of first node in selection
 	if ( typeof set === 'undefined' ) {
-		const nodes = toArray( this[0][0].childNodes );
+		const nodes = this.toArray( this.sel[0].childNodes );
 
 		nodes.forEach( node => {
 			if ( node.nodeType === 1 || node.nodeType === 3 ) {

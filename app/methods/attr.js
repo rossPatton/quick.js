@@ -16,7 +16,7 @@ const attr = function( get, set ) {
 
 	// if getting, return the attr
 	// if setting, set attributes and continue chaining
-	return !set ? this[0][0].getAttribute( get ) : this;
+	return !set ? this.sel[0].getAttribute( get ) : this;
 };
 
 module.exports = attr;

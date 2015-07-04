@@ -1,5 +1,4 @@
 'use strict';
-const isNode = require( '../utils/isNode' );
 
 
 /**
@@ -12,7 +11,7 @@ const isNode = require( '../utils/isNode' );
  */
 const append = function( appendMe ) {
 	// if passed a dom node directly, check it and append it
-	if ( isNode( appendMe ) ) {
+	if ( this.isNode( appendMe ) ) {
 		this.each( el => {
 			return el.appendChild( appendMe.cloneNode() );
 		} );

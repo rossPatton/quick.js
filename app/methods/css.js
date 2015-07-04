@@ -1,5 +1,4 @@
 'use strict';
-const camelCase = require( '../utils/camelCase' );
 
 
 /**
@@ -26,7 +25,7 @@ const css = function( styles ) {
 
 	// if getting, return the matching css value of the first item in the selection
 	// if setting, set css values on entire selection and continue chaining
-	return isString ? this[0][0].style[camelCase( styles )] : this;
+	return isString ? this.sel[0].style[this.camelCase( styles )] : this;
 };
 
 module.exports = css;

@@ -10,8 +10,7 @@
  */
 const toggleClass = function( classes ) {
 	this.each( el => {
-		console.log( 'el.className: ', el.className );
-		classes.split( ' ' ).forEach( c => {
+		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {
 				el.className += ` ${c}`;
 			}

@@ -9,7 +9,7 @@
  * @returns {number} the length
  */
 const size = function() {
-	return this[0].length;
+	return this.sel.length;
 };
 
 module.exports = size;

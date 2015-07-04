@@ -17,11 +17,9 @@ const prop = function( get, set ) {
 		this.each( el => el[get] = set );
 	}
 
-	console.log( 'prop: this[0]', this[0] );
-
 	// if getting, just return the prop (bracket notation needed: get is a str)
 	// if setting, we set props above and continue chaining
-	return !set ? this[0][0][get] : this;
+	return !set ? this.sel[0][get] : this;
 };
 
 module.exports = prop;

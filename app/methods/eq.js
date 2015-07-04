@@ -10,14 +10,12 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const eq = function( pos ) {
-	if ( pos < this[0].length ) {
-		this[0] = [ this[0][pos] ]; // pos > 0 ? [ this[0][pos] ] : [ this[0][this[0].length + pos] ];
+	if ( pos < this.sel.length ) {
+		this.sel = [ this.sel[pos] ]; // pos > 0 ? [ this[0][pos] ] : [ this[0][this[0].length + pos] ];
 	}
 	else {
-		this[0] = [];
+		this.sel = [];
 	}
-
-	console.log( this[0].length );
 
 	return this;
 };
