@@ -9,6 +9,10 @@ goal is to match the functionality (more or less) of [jQuery dom manipulation me
 
 Ideally will work on the server side (like cheerio) as well as the front-end, and will be require-able on a method by method basis like lodash (eventually). Selections are cached by default, and the cache is bustable (props to [Eric Mann](http://ttmm.io/tech/selector-caching-jquery/)).
 
+Anything that results in a change to the DOM goes through requestAnimationFrame.
+
+Will have convenience methods for working with data attributes (using css classes as selectors is bad for you).
+
 If you want to contribute, I could use a little help with the isomorphic bits and eventually a little help with testing would be nice.
 
 When coverage hits around 80-90% consider this library 'useable', but changes may still occur.
