@@ -9,7 +9,11 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const show = function() {
-	this.each( el => el.style.display = 'block' );
+	this.each( el => {
+		if ( el.style.display === 'none' ) {
+			el.style.display = 'block';
+		}
+	} );
 	return this;
 };
 

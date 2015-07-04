@@ -14,11 +14,11 @@ describe( 'Quick.js Unit Tests', function() {
 	jsdom();
 
 	beforeEach( function() {
-		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
+		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>';
 	} );
 
 	afterEach( function() {
-		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
+		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
 	} );
 
 	describe( 'main app object should', function() {
@@ -157,6 +157,28 @@ describe( 'Quick.js Unit Tests', function() {
 		// } );
 	} );
 
+	describe( 'eq should', function() {
+		it( 'return correct el from the selection', function() {
+			assert.equal( true, $('span')[0][0].isEqualNode( $('span').eq(0)[0][0] ) );
+			assert.equal( true, $('span')[0][1].isEqualNode( $('span').eq(1)[0][0] ) );
+		} );
+
+		it( 'return empty selection if out of bounds', function() {
+			assert.equal( 0, $('span').eq(3)[0].length );
+		} );
+	} );
+
+	describe( 'hide should', function() {
+		it( 'add display none to the element', function() {
+			assert.equal( 'none', $('p').hide()[0][0].style.display );
+		} );
+
+		it( 'do nothing if element already hidden', function() {
+			$('p')[0][0].style.display = 'none';
+			assert.equal( 'none', $('p').hide()[0][0].style.display );
+		} );
+	} );
+
 	// describe( 'remove should', function() {
 	// 	it( 'remove the selection from the dom', function() {
 	// 		$( '.alreadyHere' ).remove();
@@ -174,6 +196,28 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'remove classes from each item in the selection', function() {
 			assert.equal( '', $('span').removeClass('test')[0][0].className );
 			assert.equal( '', $('span').removeClass('test')[0][1].className );
+		} );
+	} );
+
+	describe( 'show should', function() {
+		it( 'add display block to the element', function() {
+			$('p')[0][0].style.display = 'none';
+			assert.equal( 'block', $('p').show()[0][0].style.display );
+		} );
+
+		it( 'do nothing if element already visible', function() {
+			$('p')[0][0].style.display = 'flex';
+			assert.equal( 'flex', $('p').show()[0][0].style.display );
+		} );
+	} );
+
+	describe( 'text should', function() {
+		it( 'return the current textContent of first node in selection', function() {
+			assert.equal( 'Text Content Inner Text Content', $('.alreadyHere').text() );
+		} );
+
+		it( 'set the textContent of all nodes in selection to the passed in value', function() {
+			assert.equal( 'butts', $('span').text('butts')[0][0].textContent );
 		} );
 	} );
 

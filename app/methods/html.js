@@ -1,3 +1,5 @@
+'use strict';
+
 const toArray = require( '../utils/toArray' );
 
 

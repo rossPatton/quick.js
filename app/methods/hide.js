@@ -9,7 +9,11 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const hide = function() {
-	this.each( el => el.style.display = 'none' );
+	this.each( el => {
+		if ( el.style.display !== 'none' ) {
+			el.style.display = 'none';
+		}
+	} );
 	return this;
 };
 

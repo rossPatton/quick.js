@@ -9,8 +9,6 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const toggleClass = function( classes ) {
-	console.log( document.body.innerHTML );
-	console.log( 'classes: ', classes );
 	this.each( el => {
 		console.log( 'el.className: ', el.className );
 		classes.split( ' ' ).forEach( c => {
@@ -20,9 +18,6 @@ const toggleClass = function( classes ) {
 			else {
 				el.className = el.className.replace( c, '' );
 			}
-
-			console.log( 'final el.className: ', el.className );
-			console.log( 'first sel className: ', this[0][0].className );
 		} );
 	} );
 

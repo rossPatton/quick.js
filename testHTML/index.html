@@ -27,12 +27,13 @@
 </head>
 <body>
 
-<div id='first' class='odd' title="something" style='background-color: #ff0000'>
-	<p>Test</p>
+<div id='first' class='odd test-text' title="something" style='background-color: #ff0000'>
+	<div>Test</div>
 </div>
-<div class='even'>
+<div class='even test-text'>
 	<p>Test 2</p>
 </div>
+<div id='first' class='odd test-text-2' title="something" style='background-color: #ff0000'>Test Text<p>2</p></div>
 <div class='odd third'></div>
 <div class='even'></div>
 <div class='odd'></div>
@@ -50,6 +51,9 @@
 
 <script>
 $('p.hide').removeClass('hide');
+$('.test-text-2').text();
+$('.test-text-2').text('<p>Test</p>');
+$('div').text('butts');
 </script>
 
 </body>
