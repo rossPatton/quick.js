@@ -17,6 +17,10 @@ describe( 'Quick.js Unit Tests', function() {
 		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
 	} );
 
+	afterEach( function() {
+		document.body.innerHTML = '<span><div><p class="alreadyHere"><span></span></p></div></span><strong class="test-has"></strong><strong></strong>';
+	} );
+
 	describe( 'main app object should', function() {
 
 		it( 'be an object', function() {
@@ -163,18 +167,25 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'removeClass should', function() {
 
-		beforeEach( function() {
-			document.body.innerHTML = '<span class="test"><div><p class="alreadyHere"><span></span></p></div></span><span class="test"></span>';
+		it( 'remove one class from each item in the selection', function() {
+			assert.equal( '', $('p').removeClass('alreadyHere')[0][0].className );
 		} );
 
-		// it( 'remove one class from each item in the selection', function() {
-		// 	assert.equal( '', $('p').removeClass('alreadyHere')[0][0].className );
-		// } );
+		it( 'remove classes from each item in the selection', function() {
+			assert.equal( '', $('span').removeClass('test')[0][0].className );
+			assert.equal( '', $('span').removeClass('test')[0][1].className );
+		} );
+	} );
 
-		// it( 'remove classes from each item in the selection', function() {
-		// 	assert.equal( '', $('span').removeClass('test')[0][0].className );
-		// 	assert.equal( '', $('span').removeClass('test')[0][1].className );
-		// } );
+	describe( 'toggleClass should', function() {
+
+		it( 'remove alreadyHere from each item in the selection', function() {
+			assert.equal( '', $('.alreadyHere', document.body, 'bust').toggleClass('alreadyHere')[0][0].className );
+		} );
+
+		it( 'add alreadyHere to each item in the selection', function() {
+			assert.equal( ' alreadyHere', $('p', document.body, 'bust').toggleClass('alreadyHere')[0][0].className );
+		} );
 	} );
 
 	// describe( 'remove should', function() {

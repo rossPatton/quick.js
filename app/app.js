@@ -1,7 +1,6 @@
 'use strict';
 const query = require( './utils/query' );
 const methods = require( './methods/methods' );
-let proto = Object.create( methods );
 
 // initialize the app
 let App = function( input ) {
@@ -13,6 +12,7 @@ let App = function( input ) {
 	}
 
 	return this;
-};
+}.bind( Object.create( methods ) );
 
-module.exports = App.bind( proto );
+if ( typeof window !== 'undefined' ) { window.$ = App; }
+module.exports = App;

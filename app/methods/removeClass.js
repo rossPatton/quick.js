@@ -11,8 +11,9 @@
  */
 const removeClass = function( classes ) {
 	this.each( el => {
-		classes.split( ' ' ).forEach( c => {
-			return el.className.indexOf( c ) !== -1 ? el.classList.remove( c ) : '';
+		return classes.split( ' ' ).forEach( c => {
+			if ( el.className.indexOf( c ) === -1 ) { return; }
+			el.className = el.className.replace( c, '' );
 		} );
 	} );
 
