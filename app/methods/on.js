@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -17,15 +17,15 @@ const on = function( events, cb ) {
 				el: el,
 				ev: ev,
 				cb: cb
-			};
+			}
 
-			this.listeners.push( l );
+			this.listeners.push( l )
 
-			return el.addEventListener( l.ev, l.cb );
-		} );
-	} );
+			return el.addEventListener( l.ev, l.cb )
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = on;
+module.exports = on

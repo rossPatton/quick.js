@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -14,12 +14,12 @@ const prop = function( get, set ) {
 	// else we just pass in the config object
 	// ternary lets ppl pass in a value here, or a config object
 	if ( set ) {
-		this.each( el => el[get] = set );
+		this.each( el => el[get] = set )
 	}
 
 	// if getting, just return the prop (bracket notation needed: get is a str)
 	// if setting, we set props above and continue chaining
-	return !set ? this.sel[0][get] : this;
-};
+	return !set ? this.sel[0][get] : this
+}
 
-module.exports = prop;
+module.exports = prop

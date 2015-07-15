@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -11,11 +11,11 @@
 const extend = function( source ) {
 	for ( let method in source ) {
 		if ( source.hasOwnProperty( method ) ) {
-			Object.getPrototypeOf( this )[method] = source[method];
+			Object.getPrototypeOf( this )[method] = source[method]
 		}
 	}
 
-	return this;
-};
+	return this
+}
 
-export default extend;
+export default extend

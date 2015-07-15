@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -9,7 +9,7 @@
  * @returns {number} the length
  */
 const size = function() {
-	return this.sel.length;
-};
+	return this.sel.length
+}
 
-module.exports = size;
+module.exports = size

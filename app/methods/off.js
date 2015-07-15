@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -14,15 +14,15 @@ const off = function( events, cb ) {
 		return events.split( ' ' ).forEach( ev => {
 			return this.listeners.forEach( listener => {
 				if ( ev !== listener.ev || !Object.is( cb, listener.cb ) ) {
-					throw Error;
+					throw Error
 				}
 
-				return el.removeEventListener( listener.ev, listener.cb );
-			} );
-		} );
-	} );
+				return el.removeEventListener( listener.ev, listener.cb )
+			} )
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = off;
+module.exports = off

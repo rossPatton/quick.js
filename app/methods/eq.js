@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -11,13 +11,14 @@
  */
 const eq = function( pos ) {
 	if ( pos < this.sel.length ) {
-		this.sel = [ this.sel[pos] ]; // pos > 0 ? [ this[0][pos] ] : [ this[0][this[0].length + pos] ];
+		this.sel = [ this.sel[pos] ]
+		// pos > 0 ? [ this[0][pos] ] : [ this[0][this[0].length + pos] ]
 	}
 	else {
-		this.sel = [];
+		this.sel = []
 	}
 
-	return this;
-};
+	return this
+}
 
-module.exports = eq;
+module.exports = eq

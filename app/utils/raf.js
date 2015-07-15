@@ -14,12 +14,12 @@
  * @return {array} [our node list, as an array]
  */
 if ( typeof window !== 'undefined' ) {
-	console.log( 'piggy back on raf' );
-	module.exports = window.requestAnimationFrame;
+	// console.log( 'piggy back on raf' );
+	module.exports = window.requestAnimationFrame
 }
 // if on server side dont bother with raf
 else {
-	console.log( 'no raf' );
-	module.exports = function( cb ) { return cb(); };
+	// console.log( 'no raf' );
+	module.exports = function( cb ) { return cb() }
 }
 

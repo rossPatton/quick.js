@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -13,26 +13,26 @@ const wrap = function( dom ) {
 	// if passed a dom node directly, check it and append it
 	if ( this.isNode( dom ) ) {
 		this.each( el => {
-			let w = dom.cloneNode( true );
-			w.appendChild( el.cloneNode( true ) );
+			let w = dom.cloneNode( true )
+			w.appendChild( el.cloneNode( true ) )
 
-			return this.raf( el.parentNode.replaceChild( w, el ) );
-		} );
+			return this.raf( el.parentNode.replaceChild( w, el ) )
+		} )
 	}
 	else if ( typeof dom === 'string' ) {
-		let tmp = document.createElement( 'div' );
-		tmp.insertAdjacentHTML( 'afterbegin', dom );
+		let tmp = document.createElement( 'div' )
+		tmp.insertAdjacentHTML( 'afterbegin', dom )
 
 		this.each( el => {
-			let w = tmp.firstChild.cloneNode( true );
+			let w = tmp.firstChild.cloneNode( true )
 
-			w.appendChild( el.cloneNode( true ) );
+			w.appendChild( el.cloneNode( true ) )
 
-			return this.raf( el.parentNode.replaceChild( w, el ) );
-		} );
+			return this.raf( el.parentNode.replaceChild( w, el ) )
+		} )
 	}
 
-	return this;
-};
+	return this
+}
 
-module.exports = wrap;
+module.exports = wrap

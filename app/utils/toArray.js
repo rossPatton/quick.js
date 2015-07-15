@@ -5,7 +5,7 @@
  * @return {Array} our NodeList is now an array so can use array methods on it
  */
 const toArray = function( arrayLikeObject ) {
-	return Array.prototype.slice.call( arrayLikeObject );
-};
+	return Array.prototype.slice.call( arrayLikeObject )
+}
 
-module.exports = toArray;
+module.exports = toArray

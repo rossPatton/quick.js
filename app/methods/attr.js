@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -11,12 +11,12 @@
  */
 const attr = function( get, set ) {
 	if ( set ) {
-		this.each( el => el.setAttribute( get, set ) );
+		this.each( el => el.setAttribute( get, set ) )
 	}
 
 	// if getting, return the attr
 	// if setting, set attributes and continue chaining
-	return !set ? this.sel[0].getAttribute( get ) : this;
-};
+	return !set ? this.sel[0].getAttribute( get ) : this
+}
 
-module.exports = attr;
+module.exports = attr

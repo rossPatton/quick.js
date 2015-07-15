@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -10,10 +10,10 @@
  */
 const width = function( set ) {
 	if ( typeof set !== 'undefined' ) {
-		this.raf( this.each( el => el.style.width = `${set}` ) );
+		this.raf( this.each( el => el.style.width = `${set}` ) )
 	}
 
-	return typeof set === 'undefined' ? this.sel[0].clientWidth : this;
-};
+	return typeof set === 'undefined' ? this.sel[0].clientWidth : this
+}
 
-module.exports = width;
+module.exports = width

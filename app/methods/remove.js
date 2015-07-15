@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -8,8 +8,8 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const remove = function() {
-	this.raf( this.each( el => el.parentNode.removeChild( el ) ) );
-	return this;
-};
+	this.raf( this.each( el => el.parentNode.removeChild( el ) ) )
+	return this
+}
 
-module.exports = remove;
+module.exports = remove

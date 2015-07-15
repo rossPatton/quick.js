@@ -1,5 +1,4 @@
 'use strict';
-// const toArray = require( './toArray' );
 
 
 /**
@@ -21,11 +20,13 @@ const query = function( sel, parent = document, bust = false ) {
 
 	if ( bust === 'bust' ||
 		typeof this.cache[`${parent.nodeName}:${sel}`] === 'undefined' ) {
-		this.cache[`${parent.nodeName}:${sel}`] = this.toArray( parent.querySelectorAll( sel ) );
+		this.cache[`${parent.nodeName}:${sel}`] = this.toArray(
+			parent.querySelectorAll( sel )
+		)
 	}
 
 	// pretty much just so i can test the cache object better for now
-	return this.cache[`${parent.nodeName}:${sel}`];
-};
+	return this.cache[`${parent.nodeName}:${sel}`]
+}
 
-module.exports = query;
+module.exports = query

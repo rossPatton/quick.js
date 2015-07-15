@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -12,11 +12,11 @@ const show = function() {
 	this.each( el => {
 		if ( el.style.display === 'none' ) {
 			this.raf( function() {
-				el.style.display = 'block';
-			} );
+				el.style.display = 'block'
+			} )
 		}
-	} );
-	return this;
-};
+	} )
+	return this
+}
 
-module.exports = show;
+module.exports = show

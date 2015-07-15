@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -9,7 +9,7 @@
  * @returns {string} the new camelCased string
  */
 const camelCase = function( str ) {
-	return str.replace( /-[a-z]/gi, s => s.replace( '-', '' ).toUpperCase() );
-};
+	return str.replace( /-[a-z]/gi, s => s.replace( '-', '' ).toUpperCase() )
+}
 
-module.exports = camelCase;
+module.exports = camelCase

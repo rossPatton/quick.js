@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -15,12 +15,12 @@ const add = function( sel ) {
 	this.query( sel ).forEach( el => {
 		return this.sel.forEach( el2 => {
 			if ( !el.isEqualNode( el2 ) ) {
-				return this.sel.push( el );
+				return this.sel.push( el )
 			}
-		} );
-	} );
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = add;
+module.exports = add

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -10,11 +10,11 @@
 const empty = function() {
 	this.each( el => {
 		while ( el.firstChild ) {
-			this.raf( el.removeChild( el.firstChild ) );
+			this.raf( el.removeChild( el.firstChild ) )
 		}
-	} );
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = empty;
+module.exports = empty

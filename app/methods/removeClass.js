@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -11,14 +11,14 @@
 const removeClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
-			if ( el.className.indexOf( c ) === -1 ) { return; }
+			if ( el.className.indexOf( c ) === -1 ) { return }
 			el.className = this.raf( function() {
-				return el.className.replace( c, '' );
-			} );
-		} );
-	} );
+				return el.className.replace( c, '' )
+			} )
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = removeClass;
+module.exports = removeClass

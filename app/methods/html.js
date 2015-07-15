@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -12,19 +12,19 @@
  * @returns {Object | string} the html of the el, or the parent Object
  */
 const html = function( set ) {
-	this.empty();
+	this.empty()
 
 	let htmlArr = this.toArray(
 		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
-	);
+	)
 
 	this.raf( this.each( el => {
 		for ( let node of htmlArr ) {
-			el.appendChild( node.cloneNode( true ) );
+			el.appendChild( node.cloneNode( true ) )
 		}
-	} ) );
+	} ) )
 
-	return set ? this.sel[0].innerHTML : this;
-};
+	return set ? this.sel[0].innerHTML : this
+}
 
-module.exports = html;
+module.exports = html

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -13,18 +13,18 @@ const toggleClass = function( classes ) {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {
 				this.raf( function() {
-					el.className += ` ${c}`;
-				} );
+					el.className += ` ${c}`
+				} )
 			}
 			else {
 				el.className = this.raf( function() {
-					return el.className.replace( c, '' );
-				} );
+					return el.className.replace( c, '' )
+				} )
 			}
-		} );
-	} );
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = toggleClass;
+module.exports = toggleClass

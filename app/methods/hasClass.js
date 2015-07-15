@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -10,8 +10,8 @@
  */
 const hasClass = function( classes ) {
 	return classes.split( ' ' ).every( c => {
-		return this.sel[0].className.indexOf( c ) !== -1;
-	} );
-};
+		return this.sel[0].className.indexOf( c ) !== -1
+	} )
+}
 
-module.exports = hasClass;
+module.exports = hasClass

@@ -1,5 +1,5 @@
-'use strict';
-// const raf = require( '../utils/raf' );
+'use strict'
+// const raf = require( '../utils/raf' )
 
 
 /**
@@ -14,13 +14,13 @@ const addClass = function( classes ) {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {
 				return this.raf( function() {
-					el.className += ` ${c}`;
-				} );
+					el.className += ` ${c}`
+				} )
 			}
-		} );
-	} );
+		} )
+	} )
 
-	return this;
-};
+	return this
+}
 
-module.exports = addClass;
+module.exports = addClass

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -9,18 +9,17 @@
  * @returns {boolean} whether or not the node is a node
  */
 const isNode = function( node ) {
-	let amNode = false;
+	let amNode = false
 
 	// bit of a hacky x-browser workaround here
 	if ( typeof node === 'object' &&
 		node.nodeType && node.cloneNode &&
 		( node.nodeType === 1 || node.nodeType === 3 ) ) {
 
-		amNode = true;
-
+		amNode = true
 	}
 
-	return amNode;
-};
+	return amNode
+}
 
-module.exports = isNode;
+module.exports = isNode
