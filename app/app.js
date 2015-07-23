@@ -1,4 +1,5 @@
 'use strict'
+
 const proto = require( './proto' )
 
 // initialize the app

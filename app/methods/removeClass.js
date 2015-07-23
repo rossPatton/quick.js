@@ -12,9 +12,10 @@ const removeClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) { return }
-			el.className = this.raf( function() {
-				return el.className.replace( c, '' )
-			} )
+			el.className = el.className.replace( c, '' )
+			// el.className = this.raf( function() {
+			// 	return el.className.replace( c, '' )
+			// } )
 		} )
 	} )
 
