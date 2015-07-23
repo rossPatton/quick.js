@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 
 /**
@@ -16,7 +16,7 @@
  * @return {array} [our node list, as an array]
  */
 const query = function( sel, parent = document, bust = false ) {
-	this.cache = this.cache || {};
+	this.cache = this.cache || {}
 
 	if ( bust === 'bust' ||
 		typeof this.cache[`${parent.nodeName}:${sel}`] === 'undefined' ) {

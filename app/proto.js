@@ -33,6 +33,6 @@ const proto = {
 	toggleClass: require( './methods/toggleClass' ),
 	width: require( './methods/width' ),
 	wrap: require( './methods/wrap' )
-};
+}
 
-module.exports = proto;
+module.exports = proto

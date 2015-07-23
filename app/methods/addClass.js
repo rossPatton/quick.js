@@ -1,6 +1,4 @@
 'use strict'
-// const raf = require( '../utils/raf' )
-
 
 /**
  * @module

@@ -9,7 +9,7 @@ let App = function( input ) {
 		this.sel = this.query( input )
 	}
 
-	return this;
+	return this
 }.bind( Object.create( proto ) )
 
 if ( typeof window !== 'undefined' ) { window.$ = App }
