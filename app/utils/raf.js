@@ -17,6 +17,6 @@ if ( typeof window !== 'undefined' ) {
 }
 // if on server side dont bother with raf
 else {
-	module.exports = function( cb ) { return cb() }
+	module.exports = cb => cb()
 }
 
