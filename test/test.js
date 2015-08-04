@@ -270,6 +270,19 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 	} )
 
+	describe( 'width should' , function() {
+
+		it( 'set the element width', function() {
+			assert.ok( typeof $( '.test-has' ).width( '80px' ) === 'object' )
+		} )
+
+		it( 'get the element width', function() {
+			$( '.test-has' ).sel[0].clientWidth = '80px';
+			assert.equal( '80px', $( '.test-has' ).width() )
+		} )
+
+	} )
+
 	// describe( 'remove should', function() {
 	// 	it( 'remove a node from the DOM', function() {
 	// 		$('div').remove()
