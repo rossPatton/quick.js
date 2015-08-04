@@ -125,22 +125,31 @@ describe( 'Quick.js Unit Tests', function() {
 			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' ).sel.length );
 		} );
 	} );
-	// @TODO the test for hasClass without using strong doesn't pass. For example, assert.equal( true, $( 'strong.test-has' ).hasClass( 'class1' ) ) passes, but if you do assert.equal( true, $( '.test-has' ).hasClass( 'class1' ) ), it does not pass
+
 	describe( 'hasClass should', function() {
 		beforeEach( function() {
-			document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has class1 class2 class3"></strong><strong></strong>';
-		} );
+			document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="has-class-test test-has class1 class2 class3"></strong><strong></strong>'
+		} )
 
 		it( 'returns false', function() {
-			assert.equal( false, $( 'strong.test-has' ).hasClass( 'class77' ) );
+			assert.equal(
+				false,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class77' )
+			)
 		} )
 
 		it( 'returns true if one class given', function() {
-			assert.equal( true, $( 'strong.test-has' ).hasClass( 'class1' ) );
+			assert.equal(
+				true,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class1' )
+			)
 		} )
 
 		it( 'returns true if more than one class is given', function() {
-			assert.equal( true, $( 'strong.test-has' ).hasClass( 'class1 class3' ) );
+			assert.equal(
+				true,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class1 class3' )
+			)
 		} )
 	} )
 
