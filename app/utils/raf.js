@@ -12,11 +12,11 @@
  * @param {bool} [bust] [if true, we ignore the cache and get it fresh]
  * @return {array} [our node list, as an array]
  */
-if ( typeof window !== 'undefined' ) {
+if ( typeof global.window === 'undefined' && typeof window !== 'undefined' ) {
 	module.exports = window.requestAnimationFrame
 }
 // if on server side dont bother with raf
-else {
+else if ( typeof global.window === 'undefined' ) {
 	module.exports = cb => cb()
 }
 
