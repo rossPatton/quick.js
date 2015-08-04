@@ -140,6 +140,33 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 	} )
 
+	describe( 'hasClass should', function() {
+		beforeEach( function() {
+			document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="has-class-test test-has class1 class2 class3"></strong><strong></strong>'
+		} )
+
+		it( 'returns false', function() {
+			assert.equal(
+				false,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class77' )
+			)
+		} )
+
+		it( 'returns true if one class given', function() {
+			assert.equal(
+				true,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class1' )
+			)
+		} )
+
+		it( 'returns true if more than one class is given', function() {
+			assert.equal(
+				true,
+				$( '.has-class-test', document, 'bust' ).hasClass( 'class1 class3' )
+			)
+		} )
+	} )
+
 	describe( 'height should', function() {
 		// var p = document.querySelector( 'p.alreadyHere' )
 		it( 'get the height of the first el in the selection', function() {
