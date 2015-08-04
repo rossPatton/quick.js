@@ -54,6 +54,15 @@ $('p.hide').removeClass('hide');
 $('.test-text-2').text();
 $('.test-text-2').text('<p>Test</p>');
 $('div').text('butts');
+
+var method = function() {
+	console.log( 'butts' );
+}
+
+$.extend({
+	newMethod: method
+})
+
 </script>
 
 </body>

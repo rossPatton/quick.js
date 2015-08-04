@@ -27,10 +27,13 @@ const text = function( set ) {
 		this.each( el => {
 			const setTxt = document.createTextNode( set ).textContent
 
-			if ( el.nodeType === 1 || el.nodeType === 11 || el.nodeType === 9 ) {
-				this.raf( function () {
-					el.textContent = setTxt
-				} )
+			if ( el.nodeType === 1 ||
+				el.nodeType === 11 ||
+				el.nodeType === 9 ) {
+				el.textContent = setTxt
+				// this.raf( function () {
+				// 	el.textContent = setTxt
+				// } )
 			}
 		} )
 	}
