@@ -7,7 +7,7 @@ pids
 *.pid
 *.seed
 
-dist/app.min.js.map
+dist/
 node_modules
 lcov.info
 
