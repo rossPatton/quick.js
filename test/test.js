@@ -9,6 +9,7 @@ require( 'babel/register' )
 const $ = require( '../app/app' )
 
 describe( 'Quick.js Unit Tests', function() {
+	this.timeout( 5000 )
 
 	jsdom()
 

@@ -15,18 +15,18 @@
  * @param {object} [options] [options object]
  * @return {array} [our node list, as an array]
  */
-const query = function( sel, options ) {
+const query = function( sel ) {
 	this.cache = this.cache ? this.cache : {}
-	options.parent = options.parent ? options.parent : document
-	options.bust = options.bust ? options.bust : false
+	this.options.parent = this.options.parent || document
+	this.options.bust = this.options.bust || false
 
-	const key = `${options.parent.nodeName}:${sel}`
+	const key = `${this.options.parent.nodeName}:${sel}`
 
-	if ( options.bust === true ||
+	if ( this.options.bust === true ||
 		typeof this.cache[key] === 'undefined' ) {
 
 		this.cache[key] = this.toArray(
-			options.parent.querySelectorAll( sel )
+			this.options.parent.querySelectorAll( sel )
 		)
 	}
 

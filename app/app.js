@@ -3,11 +3,12 @@
 const proto = require( './proto' )
 
 // initialize the app
-let App = function( input, options = {} ) {
+let App = function( input, options ) {
 	this.listeners = this.listeners || []
+	this.options = options || {}
 
 	if ( typeof input === 'string' ) {
-		this.sel = this.query( input, options )
+		this.sel = this.query( input )
 	}
 
 	return this
