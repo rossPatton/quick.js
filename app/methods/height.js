@@ -11,7 +11,8 @@
 const height = function( val ) {
 	// set the height if a value was passed in
 	if ( val ) {
-		this.raf( this.each( el => el.style.height = parseInt( val, 10 ) ) )
+		this.each( el => el.style.height = parseInt( val, 10 ) )
+		// this.raf( this.each( el => el.style.height = parseInt( val, 10 ) ) )
 	}
 
 	// if just getting the height, return the height

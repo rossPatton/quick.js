@@ -10,7 +10,8 @@
 const empty = function() {
 	this.each( el => {
 		while ( el.firstChild ) {
-			this.raf( el.removeChild( el.firstChild ) )
+			return el.removeChild( el.firstChild )
+			// this.raf( el.removeChild( el.firstChild ) )
 		}
 	} )
 

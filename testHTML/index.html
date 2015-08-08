@@ -50,10 +50,42 @@
 <script src='../dist/app.min.js'></script>
 
 <script>
-$('p.hide').removeClass('hide');
-$('.test-text-2').text();
-$('.test-text-2').text('<p>Test</p>');
-$('div').text('butts');
+// $('p.hide', {
+// 	bust: true,
+// 	parent: document
+// }).removeClass('hide');
+
+// $('.test-text-2', {
+// 	bust: true,
+// 	parent: document
+// }).text();
+
+// $('.test-text-2', {
+// 	bust: true,
+// 	parent: document
+// }).text('<p>Test</p>');
+
+// $('div', {
+// 	bust: true,
+// 	parent: document
+// }).text('butts');
+
+$( 'div' )
+
+$( '#first' ).remove()
+
+$( 'div', {
+	bust: true
+} )
+
+var method = function() {
+	console.log( 'butts' );
+}
+
+$().extend({
+	newMethod: method
+})
+
 </script>
 
 </body>

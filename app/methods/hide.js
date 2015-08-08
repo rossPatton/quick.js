@@ -11,9 +11,10 @@
 const hide = function() {
 	this.each( el => {
 		if ( el.style.display !== 'none' ) {
-			this.raf( function() {
-				el.style.display = 'none'
-			} )
+			el.style.display = 'none'
+			// this.raf( function() {
+			// 	el.style.display = 'none'
+			// } )
 		}
 	} )
 	return this

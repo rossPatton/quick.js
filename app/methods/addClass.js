@@ -11,9 +11,10 @@ const addClass = function( classes ) {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {
-				return this.raf( function() {
-					el.className += ` ${c}`
-				} )
+				el.className += ` ${c}`
+				// return this.raf( function() {
+				// 	el.className += ` ${c}`
+				// } )
 			}
 		} )
 	} )

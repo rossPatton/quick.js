@@ -1,5 +1,6 @@
 'use strict'
 
+// @TODO cache bust is... BUSTED
 
 /**
  * @module
@@ -11,22 +12,26 @@
  * 	            also gives you an array, which is more usable than a nodelist
  * @see https://eamann.com/tech/selector-caching-jquery/
  * @param {string} [sel] [the string we'll use to get dom nodes]
- * @param {parent} [obj] [where to search]
- * @param {bool} [bust] [if true, we ignore the cache and get it fresh]
+ * @param {object} [options] [options object]
  * @return {array} [our node list, as an array]
  */
-const query = function( sel, parent = document, bust = false ) {
-	this.cache = this.cache || {}
+const query = function( sel ) {
+	this.cache = this.cache ? this.cache : {}
+	this.options.parent = this.options.parent || document
+	this.options.bust = this.options.bust || false
 
-	if ( bust === 'bust' ||
-		typeof this.cache[`${parent.nodeName}:${sel}`] === 'undefined' ) {
-		this.cache[`${parent.nodeName}:${sel}`] = this.toArray(
-			parent.querySelectorAll( sel )
+	const key = `${this.options.parent.nodeName}:${sel}`
+
+	if ( this.options.bust === true ||
+		typeof this.cache[key] === 'undefined' ) {
+
+		this.cache[key] = this.toArray(
+			this.options.parent.querySelectorAll( sel )
 		)
 	}
 
 	// pretty much just so i can test the cache object better for now
-	return this.cache[`${parent.nodeName}:${sel}`]
+	return this.cache[key]
 }
 
 module.exports = query
