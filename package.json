@@ -18,7 +18,6 @@
   "homepage": "https://github.com/rossPatton/quick.js",
   "devDependencies": {
     "babel": "5.6.1",
-    "babel-jest": "5.3.0",
     "babelify": "6.1.2",
     "browserify": "10.2.4",
     "chai": "3.0.0",
@@ -45,5 +44,8 @@
   },
   "scripts": {
     "test": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/test.js"
+  },
+  "dependencies": {
+    "request-frame": "1.0.1"
   }
 }
