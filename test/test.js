@@ -219,6 +219,25 @@ describe( 'Quick.js Unit Tests', function() {
 	// 	} )
 	// } )
 
+	describe( 'remove should', function() {
+		beforeEach( function() {
+			document.body.innerHTML = '<span><div><p class="get-rid-of-me">Text Content<span>Inner Text Content</span></p></div></span><strong id="leave-me-here" class="get-rid-of-me stuff blah waaa"></strong><strong></strong>'
+		} )
+
+		it( 'remove multiple selections from the dom', function() {
+			assert.equal( 2, document.getElementsByClassName('get-rid-of-me').length )
+			$( '.get-rid-of-me' ).remove()
+			assert.equal( 0, document.getElementsByClassName('get-rid-of-me').length )
+		} )
+
+		it( 'remove one selection from the dom', function() {
+			assert.ok( document.body.innerHTML.indexOf('leave-me-here') !== -1 )
+			$( '#leave-me-here' ).remove()
+			assert.ok( document.body.innerHTML.indexOf('leave-me-here') === -1 )
+		} )
+	} )
+
+
 	describe( 'removeClass should', function() {
 
 		it( 'remove one class from each item in the selection', function() {
