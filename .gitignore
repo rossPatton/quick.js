@@ -7,7 +7,7 @@ pids
 *.pid
 *.seed
 
-dist/
+dist
 node_modules
 lcov.info
 
