@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -10,12 +11,12 @@
  * @param {boolean} [doWeFilter] if true we return a new selection of overlapping els only
  * @returns {Object | boolean} boolean if not filtering, parent Object otherwise
  */
-const has = function( sel, doWeFilter ) {
-	const compare = this.query( sel )
+const has = function( sel: Object, doWeFilter: boolean ): Object {
+	const compare: Array = this.query( sel )
 
 	// returns true or false depending on whether or not
 	// the new selection overlaps with the old selection
-	const hasEl = compare.some( el => {
+	const hasEl: boolean = compare.some( el => {
 		return this.sel.some( el2 => {
 			return el.isEqualNode( el2 )
 		} )
@@ -24,7 +25,7 @@ const has = function( sel, doWeFilter ) {
 	// set the result to be the new selection, if filter passed in
 	// only do if there is overlap, otherwise just return the existing selection
 	if ( hasEl && doWeFilter === 'filter' ) {
-		let filtered = []
+		let filtered: Array = []
 
 		// compare new selection (compare) to existing selection (this[0])
 		// filtered is the result of the filter, flattened (which seems unecessary but...)
@@ -32,6 +33,7 @@ const has = function( sel, doWeFilter ) {
 			this.sel.filter( el2 => el1.isEqualNode( el2 ) )
 		) )
 
+		// this flattens the array
 		filtered = [].concat.apply( [], filtered )
 
 		// set the overlap to be the new selection

@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,11 +10,12 @@
  * @param {Object | string} [styles] string for an individual style, object for many styles
  * @returns {Object | string} the matching style rule if getting, or the parent Object if setting
  */
-const css = function( styles ) {
-	const isString = typeof styles === 'string'
+const css = function( styles: string | Object ) {
+	const isString: boolean = typeof styles === 'string'
 
 	// set css values of passed in object on every element in the selection
 	if ( !isString && typeof styles === 'object' ) {
+
 		this.each( el => {
 			for ( let key in styles ) {
 				if ( styles.hasOwnProperty( key ) ) {

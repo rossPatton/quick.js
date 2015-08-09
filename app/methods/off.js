@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,10 +10,11 @@
  * @param {Function} [cb] the callback to remove from the selection
  * @returns {Object} [this] like most methods, returns parent object
  */
-const off = function( events, cb ) {
+const off = function( events: string, cb: Function ): Object {
 	this.each( el => {
 		return events.split( ' ' ).forEach( ev => {
 			return this.listeners.forEach( listener => {
+				// dunno about throwing here...
 				if ( ev !== listener.ev || !Object.is( cb, listener.cb ) ) {
 					throw Error
 				}

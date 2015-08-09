@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,10 +10,9 @@
  * @param {number} [pos] the index of the selection to retrieve
  * @returns {Object} [this] like most methods, returns parent object
  */
-const eq = function( pos ) {
+const eq = function( pos: number ): Object {
 	if ( pos < this.sel.length ) {
 		this.sel = [ this.sel[pos] ]
-		// pos > 0 ? [ this[0][pos] ] : [ this[0][this[0].length + pos] ]
 	}
 	else {
 		this.sel = []

@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -6,10 +7,10 @@
  * @public
  * @requires isNode
  * @description prepends dom nodes using those nodes directly or a string
- * @param {Object} [prependMe] the dom node to prepend to the dom
+ * @param {Object|string} [prependMe] the dom node to prepend to the dom
  * @returns {Object} [this] like most methods, returns parent object
  */
-const prepend = function( prependMe ) {
+const prepend = function( prependMe: string | Object ): Object {
 	// if passed a dom node directly, check it and append it
 	if ( this.isNode( prependMe ) ) {
 		this.each( el => {

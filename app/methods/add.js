@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,7 +10,8 @@
  * @param	{string} [sel] the string (selector) used to query the dom
  * @returns {Object} [this] like most methods, returns parent object
  */
-const add = function( sel ) {
+const add = function( sel: string ): Object {
+
 	// iterate over new selection and current
 	// if no dupe, push to current selection
 	this.query( sel ).forEach( el => {

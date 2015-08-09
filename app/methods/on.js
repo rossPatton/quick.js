@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -10,7 +11,7 @@
  * @param {Function} [cb] the callback to attach to the selection
  * @returns {Object} [this] like most methods, returns parent object
  */
-const on = function( events, cb ) {
+const on = function( events: string, cb: Function ): Object {
 	this.each( el => {
 		return events.split( ' ' ).forEach( ev => {
 			const l = {

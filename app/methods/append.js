@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,7 +10,7 @@
  * @param {Object} [appendMe] the dom node to append to the dom
  * @returns {Object} [this] like most methods, returns parent object
  */
-const append = function( appendMe ) {
+const append = function( appendMe: string | Object ): Object {
 	// if passed a dom node directly, check it and append it
 	if ( this.isNode( appendMe ) ) {
 		this.each( el => {
@@ -20,8 +21,10 @@ const append = function( appendMe ) {
 		// } ) )
 	}
 	else if ( typeof appendMe === 'string' ) {
-		let tmp = document.createElement( 'div' )
-		tmp.insertAdjacentHTML( 'afterbegin', appendMe )
+		let tmp: Object = document.createElement( 'div' )
+
+		tmp.innerHTML = appendMe
+
 		this.each( el => {
 			return el.appendChild( tmp.firstChild.cloneNode( true ) )
 		} )

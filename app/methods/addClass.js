@@ -1,4 +1,6 @@
+/* @flow */
 'use strict'
+
 
 /**
  * @module
@@ -7,7 +9,7 @@
  * @param	{string} [classes] the classes to add, separated by a space
  * @returns {Object} [this] like most methods, returns parent object
  */
-const addClass = function( classes ) {
+const addClass = function( classes: string ): Object {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
 			if ( el.className.indexOf( c ) === -1 ) {

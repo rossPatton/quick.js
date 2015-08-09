@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,7 +9,7 @@
  * @param {string} [str] the string to convert
  * @returns {string} the new camelCased string
  */
-const camelCase = function( str ) {
+const camelCase = function( str: string ): string {
 	return str.replace( /-[a-z]/gi, s => s.replace( '-', '' ).toUpperCase() )
 }
 

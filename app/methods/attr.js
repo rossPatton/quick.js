@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,7 +10,7 @@
  * @param {string} [set] sets an attribute on the selection
  * @returns {Object} [this | string] if getting, returns the attr, if setting, returns parent Object
  */
-const attr = function( get, set ) {
+const attr = function( get: string, set: string ): string | Object {
 	if ( set ) {
 		this.each( el => el.setAttribute( get, set ) )
 	}

@@ -1,6 +1,6 @@
+/* @flow */
 'use strict'
 
-// @TODO cache bust is... BUSTED
 
 /**
  * @module
@@ -15,22 +15,25 @@
  * @param {object} [options] [options object]
  * @return {array} [our node list, as an array]
  */
-const query = function( sel ) {
-	this.cache = this.cache ? this.cache : {}
-	this.options.parent = this.options.parent || document
-	this.options.bust = this.options.bust || false
+const query = function( sel: string ): Array {
+	const parent: Object = this.options.parent || document
+	const key: string = `${parent.nodeName}:${sel}`
+	const bust: boolean = this.options.bust || false
+	const clear: boolean = this.options.clear || false
 
-	const key = `${this.options.parent.nodeName}:${sel}`
-
-	if ( this.options.bust === true ||
-		typeof this.cache[key] === 'undefined' ) {
-
-		this.cache[key] = this.toArray(
-			this.options.parent.querySelectorAll( sel )
-		)
+	// completely wipe the cache if clear prop passed in
+	if ( clear === true ) {
+		this.cache = {}
 	}
 
-	// pretty much just so i can test the cache object better for now
+	// if bust true, or selector not yet cached, query the dom
+	// if !bust or selector already cached, we just return the cached selection
+	if ( bust === true ||
+		typeof this.cache[key] === 'undefined' ) {
+		this.cache[key] = this.toArray( parent.querySelectorAll( sel ) )
+	}
+
+	// return the selection as an Array
 	return this.cache[key]
 }
 

@@ -1,4 +1,6 @@
+/* @flow */
 'use strict'
+// const raf = require( 'raf' )
 
 
 /**
@@ -7,9 +9,19 @@
  * @description remove the selection from the DOM
  * @returns {Object} [this] like most methods, returns parent object
  */
-const remove = function() {
-	this.each( el => el.parentNode.removeChild( el ) )
+const remove = function(): Object {
+	this.each( el => {
+		return el.parentNode.removeChild( el )
+	} )
+
 	return this
+	// raf( () => {
+	// 	this.each( el => {
+	// 		return el.parentNode.removeChild( el )
+	// 	} )
+
+	// 	return this
+	// } )
 }
 
 module.exports = remove

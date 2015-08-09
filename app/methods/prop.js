@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -9,7 +10,7 @@
  * @param {string} [set] set property on the entire selection
  * @returns {string | Object} the value of property, or the parent Object
  */
-const prop = function( get, set ) {
+const prop = function( get: string, set: string ): string | Object {
 	// if set if string, we pass it as the value
 	// else we just pass in the config object
 	// ternary lets ppl pass in a value here, or a config object

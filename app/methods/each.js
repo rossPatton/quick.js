@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,11 +9,10 @@
  * @param {Function} [cb] the callback
  * @returns {Object} [this] like most methods, returns parent object
  */
-const each = function( cb ) {
-	const len = this.sel.length
-	let i = 0
+const each = function( cb: Function ): Object {
+	let i: number = 0 | 0
 
-	for ( i; i < len; i++ ) {
+	for ( i; i < this.sel.length; i++ ) {
 		cb( this.sel[i], i, this.sel )
 	}
 

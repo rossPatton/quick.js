@@ -9,16 +9,18 @@ require( 'babel/register' )
 const $ = require( '../app/app' )
 
 describe( 'Quick.js Unit Tests', function() {
-	this.timeout( 5000 )
 
 	jsdom()
+
+	// Object.getPrototypeOf( HTMLElement ).insertAdjacentHTML = require( './polyfills/insertAdjacentHTML' )
+	// Object.EventTarget.Node.Element.HTMLElement.prototype.insertAdjacentHTML = require( './polyfills/insertAdjacentHTML' )
 
 	beforeEach( function() {
 		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>'
 	} )
 
 	afterEach( function() {
-		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span></span></p></div></span><strong class="test-has"></strong><strong></strong>'
+		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>'
 	} )
 
 	describe( 'main app object should', function() {
@@ -30,9 +32,11 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'return an object', function() {
 			assert.equal( true, typeof $() === 'object' )
 		} )
+
 	} )
 
 	describe( 'toArray ', function() {
+
 		it( 'should return an array (obvs)', function() {
 			const testObj = {
 				0: 0,
@@ -45,20 +49,25 @@ describe( 'Quick.js Unit Tests', function() {
 	} )
 
 	describe( 'camelCase should', function() {
+
 		it( 'camelCase a string', function() {
 			assert.equal( 'testString', $().camelCase( 'test-string' ) )
 		} )
+
 	} )
 
 	describe( 'isNode should', function() {
+
 		it( 'verify node-y-ness correctly', function() {
 			assert.equal( false, $().isNode( {} ) )
 			assert.equal( true, $().isNode( document.createElement( 'div' ) ) )
 			assert.equal( true, $().isNode( document.createTextNode( 'test' ) ) )
 		} )
+
 	} )
 
 	describe( 'query should', function() {
+
 		it( 'create a selection if passed a valid string', function() {
 			assert.equal( 1, $( 'div' ).sel.length )
 		} )
@@ -69,37 +78,58 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 
 		it( 'narrow search if passed parent param', function() {
-			assert.equal( 1, $( 'span', $( '.alreadyHere' ).sel[0], 'bust' ).sel.length )
+			// get length of narrowed selection
+			const isNarrowed = $( 'span', {
+				parent: $( '.alreadyHere' ).sel[0]
+			} ).sel.length
+
+			assert.equal( 1, isNarrowed )
 		} )
 
-		it( 'have a cache length of 4 by now', function() {
-			assert.equal( 4, Object.keys( $().cache ).length )
+		// 1 for each selection,
+		// 1 for the parent we used to narrow in the last test
+		it( 'have a cache length of 5 by now', function() {
+			assert.equal( 5, Object.keys( $().cache ).length )
 		} )
 
-		// it( 'cache bust', function() {
-		// 	document.body.innerHTML = '<span><div><span><div><span></span></div></span></div></span>'
-		// 	assert.equal( 2, query('span', query('span').sel[0], 'bust' ).sel.length )
-		// } )
+		it( 'bust cache if bust prop passed in', function() {
+			// fresh dom
+			document.body.innerHTML = '<span><div><span><div><span></span></div></span></div></span>'
+
+			// should be 3, not 2
+			const isBusted = $( 'span', {
+				bust: true
+			} ).sel.length
+
+			assert.equal( 3, isBusted )
+		} )
 	} )
 
 	describe( 'add should', function() {
+
 		it( 'increase the size of the selection', function() {
 			assert.equal( 2, $( 'p' ).add( 'div' ).sel.length )
 		} )
+
 	} )
 
 	// describe( 'after should', function() {
+
 	// 	it( 'insert node before end of parent node', function() {
-	// 		$( 'em' ).after( 'div' )
-	//
+	// 		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>'
+
+	// 		$( 'div' ).after( 'em' )
+
 	// 		assert.equal(
 	// 			document.body.innerHTML,
-	// 			'<span><div><em></em><p class="alreadyHere"><span></span></p></div></span>'
+	// 			'<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div><em></em></span><strong class="test-has"></strong><strong></strong>'
 	// 		)
 	// 	} )
+
 	// } )
 
 	describe( 'addClass should', function() {
+
 		it( 'add one class to each item in the selection', function() {
 			assert.equal( ' test', $( 'div' ).addClass( 'test' ).sel[0].className )
 		} )
@@ -111,9 +141,11 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'not add extra class if class already applied', function() {
 			assert.equal( 'alreadyHere', $( 'p' ).addClass( 'alreadyHere' ).sel[0].className )
 		} )
+
 	} )
 
 	describe( 'has should', function() {
+
 		it( 'return false', function() {
 			assert.equal( false, $( 'strong' ).has( '.test-something-else' ) )
 		} )
@@ -125,20 +157,7 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'filter selection', function() {
 			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' ).sel.length )
 		} )
-	} )
 
-	describe( 'hasClass should', function() {
-		it( 'return false', function() {
-			assert.equal( false, $( 'strong' ).has( '.test-something-else' ) )
-		} )
-
-		it( 'return true', function() {
-			assert.equal( true, $( 'strong' ).has( '.test-has' ) )
-		} )
-
-		it( 'filter selection', function() {
-			assert.equal( 1, $( 'strong' ).has( '.test-has', 'filter' ).sel.length )
-		} )
 	} )
 
 	describe( 'hasClass should', function() {
@@ -169,28 +188,30 @@ describe( 'Quick.js Unit Tests', function() {
 	} )
 
 	describe( 'height should', function() {
-		// var p = document.querySelector( 'p.alreadyHere' )
+
 		it( 'get the height of the first el in the selection', function() {
-			var div = document.createElement( 'div' )
+			const div = document.createElement( 'div' )
+
 			div.className = 'testHeight'
+			div.clientHeight = 500
 			document.body.appendChild( div )
 
-			document.querySelector( 'div.testHeight' ).clientHeight = 500
 			assert.equal( 500, $( 'div.testHeight' ).height() )
 		} )
 
-		// it( 'set the height of the selection', function() {
-		// 	var div = document.createElement( 'div' )
-		// 	div.className = 'testHeight'
-		// 	document.body.appendChild( div )
-		//
-		// 	document.querySelector( 'div.testHeight' ).style = {}
-		// 	$( 'div.testHeight' ).height( '750' )
-		// 	assert.equal( 750, document.querySelector( 'div.testHeight' ).style.height )
-		// } )
+		it( 'set the height of the selection', function() {
+			var div = document.createElement( 'div' )
+			document.body.innerHTML = div
+			document.querySelector( 'div' ).style = {}
+
+			$( 'div', { bust: true } ).height( '750' )
+			assert.equal( 750, document.querySelector( 'div' ).style.height )
+			assert.equal( 750, $( 'div' ).height() )
+		} )
 	} )
 
 	describe( 'eq should', function() {
+
 		it( 'return correct el from the selection', function() {
 			assert.equal( true, $('span').sel[0].isEqualNode( $('span').eq(0).sel[0] ) )
 			assert.equal( true, $('span').sel[1].isEqualNode( $('span').eq(1).sel[0] ) )
@@ -199,9 +220,11 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'return empty selection if out of bounds', function() {
 			assert.equal( 0, $('span').eq(3).sel.length )
 		} )
+
 	} )
 
 	describe( 'hide should', function() {
+
 		it( 'add display none to the element', function() {
 			assert.equal( 'none', $('p').hide().sel[0].style.display )
 		} )
@@ -210,17 +233,11 @@ describe( 'Quick.js Unit Tests', function() {
 			$('p').sel[0].style.display = 'none'
 			assert.equal( 'none', $('p').hide().sel[0].style.display )
 		} )
+
 	} )
 
-	// describe( 'remove should', function() {
-	// 	it( 'remove the selection from the dom', function() {
-	// 		$( '.alreadyHere' ).remove()
-	// 		// $().sCache = []
-	// 		assert.equal( 0, $( '.alreadyHere', document, 'bust' )[0].length )
-	// 	} )
-	// } )
-
 	describe( 'remove should', function() {
+
 		beforeEach( function() {
 			document.body.innerHTML = '<span><div><p class="get-rid-of-me">Text Content<span>Inner Text Content</span></p></div></span><strong id="leave-me-here" class="get-rid-of-me stuff blah waaa"></strong><strong></strong>'
 		} )
@@ -236,6 +253,7 @@ describe( 'Quick.js Unit Tests', function() {
 			$( '#leave-me-here' ).remove()
 			assert.ok( document.body.innerHTML.indexOf('leave-me-here') === -1 )
 		} )
+
 	} )
 
 
@@ -249,6 +267,7 @@ describe( 'Quick.js Unit Tests', function() {
 			assert.equal( '', $('span').removeClass('test').sel[0].className )
 			assert.equal( '', $('span').removeClass('test').sel[1].className )
 		} )
+
 	} )
 
 	describe( 'show should', function() {
@@ -261,9 +280,11 @@ describe( 'Quick.js Unit Tests', function() {
 			$('p').sel[0].style.display = 'flex'
 			assert.equal( 'flex', $('p').show().sel[0].style.display )
 		} )
+
 	} )
 
 	describe( 'text should', function() {
+
 		it( 'return the current textContent of first node in selection', function() {
 			assert.equal( 'Text Content Inner Text Content', $('.alreadyHere').text() )
 		} )
@@ -271,6 +292,7 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'set the textContent of all nodes in selection to the passed in value', function() {
 			assert.equal( 'butts', $('span').text('butts').sel[0].textContent )
 		} )
+
 	} )
 
 	describe( 'toggleClass should', function() {
@@ -288,6 +310,7 @@ describe( 'Quick.js Unit Tests', function() {
 				$('p', document.body, 'bust').toggleClass('alreadyHere').sel[0].className
 			)
 		} )
+
 	} )
 
 	describe( 'width should' , function() {
@@ -303,23 +326,4 @@ describe( 'Quick.js Unit Tests', function() {
 
 	} )
 
-	// describe( 'remove should', function() {
-	// 	it( 'remove a node from the DOM', function() {
-	// 		$('div').remove()
-
-	// 		assert.equal(
-	// 			document.body.innerHTML,
-	// 			'<span><p class="alreadyHere"><span></span></p></span>'
-	// 		)
-
-	// 	} )
-
-		// it( 'add classes to each item in the selection', function() {
-		// 	assert.equal( ' test test1 test2', $('div').addClass('test1 test2')[0][0].className )
-		// } )
-
-		// it( 'not add extra class if class already applied', function() {
-		// 	assert.equal( 'alreadyHere', $('p').addClass('alreadyHere')[0][0].className )
-		// } )
-	// } )
 } )

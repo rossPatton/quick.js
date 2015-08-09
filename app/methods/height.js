@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,10 +9,11 @@
  * @param {string} [val] if passed in, set the height to this value
  * @returns {number | Object} the height if getting, parent Object if setting
  */
-const height = function( val ) {
+const height = function( val: string ): number | Object {
 	// set the height if a value was passed in
 	if ( val ) {
-		this.each( el => el.style.height = parseInt( val, 10 ) )
+		this.each( el => el.style.height = val | 0 )
+		// this.each( el => el.style.height = parseInt( val, 10 ) )
 		// this.raf( this.each( el => el.style.height = parseInt( val, 10 ) ) )
 	}
 

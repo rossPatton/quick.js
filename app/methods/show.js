@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,7 +9,7 @@
  * @description show an element, while waiting for css transitions to finish
  * @returns {Object} [this] like most methods, returns parent object
  */
-const show = function() {
+const show = function(): Object {
 	this.each( el => {
 		if ( el.style.display === 'none' ) {
 			el.style.display = 'block'
@@ -17,6 +18,7 @@ const show = function() {
 			// } )
 		}
 	} )
+
 	return this
 }
 

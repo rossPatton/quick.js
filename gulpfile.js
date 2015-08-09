@@ -54,7 +54,7 @@ gulp.task( 'app', function() {
 		.pipe( source( 'app.min.js' ) )
 		.pipe( buff() )
 		.pipe( $.if( dev, $.maps.init() ) )
-		// .pipe( $.uglify() )
+		.pipe( $.uglify() )
 		.pipe( $.maps.write( './' ) )
 		.pipe( gulp.dest( 'dist/' ) );
 } );

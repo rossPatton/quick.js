@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,7 +9,7 @@
  * @param {string} [classes] the class(es) to look for (separated by a space)
  * @returns {boolean} true if el has class, false if not
  */
-const hasClass = function( classes ) {
+const hasClass = function( classes: string ): boolean {
 	return classes.split( ' ' ).every( c => {
 		return this.sel[0].className.indexOf( c ) !== -1
 	} )

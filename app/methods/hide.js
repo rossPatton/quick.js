@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -8,7 +9,8 @@
  * @description hide an element, while waiting for css transitions to finish
  * @returns {Object} [this] like most methods, returns parent object
  */
-const hide = function() {
+const hide = function(): Object {
+
 	this.each( el => {
 		if ( el.style.display !== 'none' ) {
 			el.style.display = 'none'
@@ -17,6 +19,7 @@ const hide = function() {
 			// } )
 		}
 	} )
+
 	return this
 }
 

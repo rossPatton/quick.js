@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 
@@ -5,11 +6,11 @@
  * @module
  * @public
  * @description sanity check to make sure we've got a dom node
- * @param {object} node [the object we're checking for node-ness]
+ * @param {Object} node [the object we're checking for node-ness]
  * @returns {boolean} whether or not the node is a node
  */
-const isNode = function( node ) {
-	let amNode = false
+const isNode = function( node: Object ): boolean {
+	let amNode: boolean = false
 
 	// bit of a hacky x-browser workaround here
 	if ( typeof node === 'object' &&
