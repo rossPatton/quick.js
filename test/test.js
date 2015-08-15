@@ -1,7 +1,5 @@
 /* globals describe, it, beforeEach*/
 
-// const fs = require( 'fs' )
-// const testHTML = fs.readFileSync( process.cwd() + '/testHTML/index.html' ).toString()
 const assert = require( 'assert' )
 const jsdom = require( 'mocha-jsdom' )
 
@@ -11,9 +9,6 @@ const $ = require( '../app/app' )
 describe( 'Quick.js Unit Tests', function() {
 
 	jsdom()
-
-	// Object.getPrototypeOf( HTMLElement ).insertAdjacentHTML = require( './polyfills/insertAdjacentHTML' )
-	// Object.EventTarget.Node.Element.HTMLElement.prototype.insertAdjacentHTML = require( './polyfills/insertAdjacentHTML' )
 
 	beforeEach( function() {
 		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>'

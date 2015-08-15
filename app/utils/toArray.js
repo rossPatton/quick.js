@@ -8,7 +8,11 @@
  * @param {Object} [arrayLikeObject] object to convert to an array
  * @return {Array} our NodeList is now an array so can use array methods on it
  */
-const toArray = function( arrayLikeObject: Object ): Array {
+const toArray = function( arrayLikeObject: Object ): Array<Object> {
+	if ( typeof arrayLikeObject !== 'object' ) {
+		throw new TypeError( 'toArray requires an array like object' )
+	}
+
 	return Array.prototype.slice.call( arrayLikeObject )
 }
 

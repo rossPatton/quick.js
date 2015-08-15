@@ -12,10 +12,13 @@
  * 	            also gives you an array, which is more usable than a nodelist
  * @see https://eamann.com/tech/selector-caching-jquery/
  * @param {string} [sel] [the string we'll use to get dom nodes]
- * @param {object} [options] [options object]
  * @return {array} [our node list, as an array]
  */
-const query = function( sel: string ): Array {
+const query = function( sel: string ): Array<Object> {
+	if ( typeof sel !== 'string' ) {
+		throw new TypeError( 'query requires a string' )
+	}
+
 	const parent: Object = this.options.parent || document
 	const key: string = `${parent.nodeName}:${sel}`
 	const bust: boolean = this.options.bust || false

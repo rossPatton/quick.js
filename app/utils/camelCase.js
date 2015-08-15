@@ -10,6 +10,10 @@
  * @returns {string} the new camelCased string
  */
 const camelCase = function( str: string ): string {
+	if ( typeof str !== 'string' ) {
+		throw new TypeError( 'camelCase needs a string' )
+	}
+
 	return str.replace( /-[a-z]/gi, s => s.replace( '-', '' ).toUpperCase() )
 }
 

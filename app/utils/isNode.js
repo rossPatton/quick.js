@@ -10,17 +10,10 @@
  * @returns {boolean} whether or not the node is a node
  */
 const isNode = function( node: Object ): boolean {
-	let amNode: boolean = false
-
 	// bit of a hacky x-browser workaround here
-	if ( typeof node === 'object' &&
+	return typeof node === 'object' &&
 		node.nodeType && node.cloneNode &&
-		( node.nodeType === 1 || node.nodeType === 3 ) ) {
-
-		amNode = true
-	}
-
-	return amNode
+		( node.nodeType === 1 || node.nodeType === 3 )
 }
 
 module.exports = isNode

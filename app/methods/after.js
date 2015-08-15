@@ -12,8 +12,8 @@
  */
 const after = function( appendMe: string | Object ): Object {
 	// if passed a dom node directly, check it and append it
-	if ( this.isNode( appendMe ) ) {
-		this.each( el => {
+	if ( this.isNode( appendMe ) === true ) {
+		this.each( function( el: Object ) {
 			return el.parentNode.insertBefore(
 				appendMe.cloneNode(), el.nextSibling
 			)
@@ -24,7 +24,7 @@ const after = function( appendMe: string | Object ): Object {
 
 		tmp.innerHTML = appendMe
 
-		this.each( el => {
+		this.each( function( el: Object ) {
 			return el.parentNode.insertBefore(
 				tmp.firstChild.cloneNode( true ), el.nextSibling
 			)

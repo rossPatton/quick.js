@@ -1,0 +1,12 @@
+[ignore]
+./app/
+./node_modules/
+core.js
+
+[include]
+./flow/
+
+[libs]
+./declarations
+
+[options]

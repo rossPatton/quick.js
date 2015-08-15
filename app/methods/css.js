@@ -7,17 +7,22 @@
  * @public
  * @requires camelCase
  * @description gets or sets css properties on the selection
- * @param {Object | string} [styles] string for an individual style, object for many styles
- * @returns {Object | string} the matching style rule if getting, or the parent Object if setting
+ * @param {string | Object} [styles] string for an individual style, object for many styles
+ * @returns {string | Object} the style rule if getting, or the parent Object if setting
  */
-const css = function( styles: string | Object ) {
+const css = function( styles: string | Object ): string | Object {
 	const isString: boolean = typeof styles === 'string'
+	let retVal: string = ''
 
-	// set css values of passed in object on every element in the selection
-	if ( !isString && typeof styles === 'object' ) {
+	if ( isString === true ) {
+		retVal = this.sel[0].style[this.camelCase( styles )]
+	}
+	// else set css values of passed in object on every element in the selection
+	else if ( typeof styles === 'object' ) {
 
-		this.each( el => {
-			for ( let key in styles ) {
+		this.each( function( el: Object ) {
+			let key: string = ''
+			for ( key in styles ) {
 				if ( styles.hasOwnProperty( key ) ) {
 					el.style[key] = styles[key]
 				}
@@ -34,7 +39,7 @@ const css = function( styles: string | Object ) {
 
 	// if getting, return the matching css value of the first item in the selection
 	// if setting, set css values on entire selection and continue chaining
-	return isString ? this.sel[0].style[this.camelCase( styles )] : this
+	return isString === true ? retVal : this
 }
 
 module.exports = css
