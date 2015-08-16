@@ -7,6 +7,5 @@ core.js
 ./flow/
 
 [libs]
-./declarations
 
 [options]

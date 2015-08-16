@@ -10,6 +10,7 @@ const proto: Object = {
 	attr: require( '../methods/attr' ),
 	before: require( '../methods/before' ),
 	camelCase: require( '../utils/camelCase' ),
+	clear: require( '../methods/clear' ),
 	css: require( '../methods/css' ),
 	each: require( '../methods/each' ),
 	empty: require( '../methods/empty' ),

@@ -32,6 +32,7 @@
 </div>
 <div class='even test-text'>
 	<p>Test 2</p>
+	<span>I'm a span</span>
 </div>
 <div id='first' class='odd test-text-2' title="something" style='background-color: #ff0000'>Test Text<p>2</p></div>
 <div class='odd third'></div>
@@ -39,54 +40,13 @@
 <div class='odd'></div>
 <div class='even'></div>
 
-<p><strong>Test 1</strong></p>
+<p class='already-here'><strong class='test-has'>Test 1</strong></p>
 <p id="second-p" ><strong>Test 2</strong></p>
 <p><strong>Test 3</strong></p>
-<p class='hide'>I'm hidden!</p>
+<p class='hide has-class-test class1 class3'>I'm hidden!</p>
 <p class='show'>I'm visible!</p>
 <p class='hide two'>I'm hidden!</p>
 <p class='show two'>I'm visible!</p>
-
-<script src='../dist/app.min.js'></script>
-
-<script>
-// $('p.hide', {
-// 	bust: true,
-// 	parent: document
-// }).removeClass('hide');
-
-// $('.test-text-2', {
-// 	bust: true,
-// 	parent: document
-// }).text();
-
-// $('.test-text-2', {
-// 	bust: true,
-// 	parent: document
-// }).text('<p>Test</p>');
-
-// $('div', {
-// 	bust: true,
-// 	parent: document
-// }).text('butts');
-
-$( 'div' )
-
-$( '#first' ).remove()
-
-$( 'div', {
-	bust: true
-} )
-
-var method = function() {
-	console.log( 'butts' );
-}
-
-$().extend({
-	newMethod: method
-})
-
-</script>
 
 </body>
 </html>

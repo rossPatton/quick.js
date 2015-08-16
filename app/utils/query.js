@@ -15,19 +15,12 @@
  * @return {array} [our node list, as an array]
  */
 const query = function( sel: string ): Array<Object> {
-	if ( typeof sel !== 'string' ) {
-		throw new TypeError( 'query requires a string' )
-	}
-
+	// @TODO strengthen the parent option
+	// if user enters parent div that's already in cache
+	// pull from cache and use first matching dom node as parent
 	const parent: Object = this.options.parent || document
 	const key: string = `${parent.nodeName}:${sel}`
 	const bust: boolean = this.options.bust || false
-	const clear: boolean = this.options.clear || false
-
-	// completely wipe the cache if clear prop passed in
-	if ( clear === true ) {
-		this.cache = {}
-	}
 
 	// if bust true, or selector not yet cached, query the dom
 	// if !bust or selector already cached, we just return the cached selection

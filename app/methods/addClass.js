@@ -12,8 +12,8 @@
 const addClass = function( classes: string ): Object {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
-			if ( el.className.indexOf( c ) === -1 ) {
-				el.className += ` ${c}`
+			if ( !el.classList.contains( c ) ) {
+				return el.classList.add( c )
 				// return this.raf( function() {
 				// 	el.className += ` ${c}`
 				// } )
