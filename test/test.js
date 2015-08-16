@@ -33,11 +33,6 @@ describe( 'Quick.js Unit Tests', function() {
 	// 	$().clear()
 	// } )
 
-	it ( 'should pass', function() {
-		console.log( window )
-		console.log( window.document.body.innerHTML )
-	} )
-
 	describe( 'main app object should', function() {
 
 		it( 'be an object', function() {
@@ -221,143 +216,187 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 	} )
 
-	// describe( 'height should', function() {
+	describe( 'height should', function() {
 
-	// 	it( 'get the height of the first el in the selection', function() {
-	// 		const div = document.createElement( 'div' )
+		it( 'get the height of the first el in the selection', function() {
+			const div = document.createElement( 'div' )
 
-	// 		div.className = 'testHeight'
-	// 		div.clientHeight = 500
-	// 		document.body.appendChild( div )
+			div.className = 'testHeight'
+			div.clientHeight = 500
+			document.body.appendChild( div )
 
-	// 		assert.equal( 500, $( 'div.testHeight' ).height() )
-	// 	} )
+			assert.equal( 500, $( 'div.testHeight' ).height() )
+		} )
 
-	// 	it( 'set the height of the selection', function() {
-	// 		var div = document.createElement( 'div' )
-	// 		document.body.innerHTML = div
-	// 		document.querySelector( 'div' ).style = {}
+		// it( 'set the height of the selection', function() {
+		// 	var div = document.createElement( 'div' )
+		// 	document.body.innerHTML = div
+		// 	document.querySelector( 'div' ).style = {}
 
-	// 		$( 'div', { bust: true } ).height( '750' )
-	// 		assert.equal( 750, document.querySelector( 'div' ).style.height )
-	// 		assert.equal( 750, $( 'div' ).height() )
-	// 	} )
-	// } )
+		// 	$( 'div', { bust: true } ).height( '750' )
+		// 	assert.equal( 750, document.querySelector( 'div' ).style.height )
+		// 	assert.equal( 750, $( 'div' ).height() )
+		// } )
 
-	// describe( 'eq should', function() {
+	} )
 
-	// 	it( 'return correct el from the selection', function() {
-	// 		assert.ok( $('span').sel[0].isEqualNode( $('span').eq(0).sel[0] ) )
-	// 		assert.ok( true, $('span').sel[1].isEqualNode( $('span').eq(1).sel[0] ) )
-	// 	} )
+	describe( 'eq should', function() {
 
-	// 	it( 'return empty selection if out of bounds', function() {
-	// 		assert.equal( 0, $('span').eq(3).sel.length )
-	// 	} )
+		it( 'return correct el from the selection', function() {
+			assert.ok(
+				$( 'div' ).sel[0].isEqualNode( $( 'div' ).eq( 0 ).sel[0] )
+			)
+			assert.ok(
+				$( 'div' ).sel[1].isEqualNode( $( 'div' ).eq( 1 ).sel[0] )
+			)
+		} )
 
-	// } )
+		it( 'return empty selection if out of bounds', function() {
+			assert.equal( 0, $( 'span' ).eq( 3 ).sel.length )
+		} )
 
-	// describe( 'hide should', function() {
+	} )
 
-	// 	it( 'add display none to the element', function() {
-	// 		assert.equal( 'none', $('p').hide().sel[0].style.display )
-	// 	} )
+	describe( 'hide should', function() {
 
-	// 	it( 'do nothing if element already hidden', function() {
-	// 		$('p').sel[0].style.display = 'none'
-	// 		assert.equal( 'none', $('p').hide().sel[0].style.display )
-	// 	} )
+		it( 'add display none to the element', function() {
+			assert.equal( 'none', $( 'p' ).hide().sel[0].style.display )
+		} )
 
-	// } )
+		it( 'do nothing if element already hidden', function() {
+			$( 'p' ).sel[0].style.display = 'none'
+			assert.equal( 'none', $( 'p' ).hide().sel[0].style.display )
+		} )
 
-	// describe( 'remove should', function() {
+	} )
 
-	// 	beforeEach( function() {
-	// 		document.body.innerHTML = '<span><div><p class="get-rid-of-me">Text Content<span>Inner Text Content</span></p></div></span><strong id="leave-me-here" class="get-rid-of-me stuff blah waaa"></strong><strong></strong>'
-	// 	} )
+	describe( 'remove should', function() {
 
-	// 	it( 'remove multiple selections from the dom', function() {
-	// 		assert.equal( 2, document.getElementsByClassName('get-rid-of-me').length )
-	// 		$( '.get-rid-of-me' ).remove()
-	// 		assert.equal( 0, document.getElementsByClassName('get-rid-of-me').length )
-	// 	} )
+		// it( 'remove multiple selections from the dom', function() {
+		// 	assert.equal( 2,
+		// 		document.querySelectorAll( 'get-rid-of-me' ).length
+		// 	)
+		// 	$( '.get-rid-of-me' ).remove()
+		// 	assert.equal( 0,
+		// 		document.querySelectorAll( 'get-rid-of-me' ).length
+		// 	)
+		// } )
 
-	// 	it( 'remove one selection from the dom', function() {
-	// 		assert.ok( document.body.innerHTML.indexOf('leave-me-here') !== -1 )
-	// 		$( '#leave-me-here' ).remove()
-	// 		assert.ok( document.body.innerHTML.indexOf('leave-me-here') === -1 )
-	// 	} )
+		// it( 'remove one selection from the dom', function() {
+		// 	assert.ok(
+		// 		document.body.innerHTML.indexOf( 'leave-me-here' ) !== -1
+		// 	)
+		// 	$( '#leave-me-here' ).remove()
+		// 	assert.ok(
+		// 		document.body.innerHTML.indexOf( 'leave-me-here' ) === -1
+		// 	)
+		// } )
 
-	// } )
+	} )
 
+	describe( 'removeClass should', function() {
+		// $( 'p' ).addClass( 'test-remove-class' )
 
-	// describe( 'removeClass should', function() {
+		// it( 'remove one class from each item in the selection', function() {
+		// 	assert.equal( '', $( 'div' ).removeClass( 'test-remove-class' ).sel[0].className )
+		// 	assert.ok(
+		// 		!$( 'div' )
+		// 			.removeClass( 'test-remove-class' )
+		// 			.sel[1]
+		// 			.classList
+		// 			.contains( 'test-remove-class' )
+		// 	)
+		// } )
 
-	// 	it( 'remove one class from each item in the selection', function() {
-	// 		assert.equal( '', $('p').removeClass('alreadyHere').sel[0].className )
-	// 	} )
+		// $( 'div' ).addClass( 'test-remove-class test-remove-class2' )
 
-	// 	it( 'remove classes from each item in the selection', function() {
-	// 		assert.equal( '', $('span').removeClass('test').sel[0].className )
-	// 		assert.equal( '', $('span').removeClass('test').sel[1].className )
-	// 	} )
+		// it( 'remove classes from each item in the selection', function() {
+		// 	assert.ok(
+		// 		!$( 'div' )
+		// 			.removeClass( 'test-remove-class test-remove-class2' )
+		// 			.sel[0]
+		// 			.classList
+		// 			.contains( 'test-remove-class' )
+		// 	)
+		// 	assert.ok(
+		// 		!$( 'div' )
+		// 			.sel[0]
+		// 			.classList
+		// 			.contains( 'test-remove-class2' )
+		// 	)
+		// } )
 
-	// } )
+	} )
 
-	// describe( 'show should', function() {
-	// 	it( 'add display block to the element', function() {
-	// 		$('p').sel[0].style.display = 'none'
-	// 		assert.equal( 'block', $('p').show().sel[0].style.display )
-	// 	} )
+	describe( 'show should', function() {
 
-	// 	it( 'do nothing if element already visible', function() {
-	// 		$('p').sel[0].style.display = 'flex'
-	// 		assert.equal( 'flex', $('p').show().sel[0].style.display )
-	// 	} )
+		it( 'add display block to the element', function() {
+			$( 'p' ).sel[0].style.display = 'none'
+			assert.equal( 'block', $( 'p' ).show().sel[0].style.display )
+		} )
 
-	// } )
+		it( 'do nothing if element already visible', function() {
+			$( 'p' ).sel[0].style.display = 'flex'
+			assert.equal( 'flex', $( 'p' ).show().sel[0].style.display )
+		} )
 
-	// describe( 'text should', function() {
+	} )
 
-	// 	it( 'return the current textContent of first node in selection', function() {
-	// 		assert.equal( 'Text Content Inner Text Content', $('.alreadyHere').text() )
-	// 	} )
+	describe( 'text should', function() {
 
-	// 	it( 'set the textContent of all nodes in selection to the passed in value', function() {
-	// 		assert.equal( 'butts', $('span').text('butts').sel[0].textContent )
-	// 	} )
+		it( 'return the current textContent of first node in selection', function() {
+			assert.equal(
+				'\n\t Test 2 \n\t I\'m a span \n',
+				$( '.even.test-text' ).text()
+			)
+		} )
 
-	// } )
+		it( 'set the textContent of all nodes in selection to the passed in value', function() {
+			assert.equal(
+				'butts',
+				$( '.even.test-text' ).text( 'butts' ).sel[0].textContent
+			)
+		} )
 
-	// describe( 'toggleClass should', function() {
+	} )
 
-	// 	it( 'remove alreadyHere from each item in the selection', function() {
-	// 		assert.equal(
-	// 			'',
-	// 			$('.alreadyHere', document.body, 'bust').toggleClass('alreadyHere').sel[0].className
-	// 		)
-	// 	} )
+	describe( 'toggleClass should', function() {
 
-	// 	it( 'add alreadyHere to each item in the selection', function() {
-	// 		assert.equal(
-	// 			' alreadyHere',
-	// 			$('p', document.body, 'bust').toggleClass('alreadyHere').sel[0].className
-	// 		)
-	// 	} )
+		it( 'remove test-toggle from each item in the selection', function() {
+			var classList = $( '.test-toggle', {
+				bust: true
+			} ).toggleClass( 'test-toggle' ).sel[0].className
 
-	// } )
+			assert.equal( 'test-toggle-1', classList )
+		} )
 
-	// describe( 'width should' , function() {
+		it( 'add test-toggle to each item in the selection', function() {
+			var classList = $( '.test-toggle-1', {
+				bust: true
+			} ).toggleClass( 'test-toggle' ).sel[0].className
 
-	// 	it( 'set the element width', function() {
-	// 		assert.ok( typeof $( '.test-has' ).width( '80px' ) === 'object' )
-	// 	} )
+			assert.equal( 'test-toggle-1 test-toggle', classList )
+			// assert.equal(
+			// 	'test-toggle',
+			// 	$( '.test-toggle', {
+			// 		bust: true
+			// 	} ).toggleClass( 'test-toggle' ).sel[0].className
+			// )
+		} )
 
-	// 	it( 'get the element width', function() {
-	// 		$( '.test-has' ).sel[0].clientWidth = '80px';
-	// 		assert.equal( '80px', $( '.test-has' ).width() )
-	// 	} )
+	} )
 
-	// } )
+	describe( 'width should' , function() {
+
+		it( 'set the element width', function() {
+			assert.ok( typeof $( '.test-has' ).width( '80px' ) === 'object' )
+		} )
+
+		it( 'get the element width', function() {
+			$( '.test-has' ).sel[0].clientWidth = '80px';
+			assert.equal( '80px', $( '.test-has' ).width() )
+		} )
+
+	} )
 
 } )

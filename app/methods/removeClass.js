@@ -12,8 +12,9 @@
 const removeClass = function( classes: string ): Object {
 	this.each( el => {
 		return classes.split( ' ' ).forEach( c => {
-			if ( el.className.indexOf( c ) === -1 ) { return }
-			el.className = el.className.replace( c, '' )
+			if ( !el.classList.contains( c ) ) { return }
+			return el.classList.remove( c )
+			// el.className = el.className.replace( c, '' )
 			// el.className = this.raf( function() {
 			// 	return el.className.replace( c, '' )
 			// } )
