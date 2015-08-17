@@ -10,11 +10,12 @@ let App: Function = function( input: string, options: Object ): Object {
 	this.options = options || {}
 	this.cache = this.cache || {}
 
-	if ( typeof input === 'string' ) {
+	if ( typeof input !== 'undefined' ) {
 		this.sel = this.query( input )
 	}
 
 	return this
 }.bind( Object.create( proto ) )
 
+window.$ = App
 module.exports = App

@@ -18,6 +18,7 @@ const proto: Object = {
 	extend: require( '../methods/extend' ),
 	has: require( '../methods/has' ),
 	hasClass: require( '../methods/hasClass' ),
+	hasDuration: require( '../utils/hasDuration' ),
 	height: require( '../methods/height' ),
 	hide: require( '../methods/hide' ),
 	html: require( '../methods/html' ),
@@ -35,6 +36,7 @@ const proto: Object = {
 	text: require( '../methods/text' ),
 	toArray: require( '../utils/toArray' ),
 	toggleClass: require( '../methods/toggleClass' ),
+	transition: require( '../utils/transition' ),
 	width: require( '../methods/width' ),
 	wrap: require( '../methods/wrap' )
 }

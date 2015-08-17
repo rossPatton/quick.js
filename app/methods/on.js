@@ -29,8 +29,6 @@ const on = function( events: string, cb: Function ): Object {
 		} )
 	} )
 
-	console.log( this.listeners )
-
 	return this
 }
 
