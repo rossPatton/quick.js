@@ -21,8 +21,9 @@ const prepend = function( prependMe: string | Object ): Object {
 		// } ) )
 	}
 	else if ( typeof prependMe === 'string' ) {
-		let tmp = document.createElement( 'div' )
-		tmp.insertAdjacentHTML( 'afterbegin', prependMe )
+		let tmp: Object = document.createElement( 'div' )
+		tmp.innerHTML = prependMe
+
 		this.each( el => {
 			return el.insertBefore( tmp.firstChild.cloneNode( true ), el.firstChild )
 		} )

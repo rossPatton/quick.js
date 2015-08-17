@@ -39,6 +39,7 @@
 
 <section><b id='after-test'></b></section>
 <section id='append-test'></section>
+<section id='prepend-test'></section>
 
 <i id='attr-test' data-test='im an attribute'></i>
 
@@ -48,8 +49,13 @@
 
 <em id='test-before-wrap'><strong id='test-before'></strong></em>
 
+<em id='test-wrap'></em>
+
+<em id='test-on'></em>
+
 <div class='even test-text'>
 	<p class='test-toggle test-toggle-2'>Test 2</p>
+	<!-- i'm a comment -->
 	<span>I'm a span</span>
 </div>
 <div class='odd test-text-2' title="something" style='background-color: #ff0000'>Test Text<p>2</p></div>
@@ -70,4 +76,8 @@
 <article class='test-remove-class'></article>
 
 </body>
+
+<script>
+console.dir( document.querySelector( '#first' ) )
+</script>
 </html>

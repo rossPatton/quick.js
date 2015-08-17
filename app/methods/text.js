@@ -28,16 +28,18 @@ const text = function( set: string ): string | Object {
 	else {
 		this.each( el => {
 			const setTxt: string = document.createTextNode( set ).textContent
+			el.textContent = setTxt
 
-			if ( el.nodeType === 1 ||
-				el.nodeType === 11 ||
-				el.nodeType === 9 ) {
+			// so, not sure if this check is really needed
+			// if ( el.nodeType === 1 ||
+			// 	el.nodeType === 11 ||
+			// 	el.nodeType === 9 ) {
 
-				el.textContent = setTxt
-				// this.raf( function () {
-				// 	el.textContent = setTxt
-				// } )
-			}
+			// 	el.textContent = setTxt
+			// 	// this.raf( function () {
+			// 	// 	el.textContent = setTxt
+			// 	// } )
+			// }
 		} )
 	}
 

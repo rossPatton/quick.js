@@ -36,9 +36,9 @@ describe( 'Quick.js Unit Tests', function() {
 
 	} )
 
-	describe( 'toArray ', function() {
+	describe( 'toArray should', function() {
 
-		it( 'should return an array (obvs)', function() {
+		it( 'return an array (obvs)', function() {
 			const testObj = {
 				0: 0,
 				1: 1,
@@ -48,12 +48,28 @@ describe( 'Quick.js Unit Tests', function() {
 			assert.ok( Array.isArray( $().toArray( testObj ) ) )
 		} )
 
+		it( 'throw a TypeError if param not object', function() {
+			assert.throws(
+				$().toArray,
+				TypeError,
+				'toArray requires an array like object'
+			)
+		} )
+
 	} )
 
 	describe( 'camelCase should', function() {
 
 		it( 'camelCase a string', function() {
 			assert.equal( 'testString', $().camelCase( 'test-string' ) )
+		} )
+
+		it( 'throw a TypeError if param not object', function() {
+			assert.throws(
+				$().camelCase,
+				TypeError,
+				'camelCase needs a string'
+			)
 		} )
 
 	} )
@@ -252,6 +268,41 @@ describe( 'Quick.js Unit Tests', function() {
 
 	} )
 
+	describe( 'css should', function() {
+
+		it( 'get styles from node ( string )', function() {
+			document.querySelector( '#first' ).style.display = 'inline'
+
+			assert.equal(
+				'inline',
+				$( '#first' ).css( 'display' )
+			)
+		} )
+
+		it( 'set styles on nodes ( object )', function() {
+			$( '#first' ).css( {
+				display: 'inline-block',
+				height: '500px'
+			} )
+
+			assert.equal(
+				'inline-block',
+				$( '#first' ).css( 'display' )
+			)
+
+			assert.equal(
+				'500px',
+				$( '#first' ).css( 'height' )
+			)
+		} )
+
+		it( 'return this if setting or passed incorrect type', function() {
+			assert.ok( typeof $( '#first' ).css( {} ) === 'object' )
+			assert.ok( typeof $( '#first' ).css() === 'object' )
+		} )
+
+	} )
+
 	describe( 'empty should', function() {
 
 		it( 'remove all child nodes from each node in the selection', function() {
@@ -392,6 +443,73 @@ describe( 'Quick.js Unit Tests', function() {
 
 	} )
 
+	describe( 'on should' , function() {
+		var test = function() { return console.log( 'clicked' ) }
+
+		it( 'should push created listener to an array', function() {
+			assert.ok( $().listeners.length === 0 )
+			$( '#test-on' ).on( 'click', test )
+			assert.ok( $().listeners.length === 1 )
+		} )
+
+		it( 'should always return this', function() {
+			assert.ok( typeof $( 'div' ).on( 'click' ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'prepend should', function() {
+
+		it( 'prepend dom node to the start of the dom node ( string )', function() {
+			$( '#prepend-test' ).prepend( '<p></p>' )
+
+			assert.equal(
+				'<p></p>',
+				$( '#prepend-test' ).sel[0].innerHTML
+			)
+		} )
+
+		it( 'prepend dom node to the start of the dom node ( node )', function() {
+			var em = document.createElement( 'em' )
+			$( '#prepend-test' ).prepend( em )
+
+			assert.equal(
+				'<em></em><p></p>',
+				$( '#prepend-test' ).sel[0].innerHTML
+			)
+		} )
+
+		it( 'should return this (even if incorrect types passed)', function() {
+			assert.ok( typeof $( '#second' ).prepend( {} ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'prop should', function() {
+
+		it( 'get the property of the first node in a selection', function() {
+			assert.equal(
+				'first',
+				$( '#first' ).prop( 'id' )
+			)
+		} )
+
+		it( 'set properties of the selection', function() {
+			$( '#first' ).prop( 'id', 'not-first' )
+
+			assert.equal(
+				'not-first',
+				$( '#first' ).prop( 'id' )
+			)
+		} )
+
+		it( 'should return this only if setting', function() {
+			assert.ok( typeof $( '#first' ).prop( 'id' ) === 'string' )
+			assert.ok( typeof $( '#first' ).prop( 'id', 'not-first' ) === 'object' )
+		} )
+
+	} )
+
 	describe( 'remove should', function() {
 
 		it( 'remove multiple selections from the dom', function() {
@@ -459,7 +577,7 @@ describe( 'Quick.js Unit Tests', function() {
 
 		it( 'return the current textContent of first node in selection', function() {
 			assert.equal(
-				'\n\t Test 2 \n\t I\'m a span \n',
+				'\n\t Test 2 \n\t \n\t I\'m a span \n',
 				$( '.even.test-text' ).text()
 			)
 		} )
@@ -502,6 +620,41 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'get the element width', function() {
 			$( '.test-has' ).sel[0].clientWidth = '80px';
 			assert.equal( '80px', $( '.test-has' ).width() )
+		} )
+
+	} )
+
+	describe( 'wrap should', function() {
+
+		it( 'wrap selection with passed in dom node (string)', function() {
+			$( '#test-wrap' ).wrap( '<p id="test-wrap-wrap"></p>' )
+
+			assert.equal(
+				1,
+				$( '#test-wrap-wrap' ).size()
+			)
+
+			assert.equal(
+				'<em id="test-wrap"></em>',
+				$( '#test-wrap-wrap' ).sel[0].innerHTML
+			)
+		} )
+
+		it( 'prepend dom node to the start of the dom node ( node )', function() {
+			var iHeardYouLikeWraps = document.createElement( 'div' )
+			iHeardYouLikeWraps.className = 'i-heard-you-like-wraps'
+
+			$( '#test-wrap-wrap' ).wrap( iHeardYouLikeWraps )
+
+			assert.equal(
+				'<p id="test-wrap-wrap"><em id="test-wrap"></em></p>',
+				$( '.i-heard-you-like-wraps' ).sel[0].innerHTML
+			)
+		} )
+
+		it( 'should return this (even if incorrect types passed)', function() {
+			assert.ok( typeof $( '#second' ).wrap( {} ) === 'object' )
+			assert.ok( typeof $( '#second' ).wrap() === 'object' )
 		} )
 
 	} )
