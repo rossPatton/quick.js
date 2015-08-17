@@ -264,19 +264,21 @@ describe( 'Quick.js Unit Tests', function() {
 			)
 		} )
 
-		// it( 'insert node after start of PARENT node (with dom)', function() {
-		// 	var em = document.createElement( 'em' )
-		// 	$( '#test-before' ).before( em )
+	} )
 
-		// 	assert.equal(
-		// 		$( '#test-before-wrap' ).sel[0].innerHTML,
-		// 		'<em></em><em></em><strong id="test-before"></strong>'
-		// 	)
-		// } )
+	describe( 'extend should', function() {
 
-		// it( 'should return this (even if incorrect types passed)', function() {
-		// 	assert.ok( typeof $( '#second' ).before( {} ) === 'object' )
-		// } )
+		it( 'add a new method to the $ prototype', function() {
+			var testMethod = function() {
+				return console.log( 'test' )
+			}
+
+			$().extend( {
+				test: testMethod
+			} )
+
+			assert.ok( typeof Object.getPrototypeOf( this )['test'] !== 'undefined' )
+		} )
 
 	} )
 
@@ -327,25 +329,36 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'height should', function() {
 
-		it( 'get the height of the first el in the selection', function() {
-			const div = document.createElement( 'div' )
-
-			div.className = 'testHeight'
-			div.clientHeight = 500
-			document.body.appendChild( div )
-
-			assert.equal( 500, $( 'div.testHeight' ).height() )
+		it( 'set the height of the selection', function() {
+			$( '#test-height' ).height( '750px' )
+			assert.equal( '750px', document.querySelector( '#test-height' ).style.height )
 		} )
 
-		// it( 'set the height of the selection', function() {
-		// 	var div = document.createElement( 'div' )
-		// 	document.body.innerHTML = div
-		// 	document.querySelector( 'div' ).style = {}
+		it( 'get the height of the first el in the selection', function() {
+			document.querySelector( '#test-height' ).clientHeight = 750
+			assert.equal( 750, $( '#test-height', {
+				bust: true
+			} ).height() )
+		} )
 
-		// 	$( 'div', { bust: true } ).height( '750' )
-		// 	assert.equal( 750, document.querySelector( 'div' ).style.height )
-		// 	assert.equal( 750, $( 'div' ).height() )
-		// } )
+	} )
+
+	describe( 'htmlshould', function() {
+
+		it( 'set the html of each node in the selection', function() {
+			$( '#test-html' ).html( '<p>butts</p>' )
+			assert.equal(
+				'<p>butts</p>',
+				document.querySelector( '#test-html' ).innerHTML
+			)
+		} )
+
+		it( 'get the html of the first item in the selection', function() {
+			assert.equal(
+				'<p>butts</p>',
+				$( '#test-html' ).html()
+			)
+		} )
 
 	} )
 
@@ -381,59 +394,33 @@ describe( 'Quick.js Unit Tests', function() {
 
 	describe( 'remove should', function() {
 
-		// it( 'remove multiple selections from the dom', function() {
-		// 	assert.equal( 2,
-		// 		document.querySelectorAll( 'get-rid-of-me' ).length
-		// 	)
-		// 	$( '.get-rid-of-me' ).remove()
-		// 	assert.equal( 0,
-		// 		document.querySelectorAll( 'get-rid-of-me' ).length
-		// 	)
-		// } )
-
-		// it( 'remove one selection from the dom', function() {
-		// 	assert.ok(
-		// 		document.body.innerHTML.indexOf( 'leave-me-here' ) !== -1
-		// 	)
-		// 	$( '#leave-me-here' ).remove()
-		// 	assert.ok(
-		// 		document.body.innerHTML.indexOf( 'leave-me-here' ) === -1
-		// 	)
-		// } )
+		it( 'remove multiple selections from the dom', function() {
+			assert.equal( 2,
+				document.querySelectorAll( '.get-rid-of-me' ).length
+			)
+			$( '.get-rid-of-me' ).remove()
+			assert.equal( 0,
+				document.querySelectorAll( '.get-rid-of-me' ).length
+			)
+		} )
 
 	} )
 
 	describe( 'removeClass should', function() {
-		// $( 'p' ).addClass( 'test-remove-class' )
 
-		// it( 'remove one class from each item in the selection', function() {
-		// 	assert.equal( '', $( 'div' ).removeClass( 'test-remove-class' ).sel[0].className )
-		// 	assert.ok(
-		// 		!$( 'div' )
-		// 			.removeClass( 'test-remove-class' )
-		// 			.sel[1]
-		// 			.classList
-		// 			.contains( 'test-remove-class' )
-		// 	)
-		// } )
+		it( 'remove one class from each item in the selection', function() {
+			assert.equal(
+				'',
+				$( 'article' ).removeClass( 'test-remove-class' ).sel[0].className
+			)
+		} )
 
-		// $( 'div' ).addClass( 'test-remove-class test-remove-class2' )
-
-		// it( 'remove classes from each item in the selection', function() {
-		// 	assert.ok(
-		// 		!$( 'div' )
-		// 			.removeClass( 'test-remove-class test-remove-class2' )
-		// 			.sel[0]
-		// 			.classList
-		// 			.contains( 'test-remove-class' )
-		// 	)
-		// 	assert.ok(
-		// 		!$( 'div' )
-		// 			.sel[0]
-		// 			.classList
-		// 			.contains( 'test-remove-class2' )
-		// 	)
-		// } )
+		it( 'do nothing if selection doesnt have class', function() {
+			assert.equal(
+				'',
+				$( 'section' ).removeClass( 'test-remove-class' ).sel[0].className
+			)
+		} )
 
 	} )
 
@@ -447,6 +434,23 @@ describe( 'Quick.js Unit Tests', function() {
 		it( 'do nothing if element already visible', function() {
 			$( 'p' ).sel[0].style.display = 'flex'
 			assert.equal( 'flex', $( 'p' ).show().sel[0].style.display )
+		} )
+
+	} )
+
+	describe( 'size should', function() {
+
+		it( 'return the current length of the selection', function() {
+			$().clear()
+			assert.equal( 2, $( 'article' ).size() )
+		} )
+
+	} )
+
+	describe( 'slice should', function() {
+
+		it( 'return a subset of the selection', function() {
+			assert.equal( 1, $( 'article' ).slice( 0, 1 ).sel.length )
 		} )
 
 	} )

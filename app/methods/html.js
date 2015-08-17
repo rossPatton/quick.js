@@ -15,17 +15,15 @@
 const html = function( set ) {
 	if ( set ) {
 		this.empty()
+
+		this.each( el => {
+			el.innerHTML = set
+		} )
 	}
 
-	const htmlArr = this.toArray(
-		( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
-	)
-
-	this.each( el => {
-		for ( let node of htmlArr ) {
-			el.appendChild( node.cloneNode( true ) )
-		}
-	} )
+	// const htmlArr = this.toArray(
+	// 	( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
+	// )
 
 	// this.raf( this.each( el => {
 	// 	for ( let node of htmlArr ) {
@@ -33,7 +31,7 @@ const html = function( set ) {
 	// 	}
 	// } ) )
 
-	return set ? this.sel[0].innerHTML : this
+	return !set ? this.sel[0].innerHTML : this
 }
 
 module.exports = html
