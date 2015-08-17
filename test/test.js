@@ -446,14 +446,45 @@ describe( 'Quick.js Unit Tests', function() {
 	describe( 'on should' , function() {
 		var test = function() { return console.log( 'clicked' ) }
 
-		it( 'should push created listener to an array', function() {
+		it( 'push created listener to an array', function() {
 			assert.ok( $().listeners.length === 0 )
 			$( '#test-on' ).on( 'click', test )
 			assert.ok( $().listeners.length === 1 )
 		} )
 
-		it( 'should always return this', function() {
+		it( 'throw a TypeError', function() {
+			assert.throws(
+				$().on,
+				TypeError,
+				'on requires string as 1st param'
+			)
+		} )
+
+		it( 'return this', function() {
 			assert.ok( typeof $( 'div' ).on( 'click' ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'off should' , function() {
+		var test = function() { return console.log( 'clicked' ) }
+
+		// it( 'remove created listener from  array', function() {
+		// 	assert.ok( $().listeners.length === 0 )
+		// 	$( '#test-on' ).on( 'click', test )
+		// 	assert.ok( $().listeners.length === 1 )
+		// } )
+
+		it( 'throw a TypeError', function() {
+			assert.throws(
+				$().off,
+				TypeError,
+				'off requires string as 1st param'
+			)
+		} )
+
+		it( 'return this', function() {
+			assert.ok( typeof $( 'div' ).off( 'click' ) === 'object' )
 		} )
 
 	} )

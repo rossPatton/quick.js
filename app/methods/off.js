@@ -1,6 +1,7 @@
 /* @flow */
 'use strict'
 
+// @TODO needs to remove a listener from the array as well
 
 /**
  * @module
@@ -11,12 +12,17 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const off = function( events: string, cb: Function ): Object {
+	if ( typeof events !== 'string' ) {
+		throw new TypeError( 'off requires string as 1st param' )
+	}
+
 	this.each( el => {
 		return events.split( ' ' ).forEach( ev => {
 			return this.listeners.forEach( listener => {
 				// dunno about throwing here...
 				if ( ev !== listener.ev || !Object.is( cb, listener.cb ) ) {
-					throw Error
+					return
+					// throw Error
 				}
 
 				return el.removeEventListener( listener.ev, listener.cb )
