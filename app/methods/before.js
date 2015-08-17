@@ -14,7 +14,7 @@ const before = function( prependMe: string | Object ): Object {
 	// if passed a dom node directly, check it and append it
 	if ( this.isNode( prependMe ) ) {
 		this.each( el => {
-			return el.parentNode.insertBefore( prependMe.cloneNode(), el.previousSibling )
+			return el.parentNode.insertBefore( prependMe.cloneNode(), el )
 		} )
 	}
 	// return dom.insertBefore(tmp.firstChild.cloneNode(true), dom.firstChild)
@@ -24,7 +24,7 @@ const before = function( prependMe: string | Object ): Object {
 		tmp.innerHTML = prependMe
 
 		this.each( el => {
-			return el.parentNode.insertBefore( tmp.firstChild.cloneNode( true ), el.previousSibling )
+			return el.parentNode.insertBefore( tmp.firstChild.cloneNode( true ), el )
 		} )
 	}
 

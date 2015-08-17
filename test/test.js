@@ -11,8 +11,6 @@ describe( 'Quick.js Unit Tests', function() {
 
 	window = {}
 
-	// jsdom()
-
 	// pull in local html for testing
 	// maybe later pull in WIRED for funsies
 	before( function( done ) {
@@ -25,13 +23,6 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 
 	} )
-
-	// afterEach( function() {
-	// 	// wipe cache after each test
-	// 	// this syntax could be better
-	// 	// @TODO prollly just create a .clear() method
-	// 	$().clear()
-	// } )
 
 	describe( 'main app object should', function() {
 
@@ -84,7 +75,7 @@ describe( 'Quick.js Unit Tests', function() {
 		} )
 
 		it( 'create a selection if passed a valid string', function() {
-			assert.equal( 8, $( 'div' ).sel.length )
+			assert.equal( 9, $( 'div' ).sel.length )
 		} )
 
 		it( 'create a selection if passed a valid string', function() {
@@ -124,27 +115,12 @@ describe( 'Quick.js Unit Tests', function() {
 
 		it( 'increase the size of the selection', function() {
 			assert.equal( 9, $( 'p' ).sel.length )
-			assert.equal( 8, $( 'div' ).sel.length )
+			assert.equal( 9, $( 'div' ).sel.length )
 
-			assert.equal( 17, $( 'p' ).add( 'div' ).sel.length )
+			assert.equal( 18, $( 'p' ).add( 'div' ).sel.length )
 		} )
 
 	} )
-
-	// describe( 'after should', function() {
-
-	// 	it( 'insert node before end of parent node', function() {
-	// 		document.body.innerHTML = '<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div></span><strong class="test-has"></strong><strong></strong>'
-
-	// 		$( 'div' ).after( 'em' )
-
-	// 		assert.equal(
-	// 			document.body.innerHTML,
-	// 			'<span><div><p class="alreadyHere">Text Content<span>Inner Text Content</span></p></div><em></em></span><strong class="test-has"></strong><strong></strong>'
-	// 		)
-	// 	} )
-
-	// } )
 
 	describe( 'addClass should', function() {
 
@@ -168,6 +144,139 @@ describe( 'Quick.js Unit Tests', function() {
 				$( '.already-here' ).addClass( 'already-here' ).sel[0].className
 			)
 		} )
+
+	} )
+
+	describe( 'after should', function() {
+
+		it( 'insert node before end of PARENT node', function() {
+			$( '#after-test' ).after( '<em></em>' )
+
+			assert.equal(
+				$( 'section' ).sel[2].innerHTML,
+				'<b id=\"after-test\"></b><em></em>'
+			)
+		} )
+
+		it( 'insert node before end of PARENT node (with dom)', function() {
+			var em = document.createElement( 'em' )
+			$( '#second' ).after( em )
+
+			assert.equal(
+				$( 'section' ).sel[1].innerHTML,
+				'\n\t<div id=\"second\" class=\"test test1 test2\">Test</div><em></em>\n'
+			)
+		} )
+
+		it( 'should return this (even if incorrect types passed)', function() {
+			assert.ok( typeof $( '#second' ).after( {} ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'append should', function() {
+
+		it( 'append dom node to the end of the dom node ( string )', function() {
+			$( '#append-test' ).append( '<p></p>' )
+			assert.equal(
+				$( '#append-test' ).sel[0].innerHTML,
+				'<p></p>'
+			)
+		} )
+
+		it( 'append dom node to the end of the dom node ( node )', function() {
+			var em = document.createElement( 'em' )
+			$( '#append-test' ).append( em )
+
+			assert.equal(
+				$( '#append-test' ).sel[0].innerHTML,
+				'<p></p><em></em>'
+			)
+		} )
+
+		it( 'should return this (even if incorrect types passed)', function() {
+			assert.ok( typeof $( '#second' ).append( {} ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'attr should', function() {
+
+		it( 'get the attribute of the first node in a selection', function() {
+			assert.equal(
+				$( '#attr-test' ).attr( 'data-test' ),
+				'im an attribute'
+			)
+		} )
+
+		it( 'set attributes of the selection', function() {
+			$( '#attr-test' ).attr( 'data-test', 'i say this now' )
+
+			assert.equal(
+				$( '#attr-test' ).attr( 'data-test' ),
+				'i say this now'
+			)
+		} )
+
+		it( 'should return this only if setting', function() {
+			assert.ok( typeof $( '#attr-test' ).attr( 'data-test' ) === 'string' )
+			assert.ok( typeof $( '#attr-test' ).attr( 'data-test', 'i say this now' ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'before should', function() {
+
+		it( 'insert node after start of PARENT node', function() {
+			$( '#test-before' ).before( '<em></em>' )
+
+			assert.equal(
+				$( '#test-before-wrap' ).sel[0].innerHTML,
+				'<em></em><strong id="test-before"></strong>'
+			)
+		} )
+
+		it( 'insert node after start of PARENT node (with dom)', function() {
+			var em = document.createElement( 'em' )
+			$( '#test-before' ).before( em )
+
+			assert.equal(
+				$( '#test-before-wrap' ).sel[0].innerHTML,
+				'<em></em><em></em><strong id="test-before"></strong>'
+			)
+		} )
+
+		it( 'should return this (even if incorrect types passed)', function() {
+			assert.ok( typeof $( '#second' ).before( {} ) === 'object' )
+		} )
+
+	} )
+
+	describe( 'empty should', function() {
+
+		it( 'remove all child nodes from each node in the selection', function() {
+			$().clear()
+			$( '#test-before-wrap' ).empty()
+
+			assert.equal(
+				$( '#test-before-wrap' ).sel[0].innerHTML,
+				''
+			)
+		} )
+
+		// it( 'insert node after start of PARENT node (with dom)', function() {
+		// 	var em = document.createElement( 'em' )
+		// 	$( '#test-before' ).before( em )
+
+		// 	assert.equal(
+		// 		$( '#test-before-wrap' ).sel[0].innerHTML,
+		// 		'<em></em><em></em><strong id="test-before"></strong>'
+		// 	)
+		// } )
+
+		// it( 'should return this (even if incorrect types passed)', function() {
+		// 	assert.ok( typeof $( '#second' ).before( {} ) === 'object' )
+		// } )
 
 	} )
 
@@ -376,12 +485,6 @@ describe( 'Quick.js Unit Tests', function() {
 			} ).toggleClass( 'test-toggle' ).sel[0].className
 
 			assert.equal( 'test-toggle-1 test-toggle', classList )
-			// assert.equal(
-			// 	'test-toggle',
-			// 	$( '.test-toggle', {
-			// 		bust: true
-			// 	} ).toggleClass( 'test-toggle' ).sel[0].className
-			// )
 		} )
 
 	} )

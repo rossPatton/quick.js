@@ -25,6 +25,9 @@ const after = function( appendMe: string | Object ): Object {
 		tmp.innerHTML = appendMe
 
 		this.each( function( el: Object ) {
+
+			console.log( el.parentNode.innerHTML )
+
 			return el.parentNode.insertBefore(
 				tmp.firstChild.cloneNode( true ), el.nextSibling
 			)

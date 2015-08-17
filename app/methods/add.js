@@ -26,12 +26,17 @@ const add = function( sel: string ): Object {
 	// 	} )
 	// } )
 
+	// console.log( this.sel.length )
+
 	// this is also crappy because it won't work
 	// with classnames, or attributes
 	// but is good enough for now
 	this.query( sel ).forEach( el => {
+		// console.log( el )
 		return this.sel.push( el )
 	} )
+
+	// console.log( this.sel.length )
 
 	return this
 }
