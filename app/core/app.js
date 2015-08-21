@@ -17,5 +17,5 @@ let App: Function = function( input: string, options: Object ): Object {
 	return this
 }.bind( Object.create( proto ) )
 
-window.$ = App
+// window.$ = App
 module.exports = App
