@@ -11,7 +11,15 @@
  * @returns {boolean} true if element has duration more than 0s
  */
 const hasDuration = function( el: Object ): boolean {
-	return document.defaultView.getComputedStyle( el, null ).transitionDuration !== '0s'
+	const dur: string | void = document.defaultView.getComputedStyle( el, null ).transitionDuration
+	let has: boolean = true
+
+	// if duration not defined or it doesn't equal 0s
+	if ( dur === '0s' || typeof dur === 'undefined' ) {
+		has = false
+	}
+
+	return has
 }
 
 module.exports = hasDuration
