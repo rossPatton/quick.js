@@ -18,7 +18,7 @@ const query = function( sel: string | Object ): Array<Object> {
 	// if user enters parent div that's already in cache
 	// pull from cache and use first matching dom node as parent
 	// also, should prolly do a typecheck here
-	// const parent: Object = this.options.parent || document
+	const parent: Object = this.options.parent || document
 	const key: string = `${parent.nodeName}:${sel}`
 	const bust: boolean = this.options.bust || false
 
@@ -29,7 +29,7 @@ const query = function( sel: string | Object ): Array<Object> {
 
 		if ( typeof sel === 'string' ) {
 			// :scope forces querySelector to behave
-			this.cache[key] = this.toArray( document.querySelectorAll( `:scope ${sel}` ) )
+			this.cache[key] = this.toArray( parent.querySelectorAll( sel ) )
 		}
 		// this will fail if passing in a non-node selection, but that's on you
 		else if ( typeof sel === 'object' ) {
