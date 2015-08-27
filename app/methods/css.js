@@ -28,13 +28,6 @@ const css = function( styles: string | Object ): string | Object {
 				}
 			}
 		} )
-		// this.raf( this.each( el => {
-		// 	for ( let key in styles ) {
-		// 		if ( styles.hasOwnProperty( key ) ) {
-		// 			el.style[key] = styles[key]
-		// 		}
-		// 	}
-		// } ) )
 	}
 
 	// if getting, return the matching css value of the first item in the selection

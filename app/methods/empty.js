@@ -12,7 +12,6 @@ const empty = function(): Object {
 	this.each( el => {
 		while ( el.firstChild ) {
 			el.removeChild( el.firstChild )
-			// this.raf( el.removeChild( el.firstChild ) )
 		}
 	} )
 

@@ -16,9 +16,6 @@ const prepend = function( prependMe: string | Object ): Object {
 		this.each( el => {
 			return el.insertBefore( prependMe.cloneNode(), el.firstChild )
 		} )
-		// this.raf( this.each( el => {
-		// 	return el.insertBefore( prependMe.cloneNode(), el.firstChild )
-		// } ) )
 	}
 	else if ( typeof prependMe === 'string' ) {
 		let tmp: Object = document.createElement( 'div' )
@@ -27,9 +24,6 @@ const prepend = function( prependMe: string | Object ): Object {
 		this.each( el => {
 			return el.insertBefore( tmp.firstChild.cloneNode( true ), el.firstChild )
 		} )
-		// this.raf( this.each( el => {
-		// 	return el.insertBefore( tmp.firstChild.cloneNode( true ), el.firstChild )
-		// } ) )
 	}
 
 	return this

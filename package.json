@@ -47,5 +47,8 @@
   },
   "scripts": {
     "test": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/test.js"
+  },
+  "dependencies": {
+    "raf": "^3.1.0"
   }
 }

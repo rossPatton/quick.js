@@ -18,7 +18,6 @@ const wrap = function( dom: string | Object ): Object {
 			w.appendChild( el.cloneNode( true ) )
 
 			el.parentNode.replaceChild( w, el )
-			// return this.raf( el.parentNode.replaceChild( w, el ) )
 		} )
 	}
 	else if ( typeof dom === 'string' ) {
@@ -31,7 +30,6 @@ const wrap = function( dom: string | Object ): Object {
 
 			w.appendChild( el.cloneNode( true ) )
 			el.parentNode.replaceChild( w, el )
-			// return this.raf( el.parentNode.replaceChild( w, el ) )
 		} )
 	}
 

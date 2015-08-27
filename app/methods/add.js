@@ -11,22 +11,11 @@
  * @returns {Object} [this] like most methods, returns parent object
  */
 const add = function( sel: string ): Object {
-
 	// iterate over new selection and current
 	// if no dupe, push to current selection
 	// @TODO this is naive, results in crazy big selections
 	// pairing it down for now but needs work
 	// should probably use something like every instead of forEach
-
-	// this.query( sel ).forEach( el => {
-	// 	return this.sel.forEach( el2 => {
-	// 		if ( !el.isEqualNode( el2 ) ) {
-	// 			return this.sel.push( el )
-	// 		}
-	// 	} )
-	// } )
-
-	// console.log( this.sel.length )
 
 	// this is also crappy because it won't work
 	// with classnames, or attributes
@@ -35,8 +24,6 @@ const add = function( sel: string ): Object {
 		// console.log( el )
 		return this.sel.push( el )
 	} )
-
-	// console.log( this.sel.length )
 
 	return this
 }

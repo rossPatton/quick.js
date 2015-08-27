@@ -3,8 +3,8 @@ const assert = require( 'assert' )
 const jsdom  = require( 'jsdom' )
 const dom    = fs.readFileSync( __dirname + '/testDOM.html' ).toString()
 
-require( 'babel/register' )
-const $ = require( '../app/core/app' )
+// require( 'babel/register' )
+var $ = {}
 
 describe( 'Quick.js Unit Tests', function() {
 	this.timeout( 0 )
@@ -19,6 +19,8 @@ describe( 'Quick.js Unit Tests', function() {
 			window = win
 			document = window.document
 			require( 'classlist-polyfill' )
+			require( 'babel/register' )
+			$ = require( '../app/core/app' )
 			done()
 		} )
 

@@ -15,8 +15,6 @@ const height = function( val: string ): number | Object {
 		this.each( function( el: Object ) {
 			el.style.height = val
 		} )
-		// this.each( el => el.style.height = parseInt( val, 10 ) )
-		// this.raf( this.each( el => el.style.height = parseInt( val, 10 ) ) )
 	}
 
 	// if just getting the height, return the height

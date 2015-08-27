@@ -1,6 +1,5 @@
 /* @flow */
 'use strict'
-// const raf = require( 'raf' )
 
 
 /**
@@ -15,13 +14,6 @@ const remove = function(): Object {
 	} )
 
 	return this
-	// raf( () => {
-	// 	this.each( el => {
-	// 		return el.parentNode.removeChild( el )
-	// 	} )
-
-	// 	return this
-	// } )
 }
 
 module.exports = remove

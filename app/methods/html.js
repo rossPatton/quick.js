@@ -21,16 +21,6 @@ const html = function( set ) {
 		} )
 	}
 
-	// const htmlArr = this.toArray(
-	// 	( new DOMParser() ).parseFromString( set, 'text/html' ).body.children
-	// )
-
-	// this.raf( this.each( el => {
-	// 	for ( let node of htmlArr ) {
-	// 		el.appendChild( node.cloneNode( true ) )
-	// 	}
-	// } ) )
-
 	return !set ? this.sel[0].innerHTML : this
 }
 

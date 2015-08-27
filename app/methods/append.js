@@ -16,9 +16,6 @@ const append = function( appendMe: string | Object ): Object {
 		this.each( el => {
 			return el.appendChild( appendMe.cloneNode() )
 		} )
-		// this.raf( this.each( el => {
-		// 	return el.appendChild( appendMe.cloneNode() )
-		// } ) )
 	}
 	else if ( typeof appendMe === 'string' ) {
 		let tmp: Object = document.createElement( 'div' )
@@ -28,10 +25,6 @@ const append = function( appendMe: string | Object ): Object {
 		this.each( el => {
 			return el.appendChild( tmp.firstChild.cloneNode( true ) )
 		} )
-
-		// this.raf( this.each( el => {
-		// 	return el.appendChild( tmp.firstChild.cloneNode( true ) )
-		// } ) )
 	}
 
 	return this

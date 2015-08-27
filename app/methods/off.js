@@ -19,10 +19,8 @@ const off = function( events: string, cb: Function ): Object {
 	this.each( el => {
 		return events.split( ' ' ).forEach( ev => {
 			return this.listeners.forEach( listener => {
-				// dunno about throwing here...
 				if ( ev !== listener.ev || !Object.is( cb, listener.cb ) ) {
 					return
-					// throw Error
 				}
 
 				return el.removeEventListener( listener.ev, listener.cb )

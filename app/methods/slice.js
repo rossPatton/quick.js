@@ -12,7 +12,6 @@
  */
 const slice = function( pos1: number, pos2: number ): Object {
 	this.sel = this.sel.slice( pos1, pos2 )
-
 	return this
 }
 
