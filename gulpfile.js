@@ -16,18 +16,32 @@ var source    = require( 'vinyl-source-stream' )
 var b = require( 'browserify' )( {
 	debug: false
 } )
+
 var $ = require( 'gulp-load-plugins' )( {
 	pattern: ['gulp-*', 'gulp.*'],
 	replaceString: /^gulp(-|\.)/,
 	camelize: true, // transforms hyphenated plugins names to camel case
 	lazy: true, // lazy load plugins on demand
 	rename: {
-		'gulp-sourcemaps': 'maps'
+		'gulp-sourcemaps': 'maps',
+		'gulp-jsdoc-to-markdown': 'jsdoc',
 	}
 } )
 
-// var clientSrcDir = 'src'
-// var flowDest = './tmp'
+gulp.task( 'transpile', function() {
+	return gulp.src( 'app/**/*.js' )
+		.pipe( $.babel() )
+		.pipe( gulp.dest( 'tmp' ) )
+} )
+
+gulp.task( 'docs', function() {
+	return gulp.src( 'tmp/**/*.js' )
+		.pipe( $.jsdoc() )
+		.pipe( $.rename( function( path ) {
+			path.extname = '.md'
+		} ) )
+		.pipe( gulp.dest( 'api' ) )
+} )
 
 gulp.task( 'flow-babel', function( cb ) {
 	gulp.src( 'app/**/*.js')
