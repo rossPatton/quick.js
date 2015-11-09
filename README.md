@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/rossPatton/quick.js/badges/gpa.svg)](https://codeclimate.com/github/rossPatton/quick.js) [![Test Coverage](https://codeclimate.com/github/rossPatton/quick.js/badges/coverage.svg)](https://codeclimate.com/github/rossPatton/quick.js/coverage)
+![Test Coverage](https://codeclimate.com/github/rossPatton/quick.js/badges/coverage.svg)](https://codeclimate.com/github/rossPatton/quick.js/coverage)
 
 # quick.js
 Lightweight, Modular, Isomorphic, DOM Traversal Library
