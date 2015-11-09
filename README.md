@@ -3,16 +3,18 @@
 # quick.js
 Lightweight, Modular, Isomorphic, DOM Traversal Library
 
-inspired by [sprintjs](https://github.com/bendc/sprint), very rough, use at own risk, etc etc. 
+inspired by [sprintjs](https://github.com/bendc/sprint)
 
-goal is to match the functionality (more or less) of [jQuery dom manipulation methods](https://api.jquery.com/category/manipulation/), using the latest native methods. Not a library to use if you have to support legacy browsers.
+this package is just an experiment to create a very thin jquery like wrapper for dom manipulation that works universally. it weighs in at a whopping 11kb and uses native methods for everything.
 
-Ideally will work on the server side (like cheerio) as well as the front-end, and will be require-able on a method by method basis like lodash (eventually). Selections are cached by default, and the cache is bustable (props to [Eric Mann](http://ttmm.io/tech/selector-caching-jquery/)).
+more or less matches the functionality of [jQuery dom manipulation methods](https://api.jquery.com/category/manipulation/), Not a library to use if you have to support legacy browsers. I don't support the various alias methods, having just one method for each thing.
 
-Anything that results in a change to the DOM goes through requestAnimationFrame.
+Selections are cached by default, and the cache is bustable (props to [Eric Mann](http://ttmm.io/tech/selector-caching-jquery/)).
 
-Will have convenience methods for working with data attributes (using css classes as selectors is bad for you).
+If you want to contribute, I could use a little help with asyncing the whole thing, ala jquery 3 style.
 
-If you want to contribute, I could use a little help with the isomorphic bits and eventually a little help with testing would be nice.
+Coverage is good and it's more or less type safe, but I can always use help there to tighten things up.
 
-When coverage hits around 80-90% consider this library 'useable', but changes may still occur.
+Some methods may not be an exact copy of their jquery counterparts. This is a quick and dirty dom manipulation library, not a jquery replacement.
+
+Contributions and PRs very welcome.

@@ -10,9 +10,9 @@
  * @param {Object} [appendMe] the node to append to the dom
  * @returns {Object} [this] like most methods, returns parent object
  */
-const after = function( appendMe: string | Object ): Object {
+const after = function( appendMe: string | {cloneNode: Function} ): Object {
 	// if passed a dom node directly, check it and append it
-	if ( this.isNode( appendMe ) === true ) {
+	if ( typeof appendMe === 'object' && this.isNode( appendMe ) === true ) {
 		this.each( function( el: Object ) {
 			return el.parentNode.insertBefore(
 				appendMe.cloneNode(), el.nextSibling
