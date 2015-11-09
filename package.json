@@ -8,7 +8,9 @@
     "url": "https://github.com/rossPatton/quick.js.git"
   },
   "keywords": [
-    "quick"
+    "quick",
+    "jquery",
+    "DOM",
   ],
   "author": "Ross Patton",
   "license": "GPL-3.0",
